@@ -5,10 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gxkj.webs</groupId>
-    <artifactId>myshopx</artifactId>
+    <artifactId>myshopx-root</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
-
+    <packaging>pom</packaging>
+    <modules>
+               <module>myshopx-admin</module>
+               <module>myshopx-common</module>
+                <module>myshopx-service</module>
+                <module>myshopx-dao</module>
+      </modules>
     <!-- 项目属性 -->
     <properties>
 
@@ -49,7 +54,10 @@
         <tomcat.version>2.2</tomcat.version>
         <jetty.version>7.6.14.v20131031</jetty.version>
         <webserver.port>8181</webserver.port>
+        <!--指定Maven用什么编码来读取源码及文档 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--指定Maven用什么编码来呈现站点的HTML文件 -->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <downloadSources>true</downloadSources>
 
     </properties>
