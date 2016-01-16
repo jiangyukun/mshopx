@@ -26,7 +26,7 @@ public class UserTServiceImplTest extends AbstractJUnit4SpringContextTests {
         UserT u = new UserT();
         u.setId(UUID.randomUUID().toString());
         u.setUserName("wode ceshi ");
-        u.setPassword("mm");
+        u.setPassword("33");
        int r = userTService.addUser(u);
         System.out.println("result = "+r);
 
