@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="myshopx-admin:war">
+    <output-path>$PROJECT_DIR$/myshopx-admin/target</output-path>
+    <root id="archive" name="myshopx-admin.war">
+      <element id="artifact" artifact-name="myshopx-admin:war exploded" />
+    </root>
+  </artifact>
+</component>
