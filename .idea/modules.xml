@@ -4,13 +4,9 @@
     <modules>
       <module fileurl="file://E:/BaiduYunDownload/hella/hella/hella.iml" filepath="E:/BaiduYunDownload/hella/hella/hella.iml" />
       <module fileurl="file://D:/IdeaWS/my/jeesite/jeesite.iml" filepath="D:/IdeaWS/my/jeesite/jeesite.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Mybatis-Spring/mybatis-spring.iml" filepath="$PROJECT_DIR$/../Mybatis-Spring/mybatis-spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/myshopx-common/myshopx-common.iml" filepath="$PROJECT_DIR$/myshopx-common/myshopx-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/myshopx-dao/myshopx-dao.iml" filepath="$PROJECT_DIR$/myshopx-dao/myshopx-dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/myshopx-service/myshopx-service.iml" filepath="$PROJECT_DIR$/myshopx-service/myshopx-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../H57_Shiro/samples.iml" filepath="$PROJECT_DIR$/../H57_Shiro/samples.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../spring-mybaits-template/spring-mybaits-template.iml" filepath="$PROJECT_DIR$/../spring-mybaits-template/spring-mybaits-template.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/zhibing_mybatis.iml" filepath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/zhibing_mybatis.iml" />
     </modules>
   </component>
 </project>

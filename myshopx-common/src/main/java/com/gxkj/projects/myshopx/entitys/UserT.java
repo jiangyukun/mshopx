@@ -15,6 +15,8 @@ public class UserT   implements Serializable{
 
     private int age;
 
+    private String headUrl;
+
     public String getId() {
         return id;
     }
@@ -45,5 +47,13 @@ public class UserT   implements Serializable{
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getHeadUrl() {
+        return headUrl;
+    }
+
+    public void setHeadUrl(String headUrl) {
+        this.headUrl = headUrl;
     }
 }

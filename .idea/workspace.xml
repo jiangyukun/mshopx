@@ -2,40 +2,133 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e89a4af-a8b7-40a8-947c-4b5131202b1b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/zhibing_mybatis.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../spring-mybaits-template/test/java/UserTServiceImplTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-common/src/main/java/org/apache/ibatis/session/Configuration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-common/src/main/java/org/apache/ibatis/thread/Runnable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-common/src/main/java/org/mybatis/spring/SqlSessionFactoryBean.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-dao/src/main/webapp/WEB-INF/classes/com/gxkj/projects/myshopx/dao/IUserDao.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/controller/MUserController.class" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/controller/MUserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/dao/MUserMapper.class" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/dao/MUserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/model/MUser.class" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/model/MUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/service/MUserServiceI.class" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/service/MUserServiceI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/service/MUserServiceImpl.class" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/rml/service/MUserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/test-classes/TestMybatis.class" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/test-classes/TestMybatis.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myshopx-dao/src/main/java/com/gxkj/projects/myshopx/dao/UserMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myshopx-service/src/main/resources/com/gxkj/projects/myshopx/dao/UserMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myshopx-service/src/main/resources/mybatis.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_nodep_2_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_0_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_0_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_0_2_26.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_1_41.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_4_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_4_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_xml_2_4_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_4_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_0_9_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_miemiedev_mybatis_paginator_1_2_15.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_4_0_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_14_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_c3p0_0_9_2_pre8.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_3_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_persistence_api_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jsp_jsp_api_2_2_1_b03.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_servlet_api_3_0_alpha_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_0_0_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_websocket_javax_websocket_api_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_ws_rs_javax_ws_rs_api_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_stream_stax_api_1_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_7.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_15.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_15.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_29.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_dbcp_6_0_29.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_6_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_castor_castor_core_1_3_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_castor_castor_xml_1_3_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_4_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_generator_mybatis_generator_core_1_3_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_0_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_2_7.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_3_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_5_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_5_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_5_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_3_2_9_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_asm_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_3_2_9_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_3_2_9_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_3_2_9_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_3_2_9_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_3_0_6_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_3_1_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_3_2_9_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_3_0_6_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_3_1_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_3_2_9_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_3_1_0_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_3_2_9_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_1_2_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_1_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__tk_mybatis_mapper_3_3_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-common/src/main/java/com/gxkj/common/mybatis/annotation/MyBatisDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-common/src/main/java/com/gxkj/common/mybatis/persistence/Page.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-dao/src/main/java/com/gxkj/projects/myshopx/dao/IUserDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-service/src/main/resources/com/gxkj/projects/myshopx/dao/IUserTDaoMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-service/src/main/resources/com/gxkj/projects/myshopx/dao/MUserMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-service/src/main/resources/mybatis-config.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-service/target/classes/com/gxkj/projects/myshopx/dao/IUserTDaoMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-service/target/classes/com/gxkj/projects/myshopx/dao/MUserMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myshopx-service/target/classes/mybatis-config.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/target/classes/com/gxkj/projects/myshopx/services/impl/UserTServiceImpl.class" afterPath="$PROJECT_DIR$/myshopx-service/target/classes/com/gxkj/projects/myshopx/services/impl/UserTServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/target/test-classes/com/gxkj/projects/myshopx/services/UserTServiceImplTest.class" afterPath="$PROJECT_DIR$/myshopx-service/target/test-classes/com/gxkj/projects/myshopx/services/UserTServiceImplTest.class" />
       <change type="MODIFICATION" beforePath="D:/IdeaWS/my/jeesite/src/main/resources/jeesite.properties" afterPath="D:/IdeaWS/my/jeesite/src/main/resources/jeesite.properties" />
       <change type="MODIFICATION" beforePath="D:/IdeaWS/my/jeesite/src/test/java/com/thinkgem/jeesite/test/Test.java" afterPath="D:/IdeaWS/my/jeesite/src/test/java/com/thinkgem/jeesite/test/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../H57_Shiro/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/../H57_Shiro/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Mybatis-Spring/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/../Mybatis-Spring/src/main/resources/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Mybatis-Spring/src/main/resources/config.properties" afterPath="$PROJECT_DIR$/../Mybatis-Spring/src/main/resources/config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Mybatis-Spring/src/test/java/com/isea533/mybatis/test/BasicTest.java" afterPath="$PROJECT_DIR$/../Mybatis-Spring/src/test/java/com/isea533/mybatis/test/BasicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Mybatis-Spring/src/test/java/com/isea533/mybatis/test/PageMapperTest.java" afterPath="$PROJECT_DIR$/../Mybatis-Spring/src/test/java/com/isea533/mybatis/test/PageMapperTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/mybatis.log" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/mybatis.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/pom.xml" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/src/main/java/rml/mapping/MUserMapper.xml" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/src/main/java/rml/mapping/MUserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/src/main/resources/spring-mybatis.xml" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/src/main/resources/spring-mybatis.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/spring-mybatis.xml" afterPath="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis/target/classes/spring-mybatis.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-common/myshopx-common.iml" afterPath="$PROJECT_DIR$/myshopx-common/myshopx-common.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-common/src/main/java/com/gxkj/projects/myshopx/entitys/UserT.java" afterPath="$PROJECT_DIR$/myshopx-common/src/main/java/com/gxkj/projects/myshopx/entitys/UserT.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-dao/myshopx-dao.iml" afterPath="$PROJECT_DIR$/myshopx-dao/myshopx-dao.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/myshopx-service.iml" afterPath="$PROJECT_DIR$/myshopx-service/myshopx-service.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/src/main/java/com/gxkj/projects/myshopx/services/impl/UserTServiceImpl.java" afterPath="$PROJECT_DIR$/myshopx-service/src/main/java/com/gxkj/projects/myshopx/services/impl/UserTServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/src/main/resources/spring-mybatis.xml" afterPath="$PROJECT_DIR$/myshopx-service/src/main/resources/spring-mybatis.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/src/main/resources/spring-service.xml" afterPath="$PROJECT_DIR$/myshopx-service/src/main/resources/spring-service.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/src/test/java/com/gxkj/projects/myshopx/services/UserTServiceImplTest.java" afterPath="$PROJECT_DIR$/myshopx-service/src/test/java/com/gxkj/projects/myshopx/services/UserTServiceImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/target/classes/spring-mybatis.xml" afterPath="$PROJECT_DIR$/myshopx-service/target/classes/spring-mybatis.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myshopx-service/target/classes/spring-service.xml" afterPath="$PROJECT_DIR$/myshopx-service/target/classes/spring-service.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../spring-mybaits-template/pom.xml" afterPath="$PROJECT_DIR$/../spring-mybaits-template/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../spring-mybaits-template/src/main/java/com/github/miemiedev/smt/repository/UserDao.mbts.xml" afterPath="$PROJECT_DIR$/../spring-mybaits-template/src/main/java/com/github/miemiedev/smt/repository/UserDao.mbts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../spring-mybaits-template/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/../spring-mybaits-template/src/main/resources/application.properties" />
     </list>
     <ignored path="mshopx.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,41 +179,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="log4j.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/log4j.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44250363">
-              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://E:/BaiduYunDownload/hella/hella/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-135.03572">
-              <caret line="199" column="31" selection-start-line="199" selection-start-column="31" selection-end-line="199" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserTServiceImplTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserTServiceImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myshopx-service/src/test/java/com/gxkj/projects/myshopx/services/UserTServiceImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.26573426">
+              <caret line="18" column="40" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -148,12 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myshopx-dao/src/main/java/com/gxkj/myshopx/dao/IUserDao.java" />
-        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/mapping/myshopx/a/a.xml" />
-        <option value="$PROJECT_DIR$/myshopx-common/src/main/java/org/apache/ibatis/thread/PropertiesUtil.java" />
-        <option value="$PROJECT_DIR$/myshopx-common/pom.xml" />
-        <option value="$PROJECT_DIR$/myshopx-common/src/main/java/com/gxkj/projects/myshopx/entitys/UserT.java" />
-        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/mapping/myshopx/a/IUserTDao.xml" />
         <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/mybatis-config.xml" />
         <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/com/gxkj/projects/myshopx/dao/IUserTDao.xml" />
         <option value="$PROJECT_DIR$/myshopx-service/pom.xml" />
@@ -182,7 +239,6 @@
         <option value="E:/BaiduYunDownload/hella/hella/src/main/resources/spring/data-source.xml" />
         <option value="E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/entity/Entity.java" />
         <option value="E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/service/user/IUserService.java" />
-        <option value="E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/mapper/UserMapper.java" />
         <option value="E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/controller/UserController.java" />
         <option value="E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/service/user/UserServiceImpl.java" />
         <option value="E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/entity/User.java" />
@@ -192,13 +248,20 @@
         <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/com/gxkj/projects/myshopx/dao/IUserTDaoMapper.xml" />
         <option value="$PROJECT_DIR$/myshopx-service/src/main/java/com/gxkj/projects/myshopx/services/UserTService.java" />
         <option value="$PROJECT_DIR$/myshopx-dao/src/main/java/com/gxkj/projects/myshopx/dao/IUserDao.java" />
-        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/spring-service.xml" />
-        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/spring-mybatis.xml" />
-        <option value="$PROJECT_DIR$/myshopx-service/src/main/java/com/gxkj/projects/myshopx/services/impl/UserTServiceImpl.java" />
-        <option value="$PROJECT_DIR$/myshopx-service/src/test/java/com/gxkj/projects/myshopx/services/UserTServiceImplTest.java" />
         <option value="$PROJECT_DIR$/myshopx-common/src/main/java/org/apache/ibatis/thread/Runnable.java" />
         <option value="E:/BaiduYunDownload/hella/hella/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/spring-mybatis.xml" />
+        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/applicationContext-server.xml" />
+        <option value="$PROJECT_DIR$/myshopx-dao/src/main/java/com/gxkj/projects/myshopx/dao/UserMapper.java" />
+        <option value="E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/com/gxkj/projects/myshopx/dao/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/myshopx-service/src/main/java/com/gxkj/projects/myshopx/services/impl/UserTServiceImpl.java" />
+        <option value="$PROJECT_DIR$/myshopx-common/src/main/java/com/gxkj/projects/myshopx/entitys/UserT.java" />
+        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/data-source.xml" />
+        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/spring-service.xml" />
+        <option value="$PROJECT_DIR$/myshopx-service/src/test/java/com/gxkj/projects/myshopx/services/UserTServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/myshopx-service/src/main/resources/mybatis.xml" />
       </list>
     </option>
   </component>
@@ -268,126 +331,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mshopx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring-mybaits-template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mshopx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myshopx-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mshopx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myshopx-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mshopx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myshopx-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mshopx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myshopx-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mshopx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myshopx-common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mshopx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hella" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/BaiduYunDownload/hella/hella" />
+    <property name="last_opened_file_path" value="D:/IdeaWS/my/jeesite" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.7" />
     <property name="js-jscs-nodeInterpreter" value="C:\nodejs\node.exe" />
@@ -400,23 +353,24 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.gxkj.projects.myshopx.services" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\my\mshopx\myshopx-service\src\main\resources\mapping\myshopx\a" />
-      <recent name="D:\my\mshopx\myshopx-service\src\main\resources\mapping\myshopx" />
-      <recent name="D:\my\mshopx\myshopx-service\src\main\resources" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.gxkj.projects.myshopx.dao" />
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\my\mshopx\myshopx-service\src\main\resources\com\gxkj\projects\myshopx\dao" />
       <recent name="D:\my\mshopx\myshopx-service\src\main\resources" />
       <recent name="D:\my\spring-mybaits-template\src\test\java" />
       <recent name="D:\my\mshopx\myshopx-service\src\main\resources\rml\mapping" />
       <recent name="D:\my\mshopx\myshopx-service\src\main\java\rml" />
-      <recent name="D:\my\mshopx\myshopx-service\src\main\java\rml\dao" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\my\mshopx\myshopx-service\src\main\resources\mapping\myshopx\a" />
+      <recent name="D:\my\mshopx\myshopx-service\src\main\resources\mapping\myshopx" />
+      <recent name="D:\my\mshopx\myshopx-service\src\main\resources" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.UserTServiceImplTest.test1">
@@ -1004,47 +958,48 @@
       <workItem from="1452748617760" duration="14081000" />
       <workItem from="1452765727624" duration="7910000" />
       <workItem from="1452910997122" duration="5244000" />
+      <workItem from="1452917250936" duration="2180000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UserServiceTest_addUserTest - 2016.01.16 at 11h 26m 29s.xml">
-      <configuration name="UserServiceTest.addUserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserServiceTest_addUserTest - 2016.01.16 at 11h 28m 17s.xml">
-      <configuration name="UserServiceTest.addUserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserServiceTest_addUserTest - 2016.01.16 at 11h 29m 51s.xml">
-      <configuration name="UserServiceTest.addUserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserServiceTest_addUserTest - 2016.01.16 at 11h 32m 49s.xml">
-      <configuration name="UserServiceTest.addUserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 11h 41m 09s.xml">
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 22m 53s.xml">
       <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 11h 41m 43s.xml">
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 23m 52s.xml">
       <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 11h 44m 50s.xml">
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 24m 26s.xml">
       <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 11h 46m 37s.xml">
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 27m 50s.xml">
       <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 11h 50m 08s.xml">
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 28m 25s.xml">
       <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 11h 51m 15s.xml">
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 29m 03s.xml">
+      <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 29m 47s.xml">
+      <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 30m 42s.xml">
+      <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 33m 42s.xml">
+      <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserTServiceImplTest_test1 - 2016.01.16 at 13h 36m 14s.xml">
       <configuration name="UserTServiceImplTest.test1" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29808000" />
+    <option name="totallyTimeSpent" value="31988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1055,15 +1010,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56182796" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25286534" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25286534" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1074,6 +1026,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1090,12 +1045,12 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39919356" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56182796" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.56182796" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1118,11 +1073,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/myshopx-service/src/test/java/com/gxkj/projects/myshopx/services/UserTServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../Mybatis-Spring/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.362069">
           <caret line="194" column="33" selection-start-line="194" selection-start-column="33" selection-end-line="194" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1130,7 +1092,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="44" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1272,7 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1280,7 +1240,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1316,62 +1275,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/BaiduYunDownload/hella/hella/hella.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7174825">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myshopx-common/src/main/java/com/gxkj/projects/myshopx/entitys/UserT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/util/SpringContextUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/BaiduYunDownload/hella/hella/src/main/resources/spring/applicationContext-server.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.464285">
-          <caret line="41" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/BaiduYunDownload/hella/hella/src/main/resources/spring/data-source.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.107143">
-          <caret line="79" column="17" selection-start-line="21" selection-start-column="4" selection-end-line="79" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/com/gxkj/projects/myshopx/dao/IUserTDaoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.5">
-          <caret line="14" column="80" selection-start-line="14" selection-start-column="80" selection-end-line="14" selection-end-column="80" />
-          <folding>
-            <marker date="1452914501374" expanded="true" signature="621:667" placeholder="SELECT id,us..user_t..." />
-            <marker date="1452914501374" expanded="true" signature="805:913" placeholder="insert into user_t..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myshopx-dao/src/main/java/com/gxkj/projects/myshopx/dao/IUserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="37" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1391,14 +1298,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/spring-service.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13828239">
-          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Mybatis-Spring/src/main/resources/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.62518966">
@@ -1411,7 +1310,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1419,14 +1317,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="72" column="30" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.9333334">
-          <caret line="49" column="31" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1458,42 +1348,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/mybatis-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.607142">
-          <caret line="36" column="64" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/spring-mybatis.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.178571">
-          <caret line="55" column="11" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/java/com/gxkj/projects/myshopx/services/impl/UserTServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31888112">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myshopx-service/src/test/java/com/gxkj/projects/myshopx/services/UserTServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/BaiduYunDownload/hella/hella/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-135.03572">
-          <caret line="199" column="31" selection-start-line="199" selection-start-column="31" selection-end-line="199" selection-end-column="31" />
+        <state vertical-scroll-proportion="-19.107143">
+          <caret line="251" column="19" selection-start-line="9" selection-start-column="4" selection-end-line="251" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1506,10 +1364,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://E:/BaiduYunDownload/hella/hella/src/main/resources/spring/data-source.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="20.25">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="56" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/BaiduYunDownload/hella/hella/src/main/resources/spring/applicationContext-server.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.928572">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="27" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44250363">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        <state vertical-scroll-proportion="16.844828">
+          <caret line="188" column="17" selection-start-line="188" selection-start-column="17" selection-end-line="188" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshopx-dao/src/main/java/com/gxkj/projects/myshopx/dao/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/BaiduYunDownload/hella/hella/src/main/java/com/yidiyiwei/hella/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="50" selection-start-line="68" selection-start-column="4" selection-end-line="79" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/java/com/gxkj/projects/myshopx/services/impl/UserTServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/com/gxkj/projects/myshopx/dao/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6206896">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="21" />
+          <folding>
+            <marker date="1452922139267" expanded="true" signature="340:448" placeholder="insert into user_t..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshopx-common/src/main/java/com/gxkj/projects/myshopx/entitys/UserT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.033333">
+          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+          <folding>
+            <element signature="e#902#903#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/spring-mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="17.535715">
+          <caret line="25" column="69" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/spring-service.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.25">
+          <caret line="21" column="105" selection-start-line="21" selection-start-column="105" selection-end-line="21" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/IdeaWS/my/jeesite/src/main/resources/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.642858">
+          <caret line="39" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshopx-service/src/main/resources/mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.392857">
+          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshopx-service/src/test/java/com/gxkj/projects/myshopx/services/UserTServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26573426">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1568,7 +1530,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>hella</last-edited>
+          <last-edited>jeesite</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

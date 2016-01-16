@@ -14,13 +14,11 @@ import java.util.UUID;
  * Created by dell on 2016/1/14.
  */
 @RunWith(SpringJUnit4ClassRunner.class)     //表示继承了SpringJUnit4ClassRunner类
-@ContextConfiguration(locations = {"classpath:spring-service.xml","classpath:spring-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-mybatis.xml","classpath:spring-service.xml"})
 public class UserTServiceImplTest extends AbstractJUnit4SpringContextTests {
 //    private static final Logger logger = Logger.getLogger(UserTServiceImplTest.class);
     @Autowired
     private UserTService userTService;
-
-
 
     @Test
     public void test1() {

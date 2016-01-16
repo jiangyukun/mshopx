@@ -3,9 +3,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="D:/IdeaWS/my/jeesite" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../H57_Shiro" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../Mybatis-Spring" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../SpringMVC-Spring-MyBatis" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../spring-mybaits-template" vcs="Git" />
   </component>
 </project>
