@@ -7,13 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import rml.model.MUser;
-import rml.service.MUserServiceI;
 
-import java.util.List;
 import java.util.UUID;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by dell on 2016/1/14.

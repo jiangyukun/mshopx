@@ -88,14 +88,14 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="hella" target="1.6" />
+      <module name="hella" target="1.7" />
       <module name="jeesite" target="1.6" />
       <module name="mshopx" target="1.6" />
       <module name="mybatis-spring" target="1.6" />
       <module name="myshopx-admin" target="1.6" />
-      <module name="myshopx-common" target="1.7" />
-      <module name="myshopx-dao" target="1.7" />
-      <module name="myshopx-service" target="1.7" />
+      <module name="myshopx-common" target="1.6" />
+      <module name="myshopx-dao" target="1.6" />
+      <module name="myshopx-service" target="1.6" />
       <module name="samples" target="1.6" />
       <module name="spring-mybaits-template" target="1.5" />
       <module name="zhibing_mybatis" target="1.7" />
