@@ -11,4 +11,8 @@
 		)
 	</insert>
 
+	<sql id="doPageQuery" >
+		select id,user_name,password,headUrl from user_t order by id
+	</sql>
+
 </mapper>

@@ -27,4 +27,9 @@ public interface UserMapper {
      */
     public int addUser(UserT user) ;
 
+    /**
+     * 分页查看用户测试
+     * @return
+     */
+    List<UserT> doPageQuery();
 }
