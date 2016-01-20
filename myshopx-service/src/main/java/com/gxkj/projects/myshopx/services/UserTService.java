@@ -1,7 +1,7 @@
 package com.gxkj.projects.myshopx.services;
 
-import com.github.pagehelper.PageInfo;
-import com.gxkj.projects.myshopx.entitys.UserT;
+
+import com.gxkj.projects.myshopx.entitys.User;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface UserTService {
 
-    public int addUser(UserT user);
+    public User addUser(User user);
 
-    public PageInfo<UserT> doPager(String cname, int pageNo, int pagesize);
+    public List<User> doListTest(int age, String name);
 }
