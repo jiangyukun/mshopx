@@ -11,7 +11,7 @@ import java.io.Serializable;
  * Created by dell on 2016/1/14.
  */
 @Entity
-@Table(name = "user_t")
+@Table(name = "user")
 public class User extends BaseModel{
 
     @Column(name="user_name",length=40)

@@ -44,7 +44,7 @@ public class UserTServiceImplTest extends AbstractJUnit4SpringContextTests {
     }
 
     @Test
-    public void doAddTest(){
+    public void doAddUserTest(){
         for(int i=0;i<100;i++){
             User u = new User();
             u.setAge(i+10);
