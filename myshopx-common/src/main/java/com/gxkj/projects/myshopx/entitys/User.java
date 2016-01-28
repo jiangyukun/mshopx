@@ -1,7 +1,5 @@
 package com.gxkj.projects.myshopx.entitys;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,6 +11,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "user")
 public class User extends BaseModel{
+
+    private static final long serialVersionUID = -3216639312710758696l;
 
     @Column(name="user_name",length=40)
     private String userName;

@@ -1,7 +1,7 @@
 package com.gxkj.projects.myshopx.services.impl;
 
 
-import com.gxkj.projects.myshopx.dao.UserDao;
+import com.gxkj.projects.myshopx.dao.UserDaoImpl;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.services.UserTService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +17,21 @@ public class UserTServiceImpl  implements UserTService {
 
 
     @Autowired
-    private UserDao userDao;
+    private UserDaoImpl userDao;
 
     public User addUser(User user) {
 
-        return  userDao.save(user);
+        userDao.insert(user);
+        return user;
     }
 
 
     public List<User> doListTest(int age, String name) {
         return userDao.doListTest(age,name);
     }
+
+
+
 
 
 }

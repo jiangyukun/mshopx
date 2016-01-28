@@ -37,26 +37,32 @@ public class UserTServiceImplTest extends AbstractJUnit4SpringContextTests {
 //        }
 //       // logger.info(JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd HH:mm:ss"));
 //    }
-    @Test
-    public void doPageTest(){
-//        PageInfo page =  userTService.doPager("",1,2);
-//        LOG.info("page="+JSON.toJSONString(page));
-    }
+
 
     @Test
     public void doAddUserTest(){
-        for(int i=0;i<100;i++){
+//        for(int i=101;i<102;i++){
+
+        int i= 102;
             User u = new User();
             u.setAge(i+10);
             u.setHeadUrl("head"+i);
             u.setUserName("uname_"+i);
             u = userTService.addUser(u);
             LOG.info("u="+JSON.toJSONString(u));
-        }
+//        }
     }
+
+    /**
+     * 自定义查询SQL的例子
+     */
     @Test
     public void doListTest(){
-        List<User> userLists =  userTService.doListTest(10,null);
+        List<User> userLists =  userTService.doListTest(0,null);
         LOG.info("userLists="+JSON.toJSONString(userLists));
+    }
+    @Test
+    public void doPageTest(){
+
     }
 }
