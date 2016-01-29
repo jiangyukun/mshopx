@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by dell on 2016/1/23.
  */
-public class ListPager {
+public class ListPager<T> {
 
     private int pageNo;
 
@@ -13,7 +13,7 @@ public class ListPager {
 
     private long totalRows;
 
-    private List<?> pageData;
+    private List<T> pageData;
 
     public int getPageNo() {
         return pageNo;
@@ -31,11 +31,11 @@ public class ListPager {
         this.rowsPerPage = rowsPerPage;
     }
 
-    public List<?> getPageData() {
+    public List<T> getPageData() {
         return pageData;
     }
 
-    public void setPageData(List<?> pageData) {
+    public void setPageData(List<T> pageData) {
         this.pageData = pageData;
     }
 

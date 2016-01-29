@@ -1,6 +1,7 @@
 package com.gxkj.projects.myshopx.services;
 
 
+import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.entitys.User;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface UserTService {
 
     public List<User> doListTest(int age, String name);
 
-//     public Page<User> getPagerUser(int page, int pageSize,String uname,int age);
+    public ListPager<User> doPageHQL(int age, String userName, int pagenNo, int pageSize);
 
 
 }

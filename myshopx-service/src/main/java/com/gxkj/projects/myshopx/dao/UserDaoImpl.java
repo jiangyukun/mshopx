@@ -1,5 +1,6 @@
 package com.gxkj.projects.myshopx.dao;
 
+import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.entitys.User;
 import org.apache.commons.lang3.StringUtils;
@@ -30,18 +31,21 @@ public class UserDaoImpl extends BaseRepositoryImpl {
         return super.selectByHQL(sql,param);
     }
 
-//    public Page<User> getPagerUser(PageRequest pageable, String uname, int age){
-//        String sql  = "select u from User u where 1=1 ";
-//        Map<String,Object> param = new HashMap<String,Object>();
-//        if(age > 0){
-//            sql += " and age = :age";
-//            param.put("age",age);
-//        }
-//        if(StringUtils.isNotBlank(uname)){
-//            sql += " and userName = :userName";
-//            param.put("userName",uname);
-//        }
-//
-//        return super.doPageSelect(sql,param,pageable);
-//    }
+    public ListPager<User> doPageHQL(int age, String userName,int pagenNo,int pageSize){
+        ListPager<User> pager = new ListPager<User>();
+        pager.setPageNo(pagenNo);
+        pager.setRowsPerPage(pageSize);
+
+        String hql  = " from User u where 1=1 ";
+        Map<String,Object> param = new HashMap<String,Object>();
+        if(age >= 0){
+            hql += " and age = :age";
+            param.put("age",age);
+        }
+        if(StringUtils.isNotBlank(userName)){
+            hql += " and userName = :userName";
+            param.put("userName",userName);
+        }
+        return  this.selectPageByHql(hql,param,pager);
+    }
 }

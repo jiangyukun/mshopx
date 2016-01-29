@@ -1,6 +1,7 @@
 package com.gxkj.projects.myshopx.services.impl;
 
 
+import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.dao.UserDaoImpl;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.services.UserTService;
@@ -30,7 +31,9 @@ public class UserTServiceImpl  implements UserTService {
         return userDao.doListTest(age,name);
     }
 
-
+    public ListPager<User> doPageHQL(int age, String userName, int pagenNo, int pageSize){
+        return userDao.doPageHQL(age,userName,pagenNo,pageSize);
+    }
 
 
 

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by dell on 2016/1/23.
+ * 泛型知识参考：http://qiemengdao.iteye.com/blog/1525624
  */
 @Component
 public class BaseRepositoryImpl     {
@@ -140,8 +140,8 @@ public class BaseRepositoryImpl     {
     }
 
 
-    public <T> ListPager selectPageByHql(String hql, Map<String, Object> param,
-                                     ListPager pager) throws SQLException {
+    public <T> ListPager<T> selectPageByHql(String hql, Map<String, Object> param,
+                                     ListPager<T> pager)   {
         Session session = sessionFactory.getCurrentSession();
         Query countQuery = session.createQuery(getCounthql(hql));
         if (param != null){
@@ -149,10 +149,10 @@ public class BaseRepositoryImpl     {
                 countQuery.setParameter(key, param.get(key));
             }
         }
-        List<Long> temp = countQuery.list();
-        long totalRows = temp!=null&&temp.size()>0?temp.get(0):0L;
-        pager.setTotalRows(totalRows);
-        if(totalRows == 0){
+
+        BigInteger totalRows = (BigInteger) countQuery.uniqueResult();
+        pager.setTotalRows(totalRows.longValue());
+        if(totalRows.intValue() == 0){
             pager.setPageData(null);
             return pager;
         }
@@ -164,7 +164,7 @@ public class BaseRepositoryImpl     {
 
 
     public <T> List<T> selectPageByHQL(String hql, Map<String, Object> param,
-                                   int from, int to) throws SQLException {
+                                   int from, int to)  {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(hql);
         if(param != null){
@@ -206,8 +206,7 @@ public class BaseRepositoryImpl     {
 
 
 
-    public  ListPager selectPageBySQL(String sql, Map<String, Object> param,
-                                     Class<?> clazz, ListPager pager) throws SQLException {
+    public <T> ListPager selectPageBySQL(String sql, Map<String, Object> param, ListPager pager,T t) throws SQLException {
         Session session = sessionFactory.getCurrentSession();
         String countSql = this.getCounthql(sql);
         SQLQuery countQuery = session.createSQLQuery(countSql);
@@ -223,13 +222,13 @@ public class BaseRepositoryImpl     {
             return pager;
         }
          List  pageData = this.selectPageBySQL(sql,param,
-                (pager.getPageNo()-1)*pager.getRowsPerPage(),pager.getRowsPerPage(),clazz);
+                (pager.getPageNo()-1)*pager.getRowsPerPage(),pager.getRowsPerPage(),t.getClass());
         pager.setPageData(pageData);
         return pager;
 
     }
-    public <T>List<T> selectPageBySQL(String sql, Map<String, Object> param,
-                                   int from, int limit, Class<T> clazz) throws SQLException {
+    public <T> List<T> selectPageBySQL(String sql, Map<String, Object> param,
+                                   int from, int limit, T t) throws SQLException {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery query = session.createSQLQuery(sql);
         if(param != null){
@@ -239,11 +238,12 @@ public class BaseRepositoryImpl     {
         }
         query.setFirstResult(from);
         query.setMaxResults(limit);
-        if(clazz != null  ){
-            this._transFormResult(query, clazz);
-        }else{
-            query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
-        }
+        this._transFormResult(query, t.getClass());
+//        if(clazz != null  ){
+//
+//        }else{
+//            query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+//        }
         return query.list();
     }
 
