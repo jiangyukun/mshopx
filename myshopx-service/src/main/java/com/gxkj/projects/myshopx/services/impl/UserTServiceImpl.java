@@ -31,10 +31,14 @@ public class UserTServiceImpl  implements UserTService {
         return userDao.doListTest(age,name);
     }
 
-    public ListPager<User> doPageHQL(int age, String userName, int pagenNo, int pageSize){
+    public ListPager<User> doHqlPageTest(int pagenNo, int pageSize,int age, String userName){
         return userDao.doPageHQL(age,userName,pagenNo,pageSize);
     }
 
+    @Override
+    public ListPager<User> doSqlPageTest(int pagenNo, int pageSize, int age, String userName) {
+        return userDao.doPageSQL(age,userName,pagenNo,pageSize);
+    }
 
 
 }

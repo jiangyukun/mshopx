@@ -15,7 +15,7 @@ public interface UserTService {
 
     public List<User> doListTest(int age, String name);
 
-    public ListPager<User> doPageHQL(int age, String userName, int pagenNo, int pageSize);
+    public ListPager<User> doHqlPageTest(int pagenNo, int pageSize,int age,   String userName);
 
-
+    public ListPager<User> doSqlPageTest(int pagenNo, int pageSize,int age,   String userName);
 }

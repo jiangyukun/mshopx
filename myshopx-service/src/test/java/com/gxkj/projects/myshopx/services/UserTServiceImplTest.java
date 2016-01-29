@@ -1,6 +1,7 @@
 package com.gxkj.projects.myshopx.services;
 
 import com.alibaba.fastjson.JSON;
+import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.entitys.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,7 +63,8 @@ public class UserTServiceImplTest extends AbstractJUnit4SpringContextTests {
         LOG.info("userLists="+JSON.toJSONString(userLists));
     }
     @Test
-    public void doPageTest(){
-
+    public void doHqlPageTest(){
+        ListPager<User> pager =  userTService.doSqlPageTest(0,10,0,"");
+        LOG.info("pager="+JSON.toJSONString(pager));
     }
 }
