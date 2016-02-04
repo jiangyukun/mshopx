@@ -12,10 +12,10 @@
     <!--</context-param>-->
 
 
-    <!--<context-param>-->
-        <!--<param-name>contextConfigLocation</param-name>-->
-        <!--<param-value>classpath:spring*.xml</param-value>-->
-    <!--</context-param>-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-*.xml</param-value>
+    </context-param>
     <context-param>
         <param-name>SystemGlobalsProperties</param-name>
         <param-value>SystemGlobals.properties</param-value>
@@ -23,9 +23,9 @@
     <listener>
         <listener-class>com.gxkj.common.listeners.ConfigInitializer</listener-class>
     </listener>
-    <!--<listener>-->
-        <!--<listener-class>com.gxkj.common.listeners.ContextUtil</listener-class>-->
-    <!--</listener>-->
+    <listener>
+        <listener-class>com.gxkj.common.listeners.ContextUtil</listener-class>
+    </listener>
 
     <filter>
         <filter-name>Spring character encoding filter</filter-name>

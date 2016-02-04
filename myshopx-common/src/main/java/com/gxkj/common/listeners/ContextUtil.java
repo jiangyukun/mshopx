@@ -33,6 +33,14 @@ public class ContextUtil extends ContextLoaderListener {
 		super.contextInitialized(event);
 		servletContext = event.getServletContext();
 		applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);
+		String[] beanNames = applicationContext.getBeanDefinitionNames();
+		if(beanNames.length > 0){
+			logger.info("--------------------创建的bean有---------------------");
+			for(String beanName :beanNames){
+				logger.info(" {}",beanName);
+			}
+		}
+
 	}
 
 	/**
