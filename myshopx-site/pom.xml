@@ -8,11 +8,18 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>myshopx-common</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>myshopx-site</artifactId>
+    <packaging>war</packaging>
     <dependencies>
-
+        <dependency>
+            <groupId>com.gxkj.projects.myshopx</groupId>
+            <artifactId>myshopx-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gxkj.projects.myshopx</groupId>
+            <artifactId>myshopx-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
-
-
 </project>
