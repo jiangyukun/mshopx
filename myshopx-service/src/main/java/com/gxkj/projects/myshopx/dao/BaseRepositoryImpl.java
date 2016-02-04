@@ -2,6 +2,7 @@ package com.gxkj.projects.myshopx.dao;
 
 
 import com.gxkj.common.utils.ListPager;
+import com.gxkj.projects.common.hibernate.HibernateToBeanResultTransformer;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -179,7 +180,7 @@ public class BaseRepositoryImpl {
      * @return
      * @throws SQLException
      */
-    public <T> List<T> selectPageByHQL(String hql,Map<String, Object> parameters, int startNo,int limit) {
+    public <T> List<T> selectLimitPageByHQL(String hql,Map<String, Object> parameters, int startNo,int limit) {
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setFirstResult(startNo);
         query.setMaxResults(startNo+limit);
@@ -191,7 +192,7 @@ public class BaseRepositoryImpl {
         return query.list();
     }
 
-    public <T> List<T> selectPageBySQL(String sql, Map<String, Object> param,
+    public <T> List<T> selectLimitPageBySQL(String sql, Map<String, Object> param,
                                        int startNo, int limit, Class<T> clazz)  {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery query = session.createSQLQuery(sql);
@@ -226,7 +227,7 @@ public class BaseRepositoryImpl {
             pager.setPageData(null);
             return pager;
         }
-        List<T> pageData = this.selectPageByHQL(hql, param,
+        List<T> pageData = this.selectLimitPageByHQL(hql, param,
                 (pager.getPageNo() - 1) * pager.getRowsPerPage(), pager.getRowsPerPage());
         pager.setPageData(pageData);
         return pager;
@@ -246,7 +247,7 @@ public class BaseRepositoryImpl {
             pager.setPageData(null);
             return ;
         }
-        List pageData = this.selectPageBySQL(sql, param,
+        List pageData = this.selectLimitPageBySQL(sql, param,
                 (pager.getPageNo() - 1) * pager.getRowsPerPage(), pager.getRowsPerPage(), t);
         pager.setPageData(pageData);
         return ;
@@ -278,7 +279,7 @@ public class BaseRepositoryImpl {
         } else {
             //  query.setResultTransformer(new HibernateResultTransformer(clazz));
             //Transformers.aliasToBean(UserEntity.class)
-            query.setResultTransformer(Transformers.aliasToBean(clazz));
+            query.setResultTransformer(new HibernateToBeanResultTransformer(clazz));
         }
     }
 

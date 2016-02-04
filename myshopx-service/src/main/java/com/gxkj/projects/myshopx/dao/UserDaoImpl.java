@@ -52,7 +52,7 @@ public class UserDaoImpl extends BaseRepositoryImpl {
         ListPager<User> pager = new ListPager<User>();
         pager.setPageNo(pagenNo);
         pager.setRowsPerPage(pageSize);
-        String hql  = " select user_name as userName , password,age,headUrl  from user u where 1=1 ";
+        String hql  = " select id,user_name as userName , password,age,headUrl,gender  from user u where gender is not null     ";
         Map<String,Object> param = new HashMap<String,Object>();
         if(age > 0){
             hql += " and age = :age";
@@ -62,6 +62,7 @@ public class UserDaoImpl extends BaseRepositoryImpl {
             hql += " and user_name = :userName";
             param.put("userName",userName);
         }
+       // hql += " order by id";
         this.selectPageBySQL(hql,param,pager,User.class);
         return pager;
     }

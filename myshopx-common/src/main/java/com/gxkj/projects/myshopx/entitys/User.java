@@ -1,5 +1,6 @@
 package com.gxkj.projects.myshopx.entitys;
 
+import com.gxkj.projects.myshopx.enums.GenderEnums;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -25,6 +26,10 @@ public class User extends BaseModel{
 
     @Column(name="headUrl",length=40)
     private String headUrl;
+
+    @Column(name="gender",length=40)
+    @Enumerated(EnumType.STRING)
+    private GenderEnums gender;
 
     public String getUserName() {
         return userName;
@@ -56,5 +61,13 @@ public class User extends BaseModel{
 
     public void setHeadUrl(String headUrl) {
         this.headUrl = headUrl;
+    }
+
+    public GenderEnums getGender() {
+        return gender;
+    }
+
+    public void setGender(GenderEnums gender) {
+        this.gender = gender;
     }
 }

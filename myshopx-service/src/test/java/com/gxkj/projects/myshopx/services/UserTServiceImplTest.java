@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,11 +45,13 @@ public class UserTServiceImplTest extends AbstractJUnit4SpringContextTests {
     public void doAddUserTest(){
 //        for(int i=101;i<102;i++){
 
-        int i= 102;
+        int i= 103;
             User u = new User();
             u.setAge(i+10);
             u.setHeadUrl("head"+i);
             u.setUserName("uname_"+i);
+            u.setCreatedAt(new Date());
+            u.setUpdatedAt(new Date());
             u = userTService.addUser(u);
             LOG.info("u="+JSON.toJSONString(u));
 //        }
@@ -63,7 +66,7 @@ public class UserTServiceImplTest extends AbstractJUnit4SpringContextTests {
         LOG.info("userLists="+JSON.toJSONString(userLists));
     }
     @Test
-    public void doHqlPageTest(){
+    public void doSqlPageTest(){
         ListPager<User> pager =  userTService.doSqlPageTest(0,10,0,"");
         LOG.info("pager="+JSON.toJSONString(pager));
     }

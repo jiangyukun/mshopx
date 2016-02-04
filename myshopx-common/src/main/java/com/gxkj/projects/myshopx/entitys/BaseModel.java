@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 
 /**
@@ -17,7 +18,7 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private BigInteger id;
 
     @Column(nullable = false)
     private Date createdAt;
@@ -53,11 +54,11 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
     }
 
 
-    public Long getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Long _id) {
+    public void setId(BigInteger _id) {
         id = _id;
     }
 
