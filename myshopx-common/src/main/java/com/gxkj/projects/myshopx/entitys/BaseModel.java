@@ -21,9 +21,11 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
     private BigInteger id;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP )
     private Date createdAt;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP )
     private Date updatedAt;
 
     @PrePersist
@@ -36,7 +38,7 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
         updatedAt = new Date();
     }
 
-    @Override
+
     public int compareTo(BaseModel o) {
         return this.getId().compareTo(o.getId());
     }

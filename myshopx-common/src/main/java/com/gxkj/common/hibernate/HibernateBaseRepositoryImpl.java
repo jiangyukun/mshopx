@@ -1,8 +1,7 @@
-package com.gxkj.projects.myshopx.dao;
+package com.gxkj.common.hibernate;
 
 
 import com.gxkj.common.utils.ListPager;
-import com.gxkj.projects.common.hibernate.HibernateToBeanResultTransformer;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -23,8 +22,8 @@ import java.util.Map;
  * 泛型知识参考：http://qiemengdao.iteye.com/blog/1525624
  */
 @Component
-public class BaseRepositoryImpl {
-    Logger LOG = LoggerFactory.getLogger(BaseRepositoryImpl.class);
+public class HibernateBaseRepositoryImpl {
+    Logger LOG = LoggerFactory.getLogger(HibernateBaseRepositoryImpl.class);
     @Autowired
     public SessionFactory sessionFactory;
 

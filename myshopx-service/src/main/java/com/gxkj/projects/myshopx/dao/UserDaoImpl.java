@@ -1,5 +1,6 @@
 package com.gxkj.projects.myshopx.dao;
 
+import com.gxkj.common.hibernate.HibernateBaseRepositoryImpl;
 import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.entitys.User;
@@ -14,7 +15,7 @@ import java.util.Map;
  * Created by dell on 2016/1/19.
  */
 @Repository
-public class UserDaoImpl extends BaseRepositoryImpl {
+public class UserDaoImpl extends HibernateBaseRepositoryImpl {
 
 
     public List<User> doListTest(int age, String userName){
@@ -52,7 +53,7 @@ public class UserDaoImpl extends BaseRepositoryImpl {
         ListPager<User> pager = new ListPager<User>();
         pager.setPageNo(pagenNo);
         pager.setRowsPerPage(pageSize);
-        String hql  = " select id,user_name as userName , password,age,headUrl,gender  from user u where gender is not null     ";
+        String hql  = " select id,user_name as userName , password,age,headUrl,gender,createdAt  from user u where gender is not null     ";
         Map<String,Object> param = new HashMap<String,Object>();
         if(age > 0){
             hql += " and age = :age";

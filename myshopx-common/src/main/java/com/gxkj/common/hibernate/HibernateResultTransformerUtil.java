@@ -1,6 +1,5 @@
-package com.gxkj.projects.common.hibernate;
+package com.gxkj.common.hibernate;
 
-import com.alibaba.fastjson.JSON;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
@@ -53,7 +52,7 @@ public class HibernateResultTransformerUtil {
 
         PropertyDescriptor tempPropertyDescriptor = null;
         for(int i=0 ;i<properties.length;i++){
-            LOG.info("{}",  i);
+
             tempPropertyDescriptor = properties[i];
             propertyName = tempPropertyDescriptor.getName();
             if("class".equals(propertyName)){

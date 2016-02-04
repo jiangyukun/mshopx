@@ -1,4 +1,4 @@
-package com.gxkj.common.utils.transform;
+package com.gxkj.common.hibernate;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;

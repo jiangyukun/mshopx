@@ -1,4 +1,4 @@
-package com.gxkj.projects.common.hibernate;
+package com.gxkj.common.hibernate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.transform.AliasedTupleSubsetResultTransformer;
