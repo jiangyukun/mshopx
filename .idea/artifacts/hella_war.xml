@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="hella:war">
-    <output-path>E:/BaiduYunDownload/hella/hella/target</output-path>
-    <root id="archive" name="thea.war">
-      <element id="artifact" artifact-name="hella:war exploded" />
-    </root>
-  </artifact>
-</component>

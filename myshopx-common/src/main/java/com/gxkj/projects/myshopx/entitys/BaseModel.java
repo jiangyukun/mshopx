@@ -1,9 +1,12 @@
 package com.gxkj.projects.myshopx.entitys;
 
-import org.apache.commons.lang.builder.HashCodeBuilder;
+
+
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 
 /**
@@ -15,12 +18,14 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private BigInteger id;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP )
     private Date createdAt;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP )
     private Date updatedAt;
 
     @PrePersist
@@ -33,7 +38,7 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
         updatedAt = new Date();
     }
 
-    @Override
+
     public int compareTo(BaseModel o) {
         return this.getId().compareTo(o.getId());
     }
@@ -51,11 +56,11 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
     }
 
 
-    public Long getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Long _id) {
+    public void setId(BigInteger _id) {
         id = _id;
     }
 

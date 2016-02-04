@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="samples:war">
-    <output-path>$PROJECT_DIR$/../H57_Shiro/target</output-path>
-    <root id="archive" name="samples-1.0.0-BUILD-SNAPSHOT.war">
-      <element id="artifact" artifact-name="samples:war exploded" />
-    </root>
-  </artifact>
-</component>

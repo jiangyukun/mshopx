@@ -1,7 +1,6 @@
 package com.gxkj.projects.myshopx.entitys;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.gxkj.projects.myshopx.enums.GenderEnums;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -14,6 +13,8 @@ import java.io.Serializable;
 @Table(name = "user")
 public class User extends BaseModel{
 
+    private static final long serialVersionUID = -3216639312710758696l;
+
     @Column(name="user_name",length=40)
     private String userName;
 
@@ -25,6 +26,10 @@ public class User extends BaseModel{
 
     @Column(name="headUrl",length=40)
     private String headUrl;
+
+    @Column(name="gender",length=40)
+    @Enumerated(EnumType.STRING)
+    private GenderEnums gender;
 
     public String getUserName() {
         return userName;
@@ -56,5 +61,13 @@ public class User extends BaseModel{
 
     public void setHeadUrl(String headUrl) {
         this.headUrl = headUrl;
+    }
+
+    public GenderEnums getGender() {
+        return gender;
+    }
+
+    public void setGender(GenderEnums gender) {
+        this.gender = gender;
     }
 }
