@@ -2,23 +2,30 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:util="http://springframework.org/schma/util"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	 
-	<context:component-scan base-package="com.gxkj.taobaoservice.controllers" /> 
+
+	<context:component-scan base-package="com.gxkj.projects.myshopx.controllers" >
+	</context:component-scan>
+
 	<bean id="handlerMapping"
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 		<property name="order" value="0" />
 		<property name="interceptors">  
            <list>
                <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-             	<bean class="com.gxkj.taobaoservice.filters.LogInterceptor" /> 
-                <bean class="com.gxkj.taobaoservice.filters.AuthorizationInterceptor" /> 
-                 <bean class="com.gxkj.common.interceptors.SharedRenderVariableInterceptor"/>
+             	<!--<bean class="com.gxkj.taobaoservice.filters.LogInterceptor" /> -->
+                <!--<bean class="com.gxkj.taobaoservice.filters.AuthorizationInterceptor" /> -->
+                 <!--<bean class="com.gxkj.common.interceptors.SharedRenderVariableInterceptor"/>-->
                 <!--   -->
            </list>  
        </property>
@@ -48,9 +55,6 @@
                    <!-- <ref bean="marshallingConverter" />  -->
 			 </list>
          </property>
-         <property name="webBindingInitializer">
-			<bean class="com.gxkj.common.util.BindingInitializer"></bean>
-		</property>
      </bean>
  
      <bean id="stringHttpMessageConverter"
@@ -62,19 +66,19 @@
      	class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"/> -->
 	   
 	 
-	 <bean id="exceptionResolver" class="com.gxkj.common.exceptions.CustomSimpleMappingExceptionResolver">
-		<property name="defaultErrorView" value="error/failure"></property>
-		<property name="exceptionAttribute" value="ex"></property>
-		<property name="exceptionMappings">
-			<props>
-				<prop key="com.gxkj.common.exceptions.BusinessException">error/error-business</prop>
-				<prop key="org.springframework.web.HttpRequestMethodNotSupportedException">exception/methodError</prop>
-				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/error-business</prop>
-				<prop key="java.lang.Exception">error/500</prop>
-			</props>
-		</property>
-		<property name="defaultStatusCode" value="500"></property>
-	</bean>
+	 <!--<bean id="exceptionResolver" class="com.gxkj.common.exceptions.CustomSimpleMappingExceptionResolver">-->
+		<!--<property name="defaultErrorView" value="error/failure"></property>-->
+		<!--<property name="exceptionAttribute" value="ex"></property>-->
+		<!--<property name="exceptionMappings">-->
+			<!--<props>-->
+				<!--<prop key="com.gxkj.common.exceptions.BusinessException">error/error-business</prop>-->
+				<!--<prop key="org.springframework.web.HttpRequestMethodNotSupportedException">exception/methodError</prop>-->
+				<!--<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/error-business</prop>-->
+				<!--<prop key="java.lang.Exception">error/500</prop>-->
+			<!--</props>-->
+		<!--</property>-->
+		<!--<property name="defaultStatusCode" value="500"></property>-->
+	<!--</bean>-->
 	 <!--  这里申明的id必须为multipartResolver  -->  
 	<bean id="multipartResolver"  
 	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
@@ -88,6 +92,4 @@
 	     -->  
 	</bean>  
 	 <mvc:resources mapping="/resources/**" location="/resources/" />
-	 <mvc:resources mapping="/upload/**" location="/upload/" />
-	 <mvc:resources mapping="*.mp4" location="/streams/" />
 </beans>
