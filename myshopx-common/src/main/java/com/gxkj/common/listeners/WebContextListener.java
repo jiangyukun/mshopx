@@ -14,7 +14,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 /**
  * 
  */
-public class ContextUtil extends ContextLoaderListener {
+public class WebContextListener extends ContextLoaderListener {
 
 	protected final  Logger logger = LoggerFactory.getLogger(getClass());   
 	
@@ -55,7 +55,7 @@ public class ContextUtil extends ContextLoaderListener {
 	 *            the applicationContext to set
 	 */
 	public static void setApplicationContext(WebApplicationContext applicationContext) {
-		ContextUtil.applicationContext = applicationContext;
+		WebContextListener.applicationContext = applicationContext;
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class ContextUtil extends ContextLoaderListener {
 	 *            the servletContext to set
 	 */
 	public static void setServletContext(ServletContext servletContext) {
-		ContextUtil.servletContext = servletContext;
+		WebContextListener.servletContext = servletContext;
 	}
 
 	public static Object getBean(String beanName) {
