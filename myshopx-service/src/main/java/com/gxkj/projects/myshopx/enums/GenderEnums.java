@@ -3,7 +3,7 @@ package com.gxkj.projects.myshopx.enums;
 /**
  * Created by dell on 2016/2/4.
  */
-public enum  GenderEnums {
+public enum GenderEnums {
 
     MAN("MAN","男"),WOMEN("WOMEN","女");
 
@@ -11,7 +11,7 @@ public enum  GenderEnums {
 
     private String desc;
 
-    GenderEnums(String value,String desc){
+    GenderEnums(String value, String desc){
         this.desc = desc;
         this.value = value;
     }

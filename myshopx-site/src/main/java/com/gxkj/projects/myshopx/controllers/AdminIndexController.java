@@ -2,7 +2,7 @@ package com.gxkj.projects.myshopx.controllers;
 
 import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.entitys.User;
-import com.gxkj.projects.myshopx.services.UserTService;
+import com.gxkj.projects.myshopx.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class AdminIndexController {
 
     Logger LOG = LoggerFactory.getLogger(AdminIndexController.class);
     @Autowired
-    private UserTService userTService;
+    private UserService userTService;
 
     @RequestMapping(value="index",method= RequestMethod.GET)
     public String index(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap){

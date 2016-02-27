@@ -3,6 +3,7 @@ package com.gxkj.projects.myshopx.entitys;
 
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,18 +14,20 @@ import java.util.Date;
  * Created by dell on 2016/1/19.
  */
 @MappedSuperclass
-public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
+public abstract class BaseModel implements   Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name="systemUUID",strategy="uuid")
+    @GeneratedValue(generator="systemUUID")
     @Column(name = "id")
-    private BigInteger id;
+    private String id;
 
-    @Column(nullable = false)
+
+    @Column(name="create_at",nullable = false)
     @Temporal(TemporalType.TIMESTAMP )
     private Date createdAt;
 
-    @Column(nullable = false)
+    @Column(name="update_at",nullable = false)
     @Temporal(TemporalType.TIMESTAMP )
     private Date updatedAt;
 
@@ -39,10 +42,6 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
     }
 
 
-    public int compareTo(BaseModel o) {
-        return this.getId().compareTo(o.getId());
-    }
-
     public boolean equals(Object other) {
         if (other == null || other.getClass() != this.getClass())
             return false;
@@ -56,12 +55,12 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
     }
 
 
-    public BigInteger getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(BigInteger _id) {
-        id = _id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getCreatedAt() {
@@ -79,5 +78,4 @@ public abstract class BaseModel implements Comparable<BaseModel>, Serializable {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 }

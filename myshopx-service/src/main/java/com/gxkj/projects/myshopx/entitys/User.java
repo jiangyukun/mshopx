@@ -1,10 +1,9 @@
 package com.gxkj.projects.myshopx.entitys;
 
 import com.gxkj.projects.myshopx.enums.GenderEnums;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by dell on 2016/1/14.
@@ -15,21 +14,24 @@ public class User extends BaseModel{
 
     private static final long serialVersionUID = -3216639312710758696l;
 
+    @Column(name="qq")
+    private String qq;
+
     @Column(name="user_name",length=40)
     private String userName;
-
-    @Column(name="password",length=40)
-    private String password;
-
-    @Column(name="age")
-    private int age;
-
-    @Column(name="headUrl",length=40)
-    private String headUrl;
 
     @Column(name="gender",length=40)
     @Enumerated(EnumType.STRING)
     private GenderEnums gender;
+
+    @Column(name="age")
+    private int age;
+
+    @Column(name="birthday",nullable = false)
+    @Temporal(TemporalType.TIMESTAMP )
+    private Date birthday;
+
+
 
     public String getUserName() {
         return userName;
@@ -39,13 +41,7 @@ public class User extends BaseModel{
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public int getAge() {
         return age;
@@ -55,13 +51,6 @@ public class User extends BaseModel{
         this.age = age;
     }
 
-    public String getHeadUrl() {
-        return headUrl;
-    }
-
-    public void setHeadUrl(String headUrl) {
-        this.headUrl = headUrl;
-    }
 
     public GenderEnums getGender() {
         return gender;
@@ -69,5 +58,22 @@ public class User extends BaseModel{
 
     public void setGender(GenderEnums gender) {
         this.gender = gender;
+    }
+
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

@@ -4,7 +4,7 @@ package com.gxkj.projects.myshopx.services.impl;
 import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.dao.UserDaoImpl;
 import com.gxkj.projects.myshopx.entitys.User;
-import com.gxkj.projects.myshopx.services.UserTService;
+import com.gxkj.projects.myshopx.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * Created by dell on 2016/1/14.
  */
 @Service
-public class UserTServiceImpl  implements UserTService {
+public class UserServiceImpl implements UserService {
 
 
     @Autowired
