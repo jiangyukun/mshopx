@@ -91,5 +91,5 @@
 	      <property name="maxInMemorySize" value="10240"/>
 	     -->  
 	</bean>  
-	 <mvc:resources mapping="/resources/**" location="/resources/" />
+	 <mvc:resources mapping="/common/**" location="/common/" />
 </beans>
