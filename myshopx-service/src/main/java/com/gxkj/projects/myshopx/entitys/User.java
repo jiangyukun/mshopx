@@ -31,7 +31,9 @@ public class User extends BaseModel{
     @Temporal(TemporalType.TIMESTAMP )
     private Date birthday;
 
-
+    @Column(name="admin")
+    @org.hibernate.annotations.Type(type="yes_no")
+    private boolean admin;
 
     public String getUserName() {
         return userName;
@@ -75,5 +77,14 @@ public class User extends BaseModel{
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

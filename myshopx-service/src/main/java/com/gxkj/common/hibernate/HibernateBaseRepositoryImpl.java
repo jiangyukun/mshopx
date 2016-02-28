@@ -45,16 +45,16 @@ public class HibernateBaseRepositoryImpl {
         sessionFactory.getCurrentSession().save(entity);
     }
 
-    public <T> void delete(T entity) throws SQLException {
+    public <T> void delete(T entity)   {
         sessionFactory.getCurrentSession().delete(entity);
     }
 
-    public <T> void update(T entity) throws SQLException {
+    public <T> void update(T entity)   {
         //sessionFactory.getCurrentSession().clear();
         sessionFactory.getCurrentSession().update(entity);
     }
 
-    public <T> T selectFirstOneByHQL(String hql, Map<String, Object> parameters) throws SQLException {
+    public <T> T selectFirstOneByHQL(String hql, Map<String, Object> parameters)   {
         Query q = sessionFactory.getCurrentSession().createQuery(hql);
         if (parameters != null) {
             for (String key : parameters.keySet()) {
@@ -66,7 +66,7 @@ public class HibernateBaseRepositoryImpl {
         List<T> entitys = q.list();
         return entitys == null ? null : entitys.size() >= 1 ? entitys.get(0) : null;
     }
-    public <T> T selectLastOneByHQL(String hql, Map<String, Object> parameters) throws SQLException {
+    public <T> T selectLastOneByHQL(String hql, Map<String, Object> parameters)   {
         Query q = sessionFactory.getCurrentSession().createQuery(hql);
         if (parameters != null) {
             for (String key : parameters.keySet()) {
@@ -79,7 +79,7 @@ public class HibernateBaseRepositoryImpl {
         return entitys == null ? null : entitys.size() >= 1 ? entitys.get(entitys.size()-1) : null;
     }
 
-    public <T> T selectFirstOneBySQL(String sql, T t, Map<String, Object> parameters) throws SQLException {
+    public <T> T selectFirstOneBySQL(String sql, T t, Map<String, Object> parameters)  {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery query = session.createSQLQuery(sql);
         if (parameters != null) {
@@ -97,7 +97,7 @@ public class HibernateBaseRepositoryImpl {
         List<T> entitys = query.list();
         return entitys == null ? null : (entitys.size() >= 1 ? entitys.get(0) : null);
     }
-    public <T> T selectLastOneBySQL(String sql, T t, Map<String, Object> parameters) throws SQLException {
+    public <T> T selectLastOneBySQL(String sql, T t, Map<String, Object> parameters)   {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery query = session.createSQLQuery(sql);
         if (parameters != null) {
@@ -265,7 +265,7 @@ public class HibernateBaseRepositoryImpl {
 
 
 
-    public <T> void deleteById(Serializable id, T t) throws SQLException {
+    public <T> void deleteById(Serializable id, T t)  {
         Session session = sessionFactory.getCurrentSession();
         session.delete(session.get(t.getClass(), id));
     }

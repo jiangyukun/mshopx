@@ -63,9 +63,19 @@ public class HibernateToBeanResultTransformer  extends AliasedTupleSubsetResultT
                     try {
 
                         if(HibernateResultTransformerUtil.isBaseType(tempPropertyBean.getPropertyClass())){
+                            //布尔型特别处理了一下
+                            if(tempPropertyBean.getField().isAnnotationPresent(org.hibernate.annotations.Type.class)){
+                                if("Y".equalsIgnoreCase(tuple[e].toString())){
+                                    tuple[e] = true;
+                                }else if("N".equalsIgnoreCase(tuple[e].toString())){
+                                    tuple[e] = false;
+                                }
+                            }
+
+
 
                             try{
-                                tempMethod.invoke(result,tuple[e]);
+                               tempMethod.invoke(result,tuple[e]);
                             }catch (IllegalArgumentException ex){
                                 LOG.info("类型不匹配,属性{}的类型为{},数据库查出值的类型为"+tuple[e].getClass().getName(),aliases[e],tempPropertyBean.getPropertyClass().getName());
                             }

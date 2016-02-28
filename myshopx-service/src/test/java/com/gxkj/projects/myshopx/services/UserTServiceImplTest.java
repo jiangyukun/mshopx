@@ -48,6 +48,7 @@ public class UserTServiceImplTest extends BaseSpringTest {
             u.setBirthday(new Date());
             u.setGender(GenderEnums.MAN);
             u.setQq("346745719");
+           // u.setAdmin(false);
             u = userService.addUser(u);
             LOG.info("u="+JSON.toJSONString(u));
 //        }

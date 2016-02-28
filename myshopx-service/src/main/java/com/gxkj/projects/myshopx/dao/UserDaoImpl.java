@@ -52,7 +52,7 @@ public class UserDaoImpl extends HibernateBaseRepositoryImpl {
         ListPager<User> pager = new ListPager<User>();
         pager.setPageNo(pagenNo);
         pager.setRowsPerPage(pageSize);
-        String hql  = " select id,user_name as userName ,  age, gender, create_at createdAt  from user u where gender is not null     ";
+        String hql  = " select id,user_name as userName , age, gender, create_at createdAt ,admin  from user u where gender is not null     ";
         Map<String,Object> param = new HashMap<String,Object>();
         if(age > 0){
             hql += " and age = :age";
