@@ -1,11 +1,7 @@
 package com.gxkj.projects.myshopx.controllers;
 
-import com.gxkj.common.utils.ListPager;
-import com.gxkj.projects.myshopx.entitys.User;
-import com.gxkj.projects.myshopx.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminIndexController {
 
     Logger LOG = LoggerFactory.getLogger(AdminIndexController.class);
-    @Autowired
-    private UserService userTService;
+
 
     @RequestMapping(value="index",method= RequestMethod.GET)
     public String index(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap){
-        ListPager<User> userList =  userTService.doSqlPageTest(0,10,0,"");
+//        ListPager<User> userList =  userTService.doSqlPageTest(0,10,0,"");
         return "admin/index";
     }
 }
