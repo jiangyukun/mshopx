@@ -14,41 +14,41 @@ public class Category extends BaseModel{
     private static final long serialVersionUID = -1679437707365467621L;
 
     @Column(name="cat_name",nullable = false)
-    private String catName;
+    private String catName;//分类名称
 
     @Column(name="keywords",nullable = false)
-    private String keywords;
+    private String keywords;//关键字
 
     @Column(name="cat_desc",nullable = false)
-    private String catDesc;
+    private String catDesc;//分类描述
 
     @Column(name="parent_id",nullable = false)
-    private String parentId;
+    private String parentId;//上级分类
 
     @Column(name="sort_order",nullable = false)
-    private int sortOrder;
+    private int sortOrder;//排序
 
     @Column(name="template_file",nullable = false)
     private String templateFile;
 
     @Column(name="measure_unit",nullable = false)
-    private String measureUnit;
+    private String measureUnit;//数量单位
 
     @Column(name="show_in_nav",nullable = false)
-    private int showInNav;
+    private int showInNav;//导航栏
 
     @Column(name="style" ,nullable = false)
     private String style;
 
     @Column(name="is_show" ,nullable = false)
-    private int isShow;
+    private int isShow;//是否显示
 
     @Column(name="grade" ,nullable = false)
-    private int grade;
+    private int grade;//价格分级
 
 
     @Column(name="filter_attr",nullable = false)
-    private String filterAttr;
+    private String filterAttr;//筛选属性
 
     public String getCatName() {
         return catName;

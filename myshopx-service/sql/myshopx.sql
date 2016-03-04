@@ -10,10 +10,31 @@ Target Server Type    : MYSQL
 Target Server Version : 50132
 File Encoding         : 65001
 
-Date: 2016-03-04 13:19:26
+Date: 2016-03-04 23:10:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `brand`
+-- ----------------------------
+DROP TABLE IF EXISTS `brand`;
+CREATE TABLE `brand` (
+  `id` varchar(64) NOT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  `brand_name` varchar(60) NOT NULL DEFAULT '',
+  `brand_logo` varchar(80) NOT NULL DEFAULT '',
+  `brand_desc` text NOT NULL,
+  `site_url` varchar(255) NOT NULL DEFAULT '',
+  `sort_order` tinyint(3) NOT NULL DEFAULT '50',
+  `is_show` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of brand
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `category`
