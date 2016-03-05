@@ -17,51 +17,18 @@ public class User extends BaseModel{
     @Column(name="qq")
     private String qq;
 
-    @Column(name="user_name",length=40)
-    private String userName;
+    @Column(name="password",length=64)
+    private String password;
 
     @Column(name="gender",length=40)
     @Enumerated(EnumType.STRING)
     private GenderEnums gender;
 
-    @Column(name="age")
-    private int age;
+    @Column(name="staus",length=32)
+    private String staus;
 
-    @Column(name="birthday",nullable = false)
-    @Temporal(TemporalType.TIMESTAMP )
-    private Date birthday;
-
-    @Column(name="admin")
-    @org.hibernate.annotations.Type(type="yes_no")
-    private boolean admin;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-
-    public GenderEnums getGender() {
-        return gender;
-    }
-
-    public void setGender(GenderEnums gender) {
-        this.gender = gender;
-    }
-
+    @Column(name="is_admin",length=1)
+    private int  isAdmin = 0;
 
     public String getQq() {
         return qq;
@@ -71,20 +38,35 @@ public class User extends BaseModel{
         this.qq = qq;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public String getPassword() {
+        return password;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-
-    public boolean isAdmin() {
-        return admin;
+    public GenderEnums getGender() {
+        return gender;
     }
 
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
+    public void setGender(GenderEnums gender) {
+        this.gender = gender;
+    }
+
+    public String getStaus() {
+        return staus;
+    }
+
+    public void setStaus(String staus) {
+        this.staus = staus;
+    }
+
+    public int getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

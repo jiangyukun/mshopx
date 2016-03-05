@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50132
 File Encoding         : 65001
 
-Date: 2016-03-05 18:29:38
+Date: 2016-03-05 18:46:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,6 +61,34 @@ CREATE TABLE `category` (
 
 -- ----------------------------
 -- Records of category
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` varchar(10) NOT NULL,
+  `comment_type` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `id_value` varchar(64) NOT NULL DEFAULT '0',
+  `email` varchar(64) NOT NULL DEFAULT '',
+  `user_name` varchar(64) NOT NULL DEFAULT '',
+  `content` text NOT NULL,
+  `comment_rank` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `add_time` int(10) unsigned NOT NULL DEFAULT '0',
+  `ip_address` varchar(15) NOT NULL DEFAULT '',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `parent_id` varchar(64) NOT NULL DEFAULT '0',
+  `user_id` varchar(64) NOT NULL DEFAULT '0',
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`),
+  KEY `id_value` (`id_value`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of comment
 -- ----------------------------
 
 -- ----------------------------
@@ -260,4 +288,24 @@ CREATE TABLE `products` (
 
 -- ----------------------------
 -- Records of products
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` varchar(64) NOT NULL,
+  `qq` varchar(32) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `staus` varchar(32) NOT NULL,
+  `gender` varchar(8) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
 -- ----------------------------
