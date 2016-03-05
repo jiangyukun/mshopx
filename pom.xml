@@ -87,6 +87,16 @@
                 <enabled>true</enabled>
             </releases>
         </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <url>https://repo.spring.io/libs-milestone</url>
+        </repository>
+        <repository>
+            <snapshots><enabled>true</enabled></snapshots>
+            <id>repository.spring.snapshot</id>
+            <name>Spring Snapshot Repository</name>
+            <url>http://repo.spring.io/snapshot</url>
+        </repository>
 
     </repositories>
     <dependencies>
@@ -193,11 +203,34 @@
         </dependency>
 
         <!-- Hibernate4 -->
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.3.7.Final</version>
+            <version>5.1.0.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.2.4.Final</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>2.2.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.4</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+
         <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
