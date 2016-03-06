@@ -37,7 +37,7 @@
 
 
 
-	<bean class="com.gxkj.common.utils.ValidatorUtil">
+	<bean  class="com.gxkj.common.utils.ValidatorUtil">
 		<property name="validator" ref="validator"/>
 	</bean>
 </beans>

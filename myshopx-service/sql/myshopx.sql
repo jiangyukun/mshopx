@@ -10,10 +10,41 @@ Target Server Type    : MYSQL
 Target Server Version : 50132
 File Encoding         : 65001
 
-Date: 2016-03-05 18:46:18
+Date: 2016-03-06 22:08:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `admin_menu`
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_menu`;
+CREATE TABLE `admin_menu` (
+  `id` varchar(64) NOT NULL,
+  `name` varchar(64) NOT NULL DEFAULT '',
+  `desc` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL DEFAULT '',
+  `is_button` char(4) NOT NULL,
+  `parent_id` varchar(64) NOT NULL DEFAULT '0',
+  `action` varchar(128) NOT NULL DEFAULT '',
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  `sort` double(10,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of admin_menu
+-- ----------------------------
+INSERT INTO `admin_menu` VALUES ('297e40e3534c28be01534c28c6d10000', '商品管理', '', '', 'N', '0', '', '2016-03-06 21:40:54', '2016-03-06 21:55:02', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c326301534c326b410000', '商品分页页面', '商品管理分页页面', '/admin/goods/pager', 'N', '297e40e3534c28be01534c28c6d10000', '', '2016-03-06 21:51:26', '2016-03-06 21:55:02', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c35b001534c35b7e90000', '商品分页查看', '分页查看功能', '/admin/goods/dopager', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 21:55:02', '2016-03-06 21:55:02', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c37d001534c37d80d0000', '增加商品', '增加商品功能', '/admin/goods/doadd', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 21:57:21', '2016-03-06 21:57:21', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2bad0000', '修改商品', '修改商品功能', '/admin/goods/doadd', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2bfb0001', '放到回收站', '商品放到回收站功能', '/admin/goods/toecyclebin', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c0a0002', '回收站', '回收站页面', '/admin/goods/ecyclebin', 'N', '297e40e3534c28be01534c28c6d10000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c120003', '删除', '从回收站删除功能', '/admin/goods/dodel', 'Y', '297e40e3534c3d2301534c3d2c0a0002', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0004', '还原', '从回收站回收功能', '/admin/goods/dodel', 'Y', '297e40e3534c3d2301534c3d2c0a0002', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
 
 -- ----------------------------
 -- Table structure for `brand`
@@ -309,3 +340,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('297e40e35349347c0153493481ec0000', '346745719', '11', '1', 'MAN', '0', '2016-03-06 07:54:51', '2016-03-06 07:54:51');

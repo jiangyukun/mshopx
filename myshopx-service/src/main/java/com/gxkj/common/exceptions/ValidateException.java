@@ -27,6 +27,27 @@ public class ValidateException extends Exception {
         this.single = false;
     }
 
+    public boolean isSingle() {
+        return single;
+    }
 
+    public void setSingle(boolean single) {
+        this.single = single;
+    }
 
+    public ValidateDescDto getValidateDescDto() {
+        return validateDescDto;
+    }
+
+    public void setValidateDescDto(ValidateDescDto validateDescDto) {
+        this.validateDescDto = validateDescDto;
+    }
+
+    public List<ValidateDescDto> getValidateDescDtos() {
+        return validateDescDtos;
+    }
+
+    public void setValidateDescDtos(List<ValidateDescDto> validateDescDtos) {
+        this.validateDescDtos = validateDescDtos;
+    }
 }
