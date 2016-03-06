@@ -1,4 +1,4 @@
-package com.gxkj.projects.myshopx.resolver;
+package com.gxkj.projects.myshopx.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
