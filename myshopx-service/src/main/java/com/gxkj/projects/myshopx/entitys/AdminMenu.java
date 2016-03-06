@@ -85,4 +85,12 @@ public class AdminMenu extends BaseModel{
     public void setSort(double sort) {
         this.sort = sort;
     }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 }

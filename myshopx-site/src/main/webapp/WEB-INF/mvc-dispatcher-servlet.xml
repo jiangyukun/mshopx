@@ -29,52 +29,42 @@
            </list>  
        </property>
 	</bean>
-	  
-	<!-- 
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-	    <property name="prefix" value="/WEB-INF/pages/" />
-	    <property name="suffix" value=".jsp" />
-	 </bean>
-	  -->
+
 	 <bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		>
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+		 <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 		 <property name="prefix" value="/WEB-INF/pages/" />
 	    <property name="suffix" value=".jsp" />
 	</bean>
 
 	<!-- 支持返回json(避免IE在ajax请求时，返回json出现下载 ) -->
 
-	 
-	  <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
-      <bean
-          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		  <property name="ignoreDefaultModelOnRedirect" value="true"/>
-          <property name="messageConverters">
-              <list>
-				  <ref bean="jsonHttpMessageConverter" />
-				 <ref bean="stringHttpMessageConverter" />
-				  <ref bean="mappingJacksonHttpMessageConverter" />
-			 </list>
-         </property>
-     </bean>
- <!---->
-     <bean id="stringHttpMessageConverter"
-         class="org.springframework.http.converter.StringHttpMessageConverter" />
-     <bean id="jsonHttpMessageConverter"
-         class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-
-	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-		<property name="supportedMediaTypes">
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
 			<list>
-				<value>text/html;charset=UTF-8</value>
+				<!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+					<!--<property name="supportedMediaTypes">-->
+						<!--<list>-->
+							<!--<value>text/html; charset=UTF-8</value>-->
+							<!--<value>application/json;charset=UTF-8</value>-->
+						<!--</list>-->
+					<!--</property>-->
+				<!--</bean>-->
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<!--<property name="supportedMediaTypes">-->
+						<!--<list>-->
+							<!--<value>text/html; charset=UTF-8</value>-->
+							<!--<value>application/json;charset=UTF-8</value>-->
+						<!--</list>-->
+					<!--</property>-->
+				</bean>
 			</list>
 		</property>
 	</bean>
-        <!--
-     <bean id="marshallingConverter" 
-     	class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"/> -->
+
+	<!--
+ <bean id="marshallingConverter"
+     class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"/> -->
 	   
 	 
 	 <bean id="exceptionResolver" class="com.gxkj.projects.myshopx.handler.MyExceptionHandler">
@@ -103,4 +93,5 @@
 	     -->  
 	</bean>  
 	 <mvc:resources mapping="/common/**" location="/common/" />
+	 <mvc:resources mapping="/resources/**" location="/resources/" />
 </beans>
