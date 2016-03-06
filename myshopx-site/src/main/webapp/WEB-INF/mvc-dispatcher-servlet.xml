@@ -43,24 +43,35 @@
 		 <property name="prefix" value="/WEB-INF/pages/" />
 	    <property name="suffix" value=".jsp" />
 	</bean>
+
+	<!-- 支持返回json(避免IE在ajax请求时，返回json出现下载 ) -->
+
 	 
 	  <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
       <bean
           class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
           <property name="messageConverters">
               <list>
+				  <ref bean="jsonHttpMessageConverter" />
 				 <ref bean="stringHttpMessageConverter" />
-                  <ref bean="jsonHttpMessageConverter" /> 
-                   <!-- <ref bean="marshallingConverter" />  -->
+				  <ref bean="mappingJacksonHttpMessageConverter" />
 			 </list>
          </property>
      </bean>
- 
+ <!---->
      <bean id="stringHttpMessageConverter"
          class="org.springframework.http.converter.StringHttpMessageConverter" />
-     <bean id="jsonHttpMessageConverter"  
+     <bean id="jsonHttpMessageConverter"
          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-        <!-- 
+
+	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+        <!--
      <bean id="marshallingConverter" 
      	class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"/> -->
 	   

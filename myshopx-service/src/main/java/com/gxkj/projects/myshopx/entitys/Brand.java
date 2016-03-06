@@ -1,5 +1,7 @@
 package com.gxkj.projects.myshopx.entitys;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 public class Brand extends BaseModel{
     private static final long serialVersionUID = 8156338941188501418L;
 
+    @NotBlank(message="{brand_name.null}")
     @Column(name="brand_name",nullable = false)
     private  String brandName;//品牌名称
 

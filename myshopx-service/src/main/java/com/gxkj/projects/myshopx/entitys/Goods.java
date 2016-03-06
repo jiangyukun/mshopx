@@ -74,13 +74,13 @@ public class Goods extends BaseModel{
     @Column(name="goods_img",nullable = false)
     private String goodsImg;
 
-    @Column(name="goods_img",nullable = false)
+    @Column(name="original_img",nullable = false)
     private String originalImg;
 
     @Column(name="is_real",nullable = false)
     private int isReal;
 
-    @Column(name="goods_brief",nullable = false ,length = 30)
+    @Column(name="extension_code",nullable = false ,length = 30)
     private String extensionCode;
 
     @Column(name="is_on_sale",nullable = false  )

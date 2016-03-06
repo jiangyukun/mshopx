@@ -5,16 +5,26 @@ import com.gxkj.projects.myshopx.dao.GoodsDaoImpl;
 import com.gxkj.projects.myshopx.entitys.Goods;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.services.GoodsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Validator;
+
 @Service
 public class GoodsServiceImpl  implements GoodsService {
+
+    Logger LOG = LoggerFactory.getLogger(GoodsServiceImpl.class);
+
+    @Autowired
+    private Validator validator = null;
 
     @Autowired
     private  GoodsDaoImpl goodsDao;
 
     public void doAddGoods(User user, Goods goods) {
+//        validator.validate(goods);
         goodsDao.insert(goods);
     }
 

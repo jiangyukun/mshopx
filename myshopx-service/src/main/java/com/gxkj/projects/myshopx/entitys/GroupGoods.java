@@ -1,8 +1,6 @@
 package com.gxkj.projects.myshopx.entitys;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -14,33 +12,15 @@ import java.math.BigDecimal;
 public class GroupGoods implements Serializable {
 
     private static final long serialVersionUID = 6159085680461754039L;
-    @Column(name="parent_id",nullable = false)
-    private  String parentId;//
 
-    @Column(name="goods_id",nullable = false)
-    private  String  goodsId;//
+    @Embedded
+    @Id
+    private  GroupGoodsPK groupGoodsPK;//
+
 
     @Column(name="goods_price",nullable = false)
     private BigDecimal goodsPrice;//
 
-    @Column(name="admin_id",nullable = false)
-    private  String  adminId;//
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getGoodsId() {
-        return goodsId;
-    }
-
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId;
-    }
 
     public BigDecimal getGoodsPrice() {
         return goodsPrice;
@@ -50,11 +30,11 @@ public class GroupGoods implements Serializable {
         this.goodsPrice = goodsPrice;
     }
 
-    public String getAdminId() {
-        return adminId;
+    public GroupGoodsPK getGroupGoodsPK() {
+        return groupGoodsPK;
     }
 
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
+    public void setGroupGoodsPK(GroupGoodsPK groupGoodsPK) {
+        this.groupGoodsPK = groupGoodsPK;
     }
 }

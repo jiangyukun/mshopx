@@ -41,11 +41,12 @@ public class UserTServiceImplTest extends BaseSpringTest {
 
         int i= 103;
             User u = new User();
-            u.setAge(i+10);
-            u.setUserName("uname_"+i);
+
             u.setCreatedAt(new Date());
             u.setUpdatedAt(new Date());
-            u.setBirthday(new Date());
+            u.setPassword(11+"");
+            u.setStaus("1");
+
             u.setGender(GenderEnums.MAN);
             u.setQq("346745719");
            // u.setAdmin(false);
