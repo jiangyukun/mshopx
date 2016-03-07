@@ -28,7 +28,7 @@ public class AdminMenuController {
 	
 	@RequestMapping(value="")
 	public String index(HttpServletRequest request,HttpServletResponse response,ModelMap modelMap){
-		String mv = "admin/menuindex";
+		String mv = "admin/adminmenu";
 		return mv;
 	}
 

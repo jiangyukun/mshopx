@@ -20,26 +20,33 @@ public class AdminMenu extends BaseModel{
     private String name;    //名称
 
     @Column(name="url",nullable = false)
+    @NotNull(message = "{admin_menu.url.null}", groups = {Add.class, Update.class})
     private String url;         //路径
 
     @Column(name="is_button",nullable = false)
     @org.hibernate.annotations.Type(type="yes_no")
+    @NotNull(message = "{admin_menu.isButton.null}", groups = {Add.class, Update.class})
     private Boolean  isButton;  //是菜单还是按钮
 
     @Column(name="parent_id",nullable = false)
+    @NotNull(message = "{admin_menu.parentId.null}", groups = {Add.class, Update.class})
     private String parentId;    //上级菜单ID
 
     @Column(name="action",nullable = false)
+    @NotNull(message = "{admin_menu.action.null}", groups = {Add.class, Update.class})
     private String action;
 
     @Column(name="desc",nullable = false)
+    @NotNull(message = "{admin_menu.desc.null}", groups = {Add.class, Update.class})
     private String desc;    //菜单描述
 
     @Column(name="sort",nullable = false)
-    private double sort;        //排序
+    @NotNull
+    private double sort = 0  ;        //排序
 
     @Column(name="btn_id",nullable = false)
-    private String btnId;    //按钮ID
+    @NotNull(message = "{admin_menu.btnId.null}", groups = {Add.class, Update.class})
+    private String btnId ;    //按钮ID
 
     public String getName() {
         return name;

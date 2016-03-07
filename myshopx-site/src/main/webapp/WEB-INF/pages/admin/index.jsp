@@ -170,8 +170,10 @@
     function treeClickFn(node){
         var attributs = node.attributes;
         var type = jQuery.type(attributs);
+
         if(type == 'undefined'){return;}
         var url = attributs.url;
+
         if($.trim(url).length == 0)return;
         var title = node.text;
         if ($('#tt').tabs('exists',title)){

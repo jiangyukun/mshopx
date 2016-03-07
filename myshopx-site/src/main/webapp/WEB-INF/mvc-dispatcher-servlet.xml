@@ -14,22 +14,42 @@
 
 	<!-- 指定自己定义的validator -->
 	<mvc:annotation-driven validator="validator">
-		<mvc:message-converters register-defaults="false">
-			<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-				<property name="objectMapper" ref="jacksonObjectMapper" />
-				<property name="supportedMediaTypes">
-					<list>
-						<bean class="org.springframework.http.MediaType">
-							<constructor-arg index="0" value="application" />
-							<constructor-arg index="1" value="json" />
-							<constructor-arg index="2" value="UTF-8" />
-						</bean>
-					</list>
-				</property>
-
-			</bean>
-		</mvc:message-converters>
+		<!--<mvc:message-converters register-defaults="false">-->
+			<!--<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+				<!--<property name="objectMapper" ref="jacksonObjectMapper" />-->
+				<!--<property name="supportedMediaTypes">-->
+					<!--<list>-->
+						<!--<bean class="org.springframework.http.MediaType">-->
+							<!--<constructor-arg index="0" value="application" />-->
+							<!--<constructor-arg index="1" value="json" />-->
+							<!--<constructor-arg index="2" value="UTF-8" />-->
+						<!--</bean>-->
+					<!--</list>-->
+				<!--</property>-->
+			<!--</bean>-->
+		<!--</mvc:message-converters>-->
 	</mvc:annotation-driven>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<property name="objectMapper" ref="jacksonObjectMapper" />
+					<property name="supportedMediaTypes">
+						<list>
+							<bean class="org.springframework.http.MediaType">
+								<constructor-arg index="0" value="application" />
+								<constructor-arg index="1" value="json" />
+								<constructor-arg index="2" value="UTF-8" />
+							</bean>
+						</list>
+				</property>
+				</bean>
+			</list>
+		</property>
+		<property name="webBindingInitializer">
+			<bean class="com.gxkj.common.utils.BindingInitializer"></bean>
+		</property>
+	</bean>
 
 	<bean id="jaxbAnnotationInspector" class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />
 
@@ -57,19 +77,19 @@
 
 
 
-	 <!--<bean id="exceptionResolver" class="com.gxkj.projects.myshopx.handler.MyExceptionHandler">-->
-		<!--<property name="defaultErrorView" value="error/failure"></property>-->
-		<!--<property name="exceptionAttribute" value="ex"></property>-->
-		<!--<property name="exceptionMappings">-->
-			<!--<props>-->
-				<!--<prop key="com.gxkj.common.exceptions.BusinessException">error/error-business</prop>-->
-				<!--<prop key="org.springframework.web.HttpRequestMethodNotSupportedException">exception/methodError</prop>-->
-				<!--<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/error-business</prop>-->
-				<!--<prop key="java.lang.Exception">error/500</prop>-->
-			<!--</props>-->
-		<!--</property>-->
-		<!--<property name="defaultStatusCode" value="500"></property>-->
-	<!--</bean>-->
+	 <bean id="exceptionResolver" class="com.gxkj.projects.myshopx.handler.MyExceptionHandler">
+		<property name="defaultErrorView" value="error/failure"></property>
+		<property name="exceptionAttribute" value="ex"></property>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.gxkj.common.exceptions.BusinessException">error/error-business</prop>
+				<prop key="org.springframework.web.HttpRequestMethodNotSupportedException">exception/methodError</prop>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/error-business</prop>
+				<prop key="java.lang.Exception">error/500</prop>
+			</props>
+		</property>
+		<property name="defaultStatusCode" value="500"></property>
+	</bean>
 	 <!--  这里申明的id必须为multipartResolver  -->  
 	<bean id="multipartResolver"  
 	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  

@@ -28,7 +28,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>apps-ingage-mweb</finalName>
+        <finalName>mysite</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

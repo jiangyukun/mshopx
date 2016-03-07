@@ -9,6 +9,7 @@ import com.gxkj.projects.myshopx.services.AdminMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,6 +24,8 @@ public class AdminMenuServiceImpl implements AdminMenuService {
 
     @Override
     public void doAddAdminMenu(User user, AdminMenu entity) throws ValidateException {
+        entity.setCreatedAt(new Date());
+        entity.setUpdatedAt(new Date());
         validatorUtil.validate(entity,true);
         adminMenuDao.insert(entity);
     }
