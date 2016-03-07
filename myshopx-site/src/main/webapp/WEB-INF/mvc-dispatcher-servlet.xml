@@ -3,83 +3,73 @@
     xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/context
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/mvc
-		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
 	<!-- 指定自己定义的validator -->
-	<mvc:annotation-driven validator="validator"/>
+	<mvc:annotation-driven validator="validator">
+		<mvc:message-converters register-defaults="false">
+			<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper" ref="jacksonObjectMapper" />
+				<property name="supportedMediaTypes">
+					<list>
+						<bean class="org.springframework.http.MediaType">
+							<constructor-arg index="0" value="application" />
+							<constructor-arg index="1" value="json" />
+							<constructor-arg index="2" value="UTF-8" />
+						</bean>
+					</list>
+				</property>
+
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean id="jaxbAnnotationInspector" class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />
+
+	<bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+		<property name="annotationIntrospector" ref="jaxbAnnotationInspector" />
+	</bean>
 
 	<context:component-scan base-package="com.gxkj.projects.myshopx.controllers" >
 	</context:component-scan>
 
-	<bean id="handlerMapping"
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
-		<property name="order" value="0" />
-		<property name="interceptors">  
-           <list>
-               <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-             	<!--<bean class="com.gxkj.taobaoservice.filters.LogInterceptor" /> -->
-                <!--<bean class="com.gxkj.taobaoservice.filters.AuthorizationInterceptor" /> -->
-                 <!--<bean class="com.gxkj.common.interceptors.SharedRenderVariableInterceptor"/>-->
-                <!--   -->
-           </list>  
-       </property>
-	</bean>
 
-	 <bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
-		 <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-		 <property name="prefix" value="/WEB-INF/pages/" />
-	    <property name="suffix" value=".jsp" />
-	</bean>
-
-	<!-- 支持返回json(避免IE在ajax请求时，返回json出现下载 ) -->
-
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
-					<!--<property name="supportedMediaTypes">-->
-						<!--<list>-->
-							<!--<value>text/html; charset=UTF-8</value>-->
-							<!--<value>application/json;charset=UTF-8</value>-->
-						<!--</list>-->
-					<!--</property>-->
-				<!--</bean>-->
-				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-					<!--<property name="supportedMediaTypes">-->
-						<!--<list>-->
-							<!--<value>text/html; charset=UTF-8</value>-->
-							<!--<value>application/json;charset=UTF-8</value>-->
-						<!--</list>-->
-					<!--</property>-->
-				</bean>
-			</list>
-		</property>
-	</bean>
 
 	<!--
- <bean id="marshallingConverter"
-     class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"/> -->
-	   
-	 
-	 <bean id="exceptionResolver" class="com.gxkj.projects.myshopx.handler.MyExceptionHandler">
-		<property name="defaultErrorView" value="error/failure"></property>
-		<property name="exceptionAttribute" value="ex"></property>
-		<property name="exceptionMappings">
-			<props>
-				<prop key="com.gxkj.common.exceptions.BusinessException">error/error-business</prop>
-				<prop key="org.springframework.web.HttpRequestMethodNotSupportedException">exception/methodError</prop>
-				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/error-business</prop>
-				<prop key="java.lang.Exception">error/500</prop>
-			</props>
-		</property>
-		<property name="defaultStatusCode" value="500"></property>
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+       <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+       <property name="prefix" value="/WEB-INF/pages/" />
+       <property name="suffix" value=".jsp" />
+    </bean>
+     -->
+	<bean
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
 	</bean>
+
+
+
+	 <!--<bean id="exceptionResolver" class="com.gxkj.projects.myshopx.handler.MyExceptionHandler">-->
+		<!--<property name="defaultErrorView" value="error/failure"></property>-->
+		<!--<property name="exceptionAttribute" value="ex"></property>-->
+		<!--<property name="exceptionMappings">-->
+			<!--<props>-->
+				<!--<prop key="com.gxkj.common.exceptions.BusinessException">error/error-business</prop>-->
+				<!--<prop key="org.springframework.web.HttpRequestMethodNotSupportedException">exception/methodError</prop>-->
+				<!--<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/error-business</prop>-->
+				<!--<prop key="java.lang.Exception">error/500</prop>-->
+			<!--</props>-->
+		<!--</property>-->
+		<!--<property name="defaultStatusCode" value="500"></property>-->
+	<!--</bean>-->
 	 <!--  这里申明的id必须为multipartResolver  -->  
 	<bean id="multipartResolver"  
 	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  

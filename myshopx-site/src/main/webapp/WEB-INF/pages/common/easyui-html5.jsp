@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ page import="com.gxkj.common.utils.SystemGlobals"%>
+<%@ page import="com.gxkj.common.utils.SystemGlobals, com.gxkj.projects.myshopx.enums.*"%>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/icon/icon.css?3">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/easyui/themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/easyui/themes/icon.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/easyui/jquery.easyui.min.js"></script>
@@ -14,6 +14,7 @@
         }
 </style>
 <script type="text/javascript">
+	var normalStatusCode = "<%=ErrorCodeEnum.NORMAL.getCode()%>"
 	 function getPageArea() {
 		if (document.compatMode == 'BackCompat') {
 			return {

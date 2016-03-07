@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.gxkj.common.utils.SystemGlobals,com.gxkj.projects.myshopx.entitys.*,
-com.gxkj.projects.myshopx.dto.*"%>
+<%@ page import="com.gxkj.common.utils.SystemGlobals,com.gxkj.projects.myshopx.entitys.*,com.gxkj.projects.myshopx.dto.*"%>
 
 <!DOCTYPE html>
 <html lang="zh">
@@ -22,7 +21,6 @@ com.gxkj.projects.myshopx.dto.*"%>
             for(var i=tabs.length-1;i>=0;i--){
                 $('#tt').tabs('close',i);
             }
-
             return;
         }else if("close other" == item.name){
             var tabs = $('#tt').tabs('tabs');
@@ -48,7 +46,6 @@ com.gxkj.projects.myshopx.dto.*"%>
         }
         opTabIndex = index;
 
-
         $('#mm').menu('show', {
             left: e.pageX,
             top: e.pageY
@@ -72,11 +69,19 @@ com.gxkj.projects.myshopx.dto.*"%>
 </div>
 <div data-options="region:'west',split:true,border:true,title:'&nbsp;'" style="width:250px;padding:10px;">
 <ul class="easyui-tree" data-options="
-		url:'<%=request.getContextPath() %>/admin/mymenu?'+new Date().getTime(),
+		url:'<%=request.getContextPath() %>/admin/menu/my?'+new Date().getTime(),
 		method:'get',
 		loadFilter:function(data){
-		alert(data);
-		return treeloadFilter(data);},
+            var statusCode = data.statusCode;
+            if(normalStatusCode != statusCode){
+                    alert('加载菜单失败');
+                    return [];
+            }else {
+                    var menus = data.entity;
+		            return treeloadFilter(menus);
+            }
+
+		},
 		animate:true,
 		onClick:treeClickFn
 		"></ul>
@@ -95,6 +100,7 @@ com.gxkj.projects.myshopx.dto.*"%>
 </body>
 <script type="text/javascript">
     function treeloadFilter(menus ,usecheck){
+
         if(menus.length==0)return menus;
         var mapdata = {};
         //第一次组织树节点内容
@@ -102,12 +108,12 @@ com.gxkj.projects.myshopx.dto.*"%>
         {
             var node = menus[i];
             var menuname = node['name'];
-            var parentNo = node['pid'];
+            var parentNo = node['parentId'];
             var aid = node['id'] ;
 
-            var path = node['path'];
-            var isbutton = node['isbutton'];
-            var authorityCode = node["btnflag"];
+            var path = node['url'];
+            var isbutton = node['isButton'];
+            var authorityCode = node["btnId"];
 
             if(isbutton == 1){
                 continue;

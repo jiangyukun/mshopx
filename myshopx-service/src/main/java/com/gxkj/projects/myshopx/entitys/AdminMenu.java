@@ -38,6 +38,9 @@ public class AdminMenu extends BaseModel{
     @Column(name="sort",nullable = false)
     private double sort;        //排序
 
+    @Column(name="btn_id",nullable = false)
+    private String btnId;    //按钮ID
+
     public String getName() {
         return name;
     }
@@ -92,5 +95,13 @@ public class AdminMenu extends BaseModel{
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getBtnId() {
+        return btnId;
+    }
+
+    public void setBtnId(String btnId) {
+        this.btnId = btnId;
     }
 }
