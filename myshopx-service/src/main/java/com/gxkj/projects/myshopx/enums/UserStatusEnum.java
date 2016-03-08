@@ -3,32 +3,21 @@ package com.gxkj.projects.myshopx.enums;
 
 public enum UserStatusEnum {
 
-    NORMAL("NORMAL","正常");
+    NORMAL( "正常");
 
-    private String value;
-
-    private String desc;
+    private String name;
 
 
 
-    UserStatusEnum(String value, String desc){
-        this.value = value;
-        this.desc = desc;
+    UserStatusEnum(String name){
+        this.name = name;
     }
 
-    public String getValue() {
-        return value;
+    public String getName() {
+        return name;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setName(String name) {
+        this.name = name;
     }
 }

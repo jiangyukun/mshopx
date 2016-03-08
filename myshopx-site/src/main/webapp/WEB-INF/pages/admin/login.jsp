@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- <%@ page import="com.gxkj.common.utils.SystemGlobals,java.util.*"%>
+<%@ page import="com.gxkj.common.utils.SystemGlobals, com.gxkj.projects.myshopx.enums.*"%>
  <!DOCTYPE html>
 <html lang="en">
 <head><%-- 
@@ -29,6 +29,7 @@
 	  }
 	</style>
 	<script type="text/javascript">
+		var normalStatusCode = "<%=ErrorCodeEnum.NORMAL.getCode()%>"
 	function refreshYanZhengMa(obj) {  $(obj).attr("src","<%=request.getContextPath()%>/yanzhengma?"+Math.random());  }
   function loginfn(btn){
   
@@ -46,23 +47,17 @@
 				  qq: QQ,d:new Date().getTime()
 			  },
 			  success:function(json){
-				 
-			  		//json = jQuery.parseJSON(json);
-				 	 var result = json["result"];
-				 	 if(result){
-				 	 	window.location = "${pageContext.request.contextPath}/admin/index";
-				 	 }else{
-				 	 	 var user = json.entity;
-				 	 	 var  msg  = json.msg;
+				  var statusCode = json.statusCode;
 
-				 	 	 	alert(msg);
+				  if(normalStatusCode == statusCode) {
+					  window.location = "${pageContext.request.contextPath}/admin/index";
+				  }else {
+					  var  msg  = json.msg;
 
-				 	 	  $(btn).attr('disabled',false);
-						 	 $(btn).text('登陆');
-				 	 	 
-				 	 }
-				 	
-				 	  
+					  alert(msg);
+					  $(btn).attr('disabled',false);
+					  $(btn).text('登陆');
+				  }
 			  },
 		      error:function(xhr,textStatus,errorThrown){
 		  		var responseText = xhr.responseText;
