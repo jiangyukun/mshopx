@@ -30,6 +30,9 @@
 		<!--</mvc:message-converters>-->
 	</mvc:annotation-driven>
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="webBindingInitializer">
+			<bean class="com.gxkj.common.utils.BindingInitializer"></bean>
+		</property>
 		<property name="messageConverters">
 			<list>
 				<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -46,9 +49,7 @@
 				</bean>
 			</list>
 		</property>
-		<property name="webBindingInitializer">
-			<bean class="com.gxkj.common.utils.BindingInitializer"></bean>
-		</property>
+
 	</bean>
 
 	<bean id="jaxbAnnotationInspector" class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />

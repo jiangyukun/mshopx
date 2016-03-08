@@ -54,11 +54,24 @@ public class AdminMenuServiceTest  extends BaseSpringTest {
             adminMenu.setUpdatedAt(new Date());
             adminMenuService.doUpdateAdminMenu(null,adminMenu);
         }
-
-
-
-
-
+    }
+    @Test
+    public void doAddMenuTest(){
+        AdminMenu adminMenu = new AdminMenu();
+        adminMenu.setName("1");
+        adminMenu.setButton(false);
+        adminMenu.setBtnId("");
+        adminMenu.setUrl("2");
+        adminMenu.setParentId("0");
+        adminMenu.setDes("");
+        adminMenu.setAction("");
+        adminMenu.setSort(1);
+        adminMenu.setId("8a8a80ea5354bc7f015354bd42020000");
+        try {
+            adminMenuService.doUpdateAdminMenu(null,adminMenu);
+        } catch (ValidateException e) {
+            e.printStackTrace();
+        }
     }
 
 

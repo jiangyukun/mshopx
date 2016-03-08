@@ -29,7 +29,7 @@ function makeTreeData(menus,usecheck){
 	      var aid = node['id'] ;
 	      
 	      var path = node['url'];
-	      var isbutton = node['isButton'];
+	      var isbutton = node['button'];
 	      var btnflag = node["btn_id"];
 			var obj = {
 	    		  id:aid,
@@ -272,12 +272,12 @@ function submitForm(){
 				  },
 				  data:{
 				  	name:name,
-					  isButton:isbutton,
+					  button:isbutton,
 					  btnId:btnflag,
 					  url:path,
 					  parentId:pid,
 					  action:'',
-					  desc:'',
+					  des:'',
 					  sort:'1'
 				  },
 				  success:function(json){
@@ -347,12 +347,12 @@ function submitForm(){
 			  data:{
 			  	id:id,
 			  	name:name,
-				  isButton:isbutton,
+				  button:isbutton,
 				  btnId:btnflag,
 				  url:path,
 				  parentId:pid,
 				  action:'',
-				  desc:'',
+				  des:'',
 				  sort:'1'
 			  	
 			  },
@@ -410,15 +410,14 @@ function updateFn(){
 	 $('#name').validatebox("validate");
 	 
 	 var isbutton = node.attributes.isbutton
-	 $('#isbutton').combobox('setValue',isbutton);	
-	 
-	 if(isbutton == 0){
-		
+
+	$("#isbutton").combobox('select',isbutton+"");
+
+	 if(isbutton == false || isbutton == 'false'){
 		$("#btn_code_tr").hide();
 		
-	}else if(isbutton == 1){
-		 
-		
+	}else if(isbutton == true || isbutton == 'true'){
+
 		$("#btn_code_tr").show();
 	}
 	$("#path").val(node.attributes.path);

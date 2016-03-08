@@ -5,13 +5,12 @@ import com.gxkj.projects.myshopx.dto.ReturnData;
 import com.gxkj.projects.myshopx.entitys.AdminMenu;
 import com.gxkj.projects.myshopx.enums.ErrorCodeEnum;
 import com.gxkj.projects.myshopx.services.AdminMenuService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +21,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin/menu")
 public class AdminMenuController {
-
+	private static final Logger LOG = LoggerFactory.getLogger(AdminMenuController.class);
 	@Autowired
 	private AdminMenuService adminMenuService;
 	
@@ -58,9 +57,13 @@ public class AdminMenuController {
 	@RequestMapping("/doadd")
 	public ReturnData<AdminMenu>  doAdd( HttpServletRequest request,
 			HttpServletResponse response,
-			AdminMenu entity, 
+										  AdminMenu entity,
     		ModelMap modelMap) throws ValidateException {
 		ReturnData<AdminMenu> returnData = new ReturnData<AdminMenu>();
+
+		String isButton = request.getParameter("isButton");
+		LOG.info("isButton={}",isButton);
+
 		adminMenuService.doAddAdminMenu( null,entity);
 		returnData.setEntity(entity);
 		returnData.setStatusCode(ErrorCodeEnum.NORMAL.getCode());

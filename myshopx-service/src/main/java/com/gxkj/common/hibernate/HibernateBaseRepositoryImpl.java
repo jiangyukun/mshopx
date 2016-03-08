@@ -37,8 +37,8 @@ public class HibernateBaseRepositoryImpl {
         return sessionFactory;
     }
 
-    public <T> T selectById(Serializable id, T t) {
-        return (T) sessionFactory.getCurrentSession().get(t.getClass(), id);
+    public <T> T selectById(Serializable id, Class clazz) {
+        return (T) sessionFactory.getCurrentSession().get(clazz, id);
     }
 
     public <T> void insert(final T entity) {
@@ -52,6 +52,14 @@ public class HibernateBaseRepositoryImpl {
     public <T> void update(T entity)   {
         //sessionFactory.getCurrentSession().clear();
         sessionFactory.getCurrentSession().update(entity);
+    }
+
+    public <T> void updateByMerge(T entity)   {
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().clear();
+        //不要用update()方法
+        sessionFactory.getCurrentSession().merge(entity);
+
     }
 
     public <T> T selectFirstOneByHQL(String hql, Map<String, Object> parameters)   {

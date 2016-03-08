@@ -26,7 +26,7 @@ public class AdminMenu extends BaseModel{
     @Column(name="is_button",nullable = false)
     @org.hibernate.annotations.Type(type="yes_no")
     @NotNull(message = "{admin_menu.isButton.null}", groups = {Add.class, Update.class})
-    private Boolean  isButton;  //是菜单还是按钮
+    private boolean  button;  //是菜单还是按钮,不要使用is开头,否则拿不到值
 
     @Column(name="parent_id",nullable = false)
     @NotNull(message = "{admin_menu.parentId.null}", groups = {Add.class, Update.class})
@@ -36,9 +36,9 @@ public class AdminMenu extends BaseModel{
     @NotNull(message = "{admin_menu.action.null}", groups = {Add.class, Update.class})
     private String action;
 
-    @Column(name="desc",nullable = false)
+    @Column(name="des",nullable = false)
     @NotNull(message = "{admin_menu.desc.null}", groups = {Add.class, Update.class})
-    private String desc;    //菜单描述
+    private String des;    //菜单描述
 
     @Column(name="sort",nullable = false)
     @NotNull
@@ -62,14 +62,6 @@ public class AdminMenu extends BaseModel{
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public Boolean getButton() {
-        return isButton;
-    }
-
-    public void setButton(Boolean button) {
-        isButton = button;
     }
 
     public String getParentId() {
@@ -96,13 +88,6 @@ public class AdminMenu extends BaseModel{
         this.sort = sort;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 
     public String getBtnId() {
         return btnId;
@@ -110,5 +95,22 @@ public class AdminMenu extends BaseModel{
 
     public void setBtnId(String btnId) {
         this.btnId = btnId;
+    }
+
+
+    public boolean isButton() {
+        return button;
+    }
+
+    public void setButton(boolean button) {
+        this.button = button;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
     }
 }

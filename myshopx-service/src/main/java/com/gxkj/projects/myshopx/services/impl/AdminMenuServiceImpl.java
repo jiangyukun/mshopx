@@ -9,6 +9,7 @@ import com.gxkj.projects.myshopx.services.AdminMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -32,8 +33,12 @@ public class AdminMenuServiceImpl implements AdminMenuService {
 
 
     public void doUpdateAdminMenu(User user, AdminMenu entity) throws ValidateException {
+        AdminMenu dbentity = adminMenuDao.selectById((Serializable) entity.getId(),AdminMenu.class);
+
+        entity.setCreatedAt(dbentity.getCreatedAt());
+        entity.setUpdatedAt(new Date());
         validatorUtil.validate(entity,true);
-        adminMenuDao.update(entity);
+        adminMenuDao.updateByMerge(entity);
     }
 
 
