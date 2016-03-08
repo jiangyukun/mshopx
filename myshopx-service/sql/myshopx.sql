@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50132
+Source Server Version : 50626
 Source Host           : localhost:3306
 Source Database       : myshopx
 
 Target Server Type    : MYSQL
-Target Server Version : 50132
+Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-03-06 22:08:18
+Date: 2016-03-08 14:17:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,29 +22,38 @@ DROP TABLE IF EXISTS `admin_menu`;
 CREATE TABLE `admin_menu` (
   `id` varchar(64) NOT NULL,
   `name` varchar(64) NOT NULL DEFAULT '',
-  `desc` varchar(128) NOT NULL,
-  `url` varchar(128) NOT NULL DEFAULT '',
+  `des` varchar(128) DEFAULT NULL,
+  `url` varchar(128) DEFAULT '',
   `is_button` char(4) NOT NULL,
   `parent_id` varchar(64) NOT NULL DEFAULT '0',
-  `action` varchar(128) NOT NULL DEFAULT '',
+  `action` varchar(128) DEFAULT '',
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   `sort` double(10,2) NOT NULL DEFAULT '0.00',
+  `btn_id` varchar(32) DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_menu
 -- ----------------------------
-INSERT INTO `admin_menu` VALUES ('297e40e3534c28be01534c28c6d10000', '商品管理', '', '', 'N', '0', '', '2016-03-06 21:40:54', '2016-03-06 21:55:02', '1.00');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c326301534c326b410000', '商品分页页面', '商品管理分页页面', '/admin/goods/pager', 'N', '297e40e3534c28be01534c28c6d10000', '', '2016-03-06 21:51:26', '2016-03-06 21:55:02', '1.00');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c35b001534c35b7e90000', '商品分页查看', '分页查看功能', '/admin/goods/dopager', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 21:55:02', '2016-03-06 21:55:02', '1.00');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c37d001534c37d80d0000', '增加商品', '增加商品功能', '/admin/goods/doadd', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 21:57:21', '2016-03-06 21:57:21', '1.00');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2bad0000', '修改商品', '修改商品功能', '/admin/goods/doadd', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2bfb0001', '放到回收站', '商品放到回收站功能', '/admin/goods/toecyclebin', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c0a0002', '回收站', '回收站页面', '/admin/goods/ecyclebin', 'N', '297e40e3534c28be01534c28c6d10000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c120003', '删除', '从回收站删除功能', '/admin/goods/dodel', 'Y', '297e40e3534c3d2301534c3d2c0a0002', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0004', '还原', '从回收站回收功能', '/admin/goods/dodel', 'Y', '297e40e3534c3d2301534c3d2c0a0002', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c28be01534c28c6d10000', '商品管理', '', '', 'N', '0', '', '2016-03-06 21:40:54', '2016-03-06 21:55:02', '2.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c326301534c326b410000', '商品分页页面', '商品管理分页页面', '/admin/goods/pager', 'N', '297e40e3534c28be01534c28c6d10000', '', '2016-03-06 21:51:26', '2016-03-06 21:55:02', '3.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c35b001534c35b7e90000', '商品分页查看', '分页查看功能', '/admin/goods/dopager', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 21:55:02', '2016-03-06 21:55:02', '4.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c37d001534c37d80d0000', '增加商品', '增加商品功能', '/admin/goods/doadd', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 21:57:21', '2016-03-06 21:57:21', '5.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2bad0000', '修改商品', '修改商品功能', '/admin/goods/doadd', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2bfb0001', '放到回收站', '商品放到回收站功能', '/admin/goods/toecyclebin', 'Y', '297e40e3534c35b001534c35b7e90000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c0a0002', '回收站', '回收站页面', '/admin/goods/ecyclebin', 'N', '297e40e3534c28be01534c28c6d10000', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c120003', '删除', '从回收站删除功能', '/admin/goods/dodel', 'Y', '297e40e3534c3d2301534c3d2c0a0002', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0004', '还原', '从回收站回收功能', '/admin/goods/dodel', 'Y', '297e40e3534c3d2301534c3d2c0a0002', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0009', '系统管理', '', '', 'N', '0', '', '2016-03-05 20:23:12', '2016-03-07 20:23:20', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0010', '菜单管理', '', '/admin/menu', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-05 20:24:14', '2016-03-08 20:24:17', '2.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0011', '创建菜单', '创建菜单', '/admin/menu/doadd', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:25:17', '2016-03-09 20:25:21', '3.00', 'admin_menu_doadd');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0012', '修改菜单', '修改菜单', '/admin/menu/doupdate', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:06', '2016-03-07 20:26:11', '4.00', 'admin_menu_doupdate');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0013', '删除菜单', '删除菜单', '/admin/menu/dodel', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:49', '2016-03-07 20:26:54', '5.00', 'admin_menu_dodel');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0014', '分页查看菜单', '分页查看菜单', '/admin/menu/dopager', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:27:45', '2016-03-08 20:27:49', '6.00', 'admin_menu_dopager');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea5354bc7f015354bd42020000', '1', '', '2', 'N', '0', '', '2016-03-08 13:40:03', '2016-03-08 14:16:39', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea5354bc7f015354bd9a200001', '22', '', '33', 'Y', '8a8a80ea5354bc7f015354bd42020000', '', '2016-03-08 13:40:25', '2016-03-08 13:40:25', '1.00', '');
 
 -- ----------------------------
 -- Table structure for `brand`
@@ -319,6 +328,41 @@ CREATE TABLE `products` (
 
 -- ----------------------------
 -- Records of products
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `sys_role`
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `createdAt` date NOT NULL,
+  `updatedAt` date NOT NULL,
+  `create_by` bigint(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of sys_role
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `sys_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `qq` varchar(36) COLLATE utf8_unicode_ci NOT NULL,
+  `createdAt` date NOT NULL,
+  `updatedAt` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of sys_user
 -- ----------------------------
 
 -- ----------------------------
