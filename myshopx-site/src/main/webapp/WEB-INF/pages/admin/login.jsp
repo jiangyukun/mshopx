@@ -1,120 +1,109 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: xubaoyong
-  Date: 2016/2/28
-  Time: 18:20
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file='/WEB-INF/pages/common/taglib.jsp'%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ page import="com.gxkj.common.utils.SystemGlobals,java.util.*"%>
+ <!DOCTYPE html>
+<html lang="en">
+<head><%-- 
+<jsp:include page="../common/bootstrap.jsp"   >
+	<jsp:param name="title" value="登陆页面"/>
+</jsp:include>--%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- The styles -->
+	<link id="bs-css" href="${pageContext.request.contextPath}/resources/charisma/css/bootstrap-cerulean.css" rel="stylesheet">
+	<link id="bs-css" href="${pageContext.request.contextPath}/resources/charisma/css/bootstrap-responsive.css" rel="stylesheet">
+	<link id="bs-css" href="${pageContext.request.contextPath}/resources/charisma/css/charisma-app.css" rel="stylesheet">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery-1.11.2.min.js"> </script>
+	<script type="text/javascript">if(window.top != window){
+			window.top.location = window.location;
+		
+		}</script>
+	<style type="text/css">
+	  body {
+		padding-bottom: 40px;
+	  }
+	  
+	  .llwidth{
+	  	width:200px;
+	  }
+	  .yzwidth{
+	  	width:110px;
+	  }
+	</style>
+	<script type="text/javascript">
+	function refreshYanZhengMa(obj) {  $(obj).attr("src","<%=request.getContextPath()%>/yanzhengma?"+Math.random());  }
+  function loginfn(btn){
+  
+  	var QQ = $("#QQ").val();
+  	var url = "<%=request.getContextPath()%>/admin/dologin";
+	$.ajax({
+			  type:'post',
+			  url: url,
+			  context: document.body,
+			  beforeSend:function(){
+			  		 $(btn).attr('disabled',true);
+			  		 $(btn).text('正在登陆');
+				 },
+			  data:{
+				  qq: QQ,d:new Date().getTime()
+			  },
+			  success:function(json){
+				 
+			  		//json = jQuery.parseJSON(json);
+				 	 var result = json["result"];
+				 	 if(result){
+				 	 	window.location = "${pageContext.request.contextPath}/admin/index";
+				 	 }else{
+				 	 	 var user = json.entity;
+				 	 	 var  msg  = json.msg;
 
-<html>
-<head>
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/common/js/randomimage.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/common/default/css/errorform.css" />
-    <script type="text/javascript" src="${pageContext.request.contextPath}/common/js/jquery.superbox-min.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/common/default/css/jquery.superbox.css" type="text/css" media="all" />
-    <script type="text/javascript">
-        jQuery(function(){
-            jQuery.superbox.settings = {
-                closeTxt: "<fmt:message key="close"/>",
-                loadTxt: "Loading...",
-                nextTxt: "Next",
-                prevTxt: "Previous"
-            };
-            jQuery.superbox();
-        });
-    </script>
-    <title>Title</title>
-</head>
-<body>
-<table width="954px" cellpadding="0" cellspacing="0" class="tables">
-    <tr>
-        <td class="titlebg"><font style="font-size: 1.4em"><fmt:message key="login"/></font></td>
-    </tr>
-    <tr><td>
-        <form name="loginform" action="${pageContext.request.contextPath}/p/j_spring_security_check" method="POST"  onsubmit="return checkRandNum();" >
-            <input type="hidden" id="rand" name="rand"/>
-            <input type="hidden" id="cannonull" name="cannonull" value='<fmt:message key="randomimage.errors.required"/>'/>
-            <input type="hidden" id="charactors4" name="charactors4" value='<ls:i18n key="randomimage.charactors.required" length="4"/>'/>
-            <input type="hidden" id="errorImage" name="errorImage" value='<fmt:message key="error.image.validation"/>'/>
-            <input type="hidden" id="returnUrl" name="returnUrl" value="${param.returnUrl}"/>
-            <table><tr><td>
-                <table cellpadding="5px" >
-                    <tr>
-                        <td colspan="2" align="left">
-                            <b><fmt:message key="username.password"/></b>
-                            <c:choose>
-                                <c:when test="${param.error == 1}"> <br><label class="error"><fmt:message key="error.password.noright"/></label></c:when>
-                                <c:when test="${param.error == 2}"> <br><label class="error"><fmt:message key="error.user.logined"/></label></c:when>
-                                <c:otherwise></c:otherwise>
-                            </c:choose>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <fmt:message key="user.name"/>
-                        </td>
-                        <td align="left"><input id="username" type='text' name="j_username" style="font-size:11pt; width: 180px"  class="inputbutton2" tabindex="1" value='<lb:lastLogingUser/>'/> </td>
-                    </tr>
-                    <tr>
-                        <td><fmt:message key="editForm.password"/></td>
-                        <td align="left"><input id="pwd" type='password' name='j_password' style="font-size:11pt; width: 180px"  autocomplete="off" class="inputbutton2" tabindex="2" onload="this.value=''"/></td>
-                    </tr>
-                    <lb:userValidationImage>
-                        <tr>
-                            <td><fmt:message key="validation.code"/></td>
-                            <td align="left"><input type="text" id="randNum" name="randNum" class="inputbutton2" maxlength="4"  style="font-size:11pt; width: 50px;" tabindex="3" >
-                                <!--
-                                <img id="randImage" name="randImage"/>
-                                 -->
-                                <img id="randImage" name="randImage" src="${pageContext.request.contextPath}/captcha.svl"  style="vertical-align: middle;"/>
-                                &nbsp;<a href="javascript:void(0)" onclick="javascript:changeRandImg('${pageContext.request.contextPath}')" style="font-weight: bold;"><fmt:message key="change.random2"/></a>
-                            </td>
-                        </tr>
-                    </lb:userValidationImage>
-                    <tr>
-                        <td></td>
-                        <td><input name="submit" type="submit" value='<fmt:message key="login"/>' class="s" tabindex="4">
-                            <input name="reset" type="reset" value='<fmt:message key="reset.hint"/>' class="s" tabindex="5"></td>
-                    </tr>
-                </table>
-            </td>
-                <td>
-                    <table cellpadding="15px"><tr><td><fmt:message key="security.hint"/></td></tr></table>
+				 	 	 	alert(msg);
 
-                    <table cellpadding="2px" style="margin-left: 20px" align="left">
-                        <tr><td align="left"><img src="${pageContext.request.contextPath}/common/default/images/004.gif"/>没有绑定会员,&nbsp;<a href="${pageContext.request.contextPath}/reg'/>"><fmt:message key="regFree"/></a></td></tr>
-                        <tr><td align="left"><img src="${pageContext.request.contextPath}/common/default/images/004.gif"/>返回首页<a href="${pageContext.request.contextPath}/index'/>"><fmt:message key="shop.index"/></a></td></tr>
-                        <tr><td align="left"><img src="${pageContext.request.contextPath}/common/default/images/004.gif"/>忘记密码
-                            <a href="${pageContext.request.contextPath}/resetpassword'/>" rel="superbox[iframe][330x230]">&nbsp;找回密码</a>
-                        </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            </table>
-        </form>
-    </td>
-    </tr>
-</table>
-</body>
-<script type="text/javascript">
-    window.onload = function(){
-        if(window.top.location.href!=location.href)
-        {
-            window.top.location.href=location.href;
-        }
+				 	 	  $(btn).attr('disabled',false);
+						 	 $(btn).text('登陆');
+				 	 	 
+				 	 }
+				 	
+				 	  
+			  },
+		      error:function(xhr,textStatus,errorThrown){
+		  		var responseText = xhr.responseText;
+		  		$(btn).attr('disabled',false);
+			 	 $(btn).text('登陆');
+		  		// $(btn)).removeAttr("disabled");
+		  } 
+  })
+ }
+  </script>
+  </head>
 
-        var userName = document.getElementById("username").value;
-        if(userName == null || userName =='' ){
-            document.getElementById("username").focus();
-        }else{
-            document.getElementById("pwd").focus();
-        }
-    }
-</script>
+  <body>
+
+     <div class="container-fluid" >
+		<div class="row-fluid">
+			<div class="row-fluid">
+				<div class="span12 center login-header" style="height:100px;">
+					<h2>测试系统</h2>
+				</div><!--/span-->
+			</div><!--/row-->
+			<div class="row-fluid">
+				<div class="well span5 center login-box"   >
+
+					<form class="form-horizontal" action="" method="post">
+						<fieldset>
+						
+							<div class="clearfix"></div>
+							<div class="input-prepend" title="QQ" data-rel="tooltip">
+								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large llwidth" name="QQ" id="QQ" type="text" value="" />
+							</div>
+							<div class="clearfix"></div>
+							<p class="center span5">
+								<button type="button" class="btn btn-primary"   onclick="loginfn(this);">登陆</button>
+							</p>
+						</fieldset>
+					</form>
+				</div><!--/span-->
+			</div><!--/row-->
+				</div><!--/fluid-row-->
+		
+	</div><!--/.fluid-container-->
+  </body>
 </html>

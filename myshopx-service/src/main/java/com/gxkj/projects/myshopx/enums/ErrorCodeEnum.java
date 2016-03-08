@@ -6,7 +6,8 @@ package com.gxkj.projects.myshopx.enums;
 public enum ErrorCodeEnum {
 
     NORMAL("0000000","正常"),
-    VALID_FIELD_ERROR("0000001","字段验证错误");
+    VALID_FIELD_ERROR("0000001","字段验证错误"),
+    SYSTEM_ERROR("0000002","数据库执行错误");
 
     private String code;
 

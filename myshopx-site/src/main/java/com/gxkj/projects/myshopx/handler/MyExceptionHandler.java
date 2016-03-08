@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -66,7 +67,18 @@ public class MyExceptionHandler extends SimpleMappingExceptionResolver {
                     }
                 }else if(ex instanceof BusinessException){
                     BusinessException  exception = (BusinessException)ex;
+                }else if(ex instanceof  java.sql.SQLException){
+                    SQLException exception = (SQLException)ex;
+                    ReturnData<String> returnData = new ReturnData<String>();
+                    returnData.setStatusCode(ErrorCodeEnum.SYSTEM_ERROR.getCode());
+                    returnData.setEntity(ErrorCodeEnum.SYSTEM_ERROR.getMsg());
+                    try {
+                        doWriteJsonData( response,returnData,ex);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+
                 return null;
             }
         }

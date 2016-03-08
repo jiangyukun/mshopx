@@ -56,6 +56,7 @@ public class UserServiceImpl implements UserService {
             user.setUpdatedAt(new Date());
             user.setStaus(UserStatusEnum.NORMAL);
             user.setAdmin(false);
+            user.setQq(user.getQq());
             validatorUtil.validate(user,true);
             userDao.insert(user);
         }
