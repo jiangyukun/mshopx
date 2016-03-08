@@ -1,8 +1,6 @@
 package com.gxkj.projects.myshopx.dao;
 
 import com.gxkj.common.hibernate.HibernateBaseRepositoryImpl;
-import com.gxkj.projects.myshopx.entitys.Menu;
-import com.gxkj.projects.myshopx.entitys.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

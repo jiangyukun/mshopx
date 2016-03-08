@@ -6,6 +6,8 @@ import com.gxkj.projects.myshopx.dao.AdminMenuDaoImpl;
 import com.gxkj.projects.myshopx.entitys.AdminMenu;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.services.AdminMenuService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.List;
 
 @Service
 public class AdminMenuServiceImpl implements AdminMenuService {
+
+    private  static Logger LOG = LoggerFactory.getLogger(AdminMenuServiceImpl.class);
 
     @Autowired
     private ValidatorUtil validatorUtil;
@@ -43,8 +47,6 @@ public class AdminMenuServiceImpl implements AdminMenuService {
 
 
     public void doDeleteAdminMenu(User user, String id) {
-//        AdminMenu menu = adminMenuDao.selectById(id,AdminMenu.class);
-//        adminMenuDao.delete(menu);
         adminMenuDao.deleteById(id,AdminMenu.class);
     }
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-03-08 14:17:48
+Date: 2016-03-08 18:26:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,8 +52,6 @@ INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0011', '创建菜�
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0012', '修改菜单', '修改菜单', '/admin/menu/doupdate', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:06', '2016-03-07 20:26:11', '4.00', 'admin_menu_doupdate');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0013', '删除菜单', '删除菜单', '/admin/menu/dodel', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:49', '2016-03-07 20:26:54', '5.00', 'admin_menu_dodel');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0014', '分页查看菜单', '分页查看菜单', '/admin/menu/dopager', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:27:45', '2016-03-08 20:27:49', '6.00', 'admin_menu_dopager');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea5354bc7f015354bd42020000', '1', '', '2', 'N', '0', '', '2016-03-08 13:40:03', '2016-03-08 14:16:39', '1.00', '');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea5354bc7f015354bd9a200001', '22', '', '33', 'Y', '8a8a80ea5354bc7f015354bd42020000', '', '2016-03-08 13:40:25', '2016-03-08 13:40:25', '1.00', '');
 
 -- ----------------------------
 -- Table structure for `brand`
@@ -372,13 +370,14 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` varchar(64) NOT NULL,
   `qq` varchar(32) NOT NULL,
-  `password` varchar(64) NOT NULL,
+  `password` varchar(64) DEFAULT NULL,
   `staus` varchar(32) NOT NULL,
-  `gender` varchar(8) NOT NULL,
+  `gender` varchar(8) DEFAULT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT '0',
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uni_qq` (`qq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------

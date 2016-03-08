@@ -1,13 +1,19 @@
 package com.gxkj.projects.myshopx.services.impl;
 
 
+import com.gxkj.common.exceptions.ValidateException;
 import com.gxkj.common.utils.ListPager;
+import com.gxkj.common.utils.ValidatorUtil;
 import com.gxkj.projects.myshopx.dao.UserDaoImpl;
 import com.gxkj.projects.myshopx.entitys.User;
+import com.gxkj.projects.myshopx.enums.UserStatusEnum;
 import com.gxkj.projects.myshopx.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,29 +22,43 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private  static Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserDaoImpl userDao;
 
-    public User addUser(User user) {
+    @Autowired
+    private ValidatorUtil validatorUtil;
 
-        userDao.insert(user);
-        return user;
+    public void doDeleteUser(User adminUser, String id) {
+        userDao.deleteById(id,User.class);
     }
 
 
-    public List<User> doListTest(int age, String name) {
-        return userDao.doListTest(age,name);
+    public ListPager<User> doHqlPage(int pagenNo, int pageSize, User user) {
+        return userDao.doPageHQL( pagenNo, pageSize,user);
     }
 
-    public ListPager<User> doHqlPageTest(int pagenNo, int pageSize,int age, String userName){
-        return userDao.doPageHQL(age,userName,pagenNo,pageSize);
+    public User getUserByQQ(String qq) {
+        return userDao.getUserByQQ(qq);
     }
 
-    @Override
+
     public ListPager<User> doSqlPageTest(int pagenNo, int pageSize, int age, String userName) {
         return userDao.doPageSQL(age,userName,pagenNo,pageSize);
     }
 
 
+    public User doLogin(User user) throws ValidateException {
+        User dbUser = userDao.getUserByQQ(user.getQq());
+        if(dbUser == null){
+            user.setCreatedAt(new Date());
+            user.setUpdatedAt(new Date());
+            user.setStaus(UserStatusEnum.NORMAL);
+            user.setAdmin(false);
+            validatorUtil.validate(user,true);
+            userDao.insert(user);
+        }
+        return dbUser;
+    }
 }

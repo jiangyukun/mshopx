@@ -1,7 +1,6 @@
 package com.gxkj.projects.myshopx.services;
 
 import com.alibaba.fastjson.JSON;
-import com.gxkj.projects.myshopx.entitys.Menu;
 import com.gxkj.projects.myshopx.enums.MenuTyp;
 import org.junit.Test;
 import org.slf4j.Logger;

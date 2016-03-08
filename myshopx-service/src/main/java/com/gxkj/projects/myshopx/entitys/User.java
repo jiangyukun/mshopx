@@ -1,6 +1,7 @@
 package com.gxkj.projects.myshopx.entitys;
 
 import com.gxkj.projects.myshopx.enums.GenderEnums;
+import com.gxkj.projects.myshopx.enums.UserStatusEnum;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,10 +26,12 @@ public class User extends BaseModel{
     private GenderEnums gender;
 
     @Column(name="staus",length=32)
-    private String staus;
+    @Enumerated(EnumType.STRING)
+    private UserStatusEnum staus;
 
-    @Column(name="is_admin",length=1)
-    private int  isAdmin = 0;
+    @Column(name="is_admin",nullable = false)
+    @org.hibernate.annotations.Type(type="yes_no")
+    private boolean  admin = false;
 
     public String getQq() {
         return qq;
@@ -54,19 +57,19 @@ public class User extends BaseModel{
         this.gender = gender;
     }
 
-    public String getStaus() {
+    public UserStatusEnum getStaus() {
         return staus;
     }
 
-    public void setStaus(String staus) {
+    public void setStaus(UserStatusEnum staus) {
         this.staus = staus;
     }
 
-    public int getIsAdmin() {
-        return isAdmin;
+    public boolean isAdmin() {
+        return admin;
     }
 
-    public void setIsAdmin(int isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }
