@@ -49,6 +49,11 @@ public class HibernateBaseRepositoryImpl {
         sessionFactory.getCurrentSession().delete(entity);
     }
 
+    public  void deleteById(Serializable id, Class clazz)  {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete( session.get(clazz, id));
+    }
+
     public <T> void update(T entity)   {
         //sessionFactory.getCurrentSession().clear();
         sessionFactory.getCurrentSession().update(entity);
@@ -269,13 +274,6 @@ public class HibernateBaseRepositoryImpl {
         else
             counthql.append("select count(*) as _count " + hql.substring(hql.indexOf("from"), hql.length()));
         return counthql.toString();
-    }
-
-
-
-    public <T> void deleteById(Serializable id, T t)  {
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(session.get(t.getClass(), id));
     }
 
 

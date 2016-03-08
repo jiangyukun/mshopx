@@ -43,6 +43,8 @@ public class AdminMenuServiceImpl implements AdminMenuService {
 
 
     public void doDeleteAdminMenu(User user, String id) {
+//        AdminMenu menu = adminMenuDao.selectById(id,AdminMenu.class);
+//        adminMenuDao.delete(menu);
         adminMenuDao.deleteById(id,AdminMenu.class);
     }
 
