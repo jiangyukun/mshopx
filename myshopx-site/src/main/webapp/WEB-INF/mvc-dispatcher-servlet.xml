@@ -70,15 +70,18 @@
        <property name="suffix" value=".jsp" />
     </bean>
      -->
-	<bean
-			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/pages/" />
-		<property name="suffix" value=".jsp" />
+
+
+	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="suffix" value=".ftl" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->
+		<property name="requestContextAttribute" value="req" />
 	</bean>
 
 
 
-	 <bean id="exceptionResolver" class="com.gxkj.projects.myshopx.handler.MyExceptionHandler">
+	<bean id="exceptionResolver" class="com.gxkj.projects.myshopx.handler.MyExceptionHandler">
 		<property name="defaultErrorView" value="error/failure"></property>
 		<property name="exceptionAttribute" value="ex"></property>
 		<property name="exceptionMappings">
