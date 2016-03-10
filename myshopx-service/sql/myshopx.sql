@@ -341,27 +341,6 @@ CREATE TABLE `sys_role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- ----------------------------
--- Records of sys_role
--- ----------------------------
-
--- ----------------------------
--- Table structure for `sys_user`
--- ----------------------------
-DROP TABLE IF EXISTS `sys_user`;
-CREATE TABLE `sys_user` (
-  `id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `qq` varchar(36) COLLATE utf8_unicode_ci NOT NULL,
-  `createdAt` date NOT NULL,
-  `updatedAt` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of sys_user
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for `user`

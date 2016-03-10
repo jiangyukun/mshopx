@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.enums.GenderEnums;
+import com.gxkj.projects.myshopx.enums.UserStatusEnum;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,32 +36,14 @@ public class UserTServiceImplTest extends BaseSpringTest {
 //    }
 
 
-    @Test
-    public void doAddUserTest(){
-//        for(int i=101;i<102;i++){
 
-        int i= 103;
-            User u = new User();
-
-            u.setCreatedAt(new Date());
-            u.setUpdatedAt(new Date());
-            u.setPassword(11+"");
-            u.setStaus("1");
-
-            u.setGender(GenderEnums.MAN);
-            u.setQq("346745719");
-           // u.setAdmin(false);
-            u = userService.addUser(u);
-            LOG.info("u="+JSON.toJSONString(u));
-//        }
-    }
 
     /**
      * 自定义查询SQL的例子
      */
     @Test
     public void doListTest(){
-        List<User> userLists =  userService.doListTest(0,null);
+        ListPager<User> userLists =  userService.doHqlPage(0,20,null);
         LOG.info("userLists="+JSON.toJSONString(userLists));
     }
     @Test
