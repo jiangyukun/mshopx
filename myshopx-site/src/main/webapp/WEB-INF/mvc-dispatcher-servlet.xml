@@ -13,22 +13,16 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
 	<!-- 指定自己定义的validator -->
-	<mvc:annotation-driven validator="validator">
-		<!--<mvc:message-converters register-defaults="false">-->
-			<!--<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
-				<!--<property name="objectMapper" ref="jacksonObjectMapper" />-->
-				<!--<property name="supportedMediaTypes">-->
-					<!--<list>-->
-						<!--<bean class="org.springframework.http.MediaType">-->
-							<!--<constructor-arg index="0" value="application" />-->
-							<!--<constructor-arg index="1" value="json" />-->
-							<!--<constructor-arg index="2" value="UTF-8" />-->
-						<!--</bean>-->
-					<!--</list>-->
-				<!--</property>-->
-			<!--</bean>-->
-		<!--</mvc:message-converters>-->
-	</mvc:annotation-driven>
+	<mvc:annotation-driven validator="validator"> </mvc:annotation-driven>
+	<mvc:interceptors>
+		<!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+		<bean class="com.gxkj.projects.myshopx.interceptors.AllInterceptor"/><!--freemarker 静态类拦截在这里配置 -->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/test/number.do"/>-->
+			<!--&lt;!&ndash; 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 &ndash;&gt;-->
+			<!--<bean class="com.host.app.web.interceptor.LoginInterceptor"/>-->
+		<!--</mvc:interceptor>-->
+	</mvc:interceptors>
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
 			<bean class="com.gxkj.common.utils.BindingInitializer"></bean>
@@ -49,7 +43,6 @@
 				</bean>
 			</list>
 		</property>
-
 	</bean>
 
 	<bean id="jaxbAnnotationInspector" class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />
@@ -100,6 +93,8 @@
 		<property name="viewClass">
 			<value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
 		</property>
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="requestContextAttribute" value="rc"></property>
 	</bean>
 
 
