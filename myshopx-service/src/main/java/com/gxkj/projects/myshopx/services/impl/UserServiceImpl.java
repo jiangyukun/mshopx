@@ -59,6 +59,10 @@ public class UserServiceImpl implements UserService {
             user.setQq(user.getQq());
             validatorUtil.validate(user,true);
             userDao.insert(user);
+
+            dbUser = user;
+        }else{
+            user =  dbUser;
         }
         return dbUser;
     }

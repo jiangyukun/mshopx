@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.gxkj.common.utils.SystemGlobals,com.gxkj.projects.myshopx.entitys.*,com.gxkj.projects.myshopx.dto.*"%>
-
 <!DOCTYPE html>
 <html lang="zh">
-<head><%--  --%>
+<head>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" content="ie=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>系统首页</title>
-    <%@include file='/WEB-INF/pages/common/taglib.jsp'%>
-    <%@include file="/WEB-INF/pages/common/easyui-html5.jsp" %>
+    <#include "../common/easyui-html5.ftl"/>
 </head>
 <script type="text/javascript">
     var opTabIndex = -1;
-    alert(opTabIndex);
     function menuHandler(item){
         if("close" == item.name){
             $('#tt').tabs('close',opTabIndex);
@@ -59,7 +54,7 @@
     <table width="100%">
         <tr width="100%">
             <td width="50%">
-                欢迎您:${user.qq}&nbsp;&nbsp;您的编号是：${user.id}
+                欢迎您:${(user.qq)!"游客"} &nbsp;&nbsp;您的编号是：${(user.id)!"0"}
             </td>
             <td align="right" width="50%">
                 <a href="#" class="easyui-linkbutton" onclick="addTabPanel('userhome')" data-options="plain:true,iconCls:'user_btn'">个人中心</a>
@@ -70,7 +65,7 @@
 </div>
 <div data-options="region:'west',split:true,border:true,title:'&nbsp;'" style="width:250px;padding:10px;">
 <ul class="easyui-tree" data-options="
-		url:'<%=request.getContextPath() %>/admin/menu/my?'+new Date().getTime(),
+		url:'${rc.contextPath}/admin/menu/my?'+new Date().getTime(),
 		method:'get',
 		loadFilter:function(data){
             var statusCode = data.statusCode;
@@ -184,7 +179,7 @@
                 title:title,
                 closable:true,
                 cache:false,
-                content:'<iframe scrolling="yes" frameborder="0"  src="<%=request.getContextPath() %>'+url+'?d='+new  Date().getMilliseconds()+'" style="width:100%;height:100%;"></iframe>'
+                content:'<iframe scrolling="yes" frameborder="0"  src="${rc.contextPath}'+url+'?d='+new  Date().getMilliseconds()+'" style="width:100%;height:100%;"></iframe>'
 
             });
         }
@@ -204,7 +199,7 @@
     function logout(){
         $.messager.confirm('系统提示', '您确定要退出该系统吗?', function(r){
             if (r){
-                window.location = "<%=request.getContextPath() %>/admin/logout";
+                window.location = "${rc.contextPath}/admin/logout";
             }
         });
     }

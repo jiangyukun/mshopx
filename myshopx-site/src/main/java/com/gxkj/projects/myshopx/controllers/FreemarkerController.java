@@ -31,24 +31,5 @@ public class FreemarkerController {
         return "demo/freemarker";
     }
 
-    private static Class[] defaultStaticClasses={ SystemGlobals.class,
-            RandomStringUtils.class,
-            ErrorCodeEnum.class,
-            RandomUtils.class};
-    protected static void setDefaultStaticModel(ModelMap modelMap) {
-        for (Class clz : defaultStaticClasses) {
-            String name = clz.getSimpleName();
-            modelMap.addAttribute(name, getStaticModel(clz));
-        }
-    }
 
-    private static Object getStaticModel(Class clz) {
-        BeansWrapper wrapper = BeansWrapper.getDefaultInstance();
-        try {
-            return wrapper.getStaticModels().get(clz.getName());
-        } catch (TemplateModelException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }

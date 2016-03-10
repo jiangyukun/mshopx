@@ -1,15 +1,21 @@
 package com.gxkj.projects.myshopx.controllers;
 
+import com.gxkj.common.exceptions.ValidateException;
 import com.gxkj.common.utils.ListPager;
+import com.gxkj.projects.myshopx.dto.ReturnData;
 import com.gxkj.projects.myshopx.entitys.User;
+import com.gxkj.projects.myshopx.enums.ErrorCodeEnum;
+import com.gxkj.projects.myshopx.services.UserService;
 import org.apache.commons.collections.SetUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactoryUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.method.HandlerMethod;
@@ -33,6 +39,11 @@ import java.util.Set;
 public class AdminLoginController {
 
     Logger LOG = LoggerFactory.getLogger(AdminLoginController.class);
+
+    public static final String sessionUserKey = "user";
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value="login",method= RequestMethod.GET)
     public String index(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap){
@@ -66,5 +77,16 @@ public class AdminLoginController {
         }
 
 return "admin/login";
+    }
+
+    @RequestMapping(value="dologin",method= RequestMethod.POST)
+    @ResponseBody
+    public ReturnData<User> dologin(User user, HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) throws ValidateException {
+        ReturnData<User> returnData = new ReturnData<User>();
+        user = userService.doLogin(user);
+        request.getSession().setAttribute(sessionUserKey,user);
+        returnData.setEntity(user);
+        returnData.setStatusCode(ErrorCodeEnum.NORMAL.getCode());
+        return returnData;
     }
 }

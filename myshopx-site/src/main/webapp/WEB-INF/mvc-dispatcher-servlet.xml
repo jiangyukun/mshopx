@@ -10,12 +10,15 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
+	<mvc:resources mapping="/common/**" location="/common/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<!-- 指定自己定义的validator -->
 	<mvc:annotation-driven validator="validator"> </mvc:annotation-driven>
+
 	<mvc:interceptors>
-		<!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+		 <!--使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求-->
 		<bean class="com.gxkj.projects.myshopx.interceptors.AllInterceptor"/><!--freemarker 静态类拦截在这里配置 -->
 		<!--<mvc:interceptor>-->
 			<!--<mvc:mapping path="/test/number.do"/>-->
@@ -95,8 +98,16 @@
 		</property>
 		<property name="exposeSpringMacroHelpers" value="true"/>
 		<property name="requestContextAttribute" value="rc"></property>
+		<property name="attributesMap" ref="freemarkerStaticModels"/>
 	</bean>
-
+	<bean id="freemarkerStaticModelsProps"
+		  class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:freemarkerstatic.properties" />
+	</bean>
+	<bean id="freemarkerStaticModels"
+		  class="com.gxkj.projects.myshopx.util.FreemarkerStaticModels" factory-method="getInstance">
+		<property name="staticModels" ref="freemarkerStaticModelsProps"/>
+	</bean>
 
 
 	<bean id="exceptionResolver" class="com.gxkj.projects.myshopx.handler.MyExceptionHandler">
@@ -124,6 +135,5 @@
 	      <property name="maxInMemorySize" value="10240"/>
 	     -->  
 	</bean>  
-	 <mvc:resources mapping="/common/**" location="/common/" />
-	 <mvc:resources mapping="/resources/**" location="/resources/" />
+
 </beans>

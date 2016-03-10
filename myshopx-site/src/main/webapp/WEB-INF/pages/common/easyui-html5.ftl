@@ -1,10 +1,10 @@
 
 <link rel="stylesheet" type="text/css" href="${rc.contextPath}/resources/icon/icon.css?3">
-<link rel="stylesheet" type="text/css" href="${rc.contextPath}resources/easyui/themes/gray/easyui.css">
-<link rel="stylesheet" type="text/css" href="${rc.contextPath}resources/easyui/themes/icon.css">
-<script type="text/javascript" src="${rc.contextPath}resources/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}resources/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}resources/easyui/locale/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" type="text/css" href="${rc.contextPath}/resources/easyui/themes/gray/easyui.css">
+<link rel="stylesheet" type="text/css" href="${rc.contextPath}/resources/easyui/themes/icon.css">
+<script type="text/javascript" src="${rc.contextPath}/resources/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/resources/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/resources/easyui/locale/easyui-lang-zh_CN.js"></script>
 <style type="text/css">
 	.mask {  
             position: absolute; top: 0px; filter: alpha(opacity=60); background-color: #777;
@@ -13,9 +13,9 @@
         }
 </style>
 <script type="text/javascript">
-	//调用常量类的例子 '${SystemGlobals.getPreference("test")}'
+	　
 //	调用枚举类的例子：${ErrorCodeEnum.NORMAL.code}
-	var normalStatusCode = "000000"
+	var normalStatusCode = "${ErrorCodeEnum.NORMAL.code}"
 	 function getPageArea() {
 		if (document.compatMode == 'BackCompat') {
 			return {
