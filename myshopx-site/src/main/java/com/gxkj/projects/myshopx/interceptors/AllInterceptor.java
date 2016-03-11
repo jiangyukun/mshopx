@@ -45,8 +45,9 @@ public class AllInterceptor implements WebRequestInterceptor {
 
         RequestAttributes attributes =  RequestContextHolder.getRequestAttributes();
         Object user =  attributes.getAttribute(AdminLoginController.sessionUserKey,RequestAttributes.SCOPE_SESSION);
-        if(user != null && modelMap != null){
+		if(user != null && modelMap != null){
             modelMap.put(AdminLoginController.sessionUserKey,user);
+
             LOG.info("user={}", JSON.toJSONString(user));
         }
 

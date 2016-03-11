@@ -61,8 +61,6 @@ public class AdminMenuController {
     		ModelMap modelMap) throws ValidateException {
 		ReturnData<AdminMenu> returnData = new ReturnData<AdminMenu>();
 
-		String isButton = request.getParameter("isButton");
-		LOG.info("isButton={}",isButton);
 
 		adminMenuService.doAddAdminMenu( null,entity);
 		returnData.setEntity(entity);

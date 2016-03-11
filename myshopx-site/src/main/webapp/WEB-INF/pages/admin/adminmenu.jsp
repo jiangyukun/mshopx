@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="zh">
-<head><%--  --%>
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" content="ie=edge"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>菜单管理信息</title>

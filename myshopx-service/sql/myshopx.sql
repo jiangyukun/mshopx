@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-03-08 18:26:05
+Date: 2016-03-11 13:23:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,6 +52,12 @@ INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0011', '创建菜�
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0012', '修改菜单', '修改菜单', '/admin/menu/doupdate', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:06', '2016-03-07 20:26:11', '4.00', 'admin_menu_doupdate');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0013', '删除菜单', '删除菜单', '/admin/menu/dodel', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:49', '2016-03-07 20:26:54', '5.00', 'admin_menu_dodel');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0014', '分页查看菜单', '分页查看菜单', '/admin/menu/dopager', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:27:45', '2016-03-08 20:27:49', '6.00', 'admin_menu_dopager');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153561693120001', '角色管理', '', '/admin/role', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-08 19:57:13', '2016-03-08 19:57:13', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153561757580002', '创建角色', '', '/admin/role/doadd', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 19:58:04', '2016-03-08 19:58:04', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535622dcde0003', '修改角色', '', '/admin/role/doupdate', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:10:39', '2016-03-08 20:10:39', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535623a3fd0004', '删除角色', '', '/admin/role/dodel', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:11:30', '2016-03-08 20:11:30', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153562421bb0005', '分页查看角色', '', '/admin/role/dopager', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:12:02', '2016-03-08 20:12:02', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535624d7c40006', '管理员管理 ', '', '/admin/user', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-08 20:12:48', '2016-03-08 20:12:48', '1.00', '');
 
 -- ----------------------------
 -- Table structure for `brand`
@@ -329,18 +335,22 @@ CREATE TABLE `products` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `sys_role`
+-- Table structure for `role`
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_role`;
-CREATE TABLE `sys_role` (
-  `id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `role_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `createdAt` date NOT NULL,
-  `updatedAt` date NOT NULL,
-  `create_by` bigint(11) NOT NULL,
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `id` varchar(32) NOT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `state` varchar(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES ('8a8a80ea53641ba70153641bd1e70000', '2016-03-11 13:17:38', '2016-03-11 13:17:38', '12', 'NORMAL');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -352,7 +362,7 @@ CREATE TABLE `user` (
   `password` varchar(64) DEFAULT NULL,
   `staus` varchar(32) NOT NULL,
   `gender` varchar(8) DEFAULT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `is_admin` char(1) NOT NULL DEFAULT '0',
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -362,4 +372,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('297e40e35349347c0153493481ec0000', '346745719', '11', '1', 'MAN', '0', '2016-03-06 07:54:51', '2016-03-06 07:54:51');
+INSERT INTO `user` VALUES ('8a8a80ea53560fc701535610afe10000', '346745719', null, 'NORMAL', null, 'N', '2016-03-08 19:50:47', '2016-03-08 19:50:47');
