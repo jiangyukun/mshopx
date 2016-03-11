@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-03-11 19:46:34
+Date: 2016-03-11 20:07:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,6 +59,10 @@ INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535623a3fd0004', '删除角�
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153562421bb0005', '分页查看角色', '', '/admin/role/dopager', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:12:02', '2016-03-08 20:12:02', '1.00', '');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535624d7c40006', '管理员管理 ', '', '/admin/user', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-08 20:12:48', '2016-03-08 20:12:48', '1.00', '');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153657d10320000', '2222', '', 'dddd', 'N', '0', '', '2016-03-11 19:43:28', '2016-03-11 19:43:28', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153658e50c90002', '增加管理员', '', '/admin/adminuser/doadd', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:02:19', '2016-03-11 20:02:19', '1.00', 'admin_adminuser_doadd');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153658ee18b0003', '修改管理员', '', '/admin/adminuser/doupdate', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:02:56', '2016-03-11 20:02:56', '1.00', 'admin_adminuser_doupdate');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153658f98420004', '删除管理员', '', '/admin/adminuser/dodel', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:03:43', '2016-03-11 20:03:43', '1.00', 'admin_adminuser_dodel');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153659034090005', '管理员分页查看', '', '/admin/adminuser/dopager', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:04:23', '2016-03-11 20:04:23', '1.00', 'admin_adminuser_dopager');
 
 -- ----------------------------
 -- Table structure for `brand`
@@ -352,7 +356,7 @@ CREATE TABLE `role` (
 -- Records of role
 -- ----------------------------
 INSERT INTO `role` VALUES ('8a8a80ea53641ba70153641bd1e70000', '2016-03-11 13:17:38', '2016-03-11 13:51:14', '122', 'DEL');
-INSERT INTO `role` VALUES ('8a8a80ea53643a710153643aee4d0000', '2016-03-11 13:51:37', '2016-03-11 13:51:37', '222', 'NORMAL');
+INSERT INTO `role` VALUES ('8a8a80ea53643a710153643aee4d0000', '2016-03-11 13:51:37', '2016-03-11 19:56:18', '222', 'NORMAL');
 
 -- ----------------------------
 -- Table structure for `user`
