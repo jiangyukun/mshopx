@@ -15,12 +15,11 @@ public interface UserService {
 
     public void doDeleteUser(User adminUser, String id);
 
-    public ListPager<User> doHqlPage(int pagenNo, int pageSize,User user);
+    public ListPager<User> doHqlPage(int pagenNo, int pageSize,User user,boolean admin);
 
-
-
-    public ListPager<User> doSqlPageTest(int pagenNo, int pageSize,int age,   String userName);
-
+    public ListPager<User> doSqlPageTest(int pagenNo, int pageSize,User user,boolean admin);
 
     public User doLogin(User user) throws ValidateException;
+
+//    public void doAdd(User user);
 }

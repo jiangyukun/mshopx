@@ -127,11 +127,11 @@ function enableableBtn(){
 					    			<td>权限ID:</td>
 					    			<td><input class="easyui-validatebox"  style="width:250px;" type="text"  id="authorityId" name="authorityId" data-options="required:false"></input></td>
 					    		</tr>
-                                <tr   >
-                                    <td>描述:</td>
-                                    <td><input class="easyui-textbox" data-options="multiline:true " style="width:250px;">
-									</td>
-                                </tr>
+                                <#--<tr   >-->
+                                    <#--<td>描述:</td>-->
+                                    <#--<td><input class="easyui-textbox" data-options="multiline:true " style="width:250px;">-->
+									<#--</td>-->
+                                <#--</tr>-->
 					    		
 					    	</table>
 					    </form>

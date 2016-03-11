@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public ListPager<User> doHqlPage(int pagenNo, int pageSize, User user) {
-        return userDao.doPageHQL( pagenNo, pageSize,user);
+    public ListPager<User> doHqlPage(int pagenNo, int pageSize,User user,boolean admin) {
+        return userDao.doPageHQL( pagenNo, pageSize, user, admin);
     }
 
     public User getUserByQQ(String qq) {
@@ -44,8 +44,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public ListPager<User> doSqlPageTest(int pagenNo, int pageSize, int age, String userName) {
-        return userDao.doPageSQL(age,userName,pagenNo,pageSize);
+    public ListPager<User> doSqlPageTest(int pagenNo, int pageSize,User user,boolean admin) {
+        return userDao.doPageSQL( pagenNo,pageSize, user, admin);
     }
 
 
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
         if(dbUser == null){
             user.setCreatedAt(new Date());
             user.setUpdatedAt(new Date());
-            user.setStaus(UserStatusEnum.NORMAL);
+            user.setState(UserStatusEnum.NORMAL);
             user.setAdmin(false);
             user.setQq(user.getQq());
             validatorUtil.validate(user,true);
@@ -65,5 +65,10 @@ public class UserServiceImpl implements UserService {
             user =  dbUser;
         }
         return dbUser;
+    }
+
+
+    public void doAdd(User user) {
+        userDao.insert(user);
     }
 }

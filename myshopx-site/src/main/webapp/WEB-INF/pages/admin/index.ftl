@@ -108,7 +108,7 @@
             var aid = node['id'] ;
 
             var path = node['url'];
-            var isbutton = node['isButton'];
+            var isbutton = node['button'];
             var authorityCode = node["btnId"];
 
             if(isbutton == true){

@@ -31,33 +31,34 @@ public class UserDaoImpl extends HibernateBaseRepositoryImpl {
         return super.selectListByHQL(sql,param);
     }
 
-    public ListPager<User> doPageHQL(int pagenNo,int pageSize, User user){
+    public ListPager<User> doPageHQL(int pagenNo,int pageSize,User user,boolean admin){
         ListPager<User> pager = new ListPager<User>();
         pager.setPageNo(pagenNo);
         pager.setRowsPerPage(pageSize);
         String hql  = " from User u where 1=1 ";
         Map<String,Object> param = new HashMap<String,Object>();
 
-//        if(StringUtils.isNotBlank(user.get)){
-//            hql += " and userName = :userName";
-//            param.put("userName",userName);
-//        }
+        if(admin){
+            hql += " and admin = :admin";
+            param.put("admin",true);
+        }
+        if(user != null) {
+            if(StringUtils.isNoneBlank(user.getQq())){
+                hql += " and qq = :qq";
+                param.put("qq",user.getQq());
+            }
+        }
         return  this.selectPageByHql(hql,param,pager);
     }
 
-    public ListPager<User> doPageSQL(int age, String userName,int pagenNo,int pageSize){
+    public ListPager<User> doPageSQL( int pagenNo,int pageSize,User user,boolean admin){
         ListPager<User> pager = new ListPager<User>();
         pager.setPageNo(pagenNo);
         pager.setRowsPerPage(pageSize);
         String hql  = " select id,user_name as userName , age, gender, create_at createdAt ,admin  from user u where gender is not null     ";
         Map<String,Object> param = new HashMap<String,Object>();
-        if(age > 0){
-            hql += " and age = :age";
-            param.put("age",age);
-        }
-        if(StringUtils.isNotBlank(userName)){
-            hql += " and user_name = :userName";
-            param.put("userName",userName);
+        if(admin){
+            hql += " and is_admin = 'Y'";
         }
        // hql += " order by id";
         this.selectPageBySQL(hql,param,pager,User.class);

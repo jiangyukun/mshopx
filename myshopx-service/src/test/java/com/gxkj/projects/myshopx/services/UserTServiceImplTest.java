@@ -2,6 +2,7 @@ package com.gxkj.projects.myshopx.services;
 
 import com.alibaba.fastjson.JSON;
 import com.gxkj.common.utils.ListPager;
+import com.gxkj.projects.myshopx.dao.UserDaoImpl;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.enums.GenderEnums;
 import com.gxkj.projects.myshopx.enums.UserStatusEnum;
@@ -21,19 +22,24 @@ public class UserTServiceImplTest extends BaseSpringTest {
     @Autowired
     private UserService userService;
 
-//    @Test
-//    public void test1() {
-//        for(int i = 101 ;i < 102; i++){
-//            UserT u = new UserT();
-//            u.setId(UUID.randomUUID().toString());
-//            u.setUserName("name_"+i);
-//            u.setPassword(i+"-"+i);
-//            int r = userTService.addUser(u);
-//
-//            LOG.info(r+"="+JSON.toJSONString(u));
-//        }
-//       // logger.info(JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd HH:mm:ss"));
-//    }
+    @Autowired
+    private UserDaoImpl userDao;
+
+
+    @Test
+    public void doAddTest(){
+        for(int i=1;i<=101;i++){
+            User u = new User();
+            u.setQq((346745719+i)+"");
+            u.setGender(GenderEnums.MAN);
+            u.setAdmin(false);
+            u.setState(UserStatusEnum.NORMAL);
+            u.setUpdatedAt(new Date());
+            u.setCreatedAt(new Date());
+//            userService.doAdd(u);
+        }
+
+    }
 
 
 

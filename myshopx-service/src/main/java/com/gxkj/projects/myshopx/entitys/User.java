@@ -25,9 +25,9 @@ public class User extends BaseModel{
     @Enumerated(EnumType.STRING)
     private GenderEnums gender;
 
-    @Column(name="staus",length=32)
+    @Column(name="state",length=32)
     @Enumerated(EnumType.STRING)
-    private UserStatusEnum staus;
+    private UserStatusEnum state;
 
     @Column(name="is_admin",nullable = false)
     @org.hibernate.annotations.Type(type="yes_no")
@@ -56,20 +56,19 @@ public class User extends BaseModel{
     public void setGender(GenderEnums gender) {
         this.gender = gender;
     }
-
-    public UserStatusEnum getStaus() {
-        return staus;
-    }
-
-    public void setStaus(UserStatusEnum staus) {
-        this.staus = staus;
-    }
-
     public boolean isAdmin() {
         return admin;
     }
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public UserStatusEnum getState() {
+        return state;
+    }
+
+    public void setState(UserStatusEnum state) {
+        this.state = state;
     }
 }

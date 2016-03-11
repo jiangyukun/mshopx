@@ -60,7 +60,7 @@ public class AdminMenuServiceTest  extends BaseSpringTest {
         AdminMenu adminMenu = new AdminMenu();
         adminMenu.setName("1");
         adminMenu.setButton(false);
-        adminMenu.setBtnId("");
+        adminMenu.setAuthorityId( "");
         adminMenu.setUrl("2");
         adminMenu.setParentId("0");
         adminMenu.setDes("");
