@@ -60,7 +60,14 @@
 						    	</table>
 							</div>
 							<div title="资源授权" style="padding:10px">
-								 <ul id='tt' class="easyui-tree" data-options="url:  '<%=request.getContextPath() %>/admin/menu/list?d='+new Date().getTime(),loadFilter:function (data){ return makeTreeData( data,true);},method:'get',animate:true,checkbox:true,cascadeCheck:true"></ul>
+								 <ul id='tt' class="easyui-tree" data-options="url:  '${rc.contextPath}/admin/menu/list?d='+new Date().getTime(),loadFilter:function (data){
+                                                              if(data.statusCode == normalStatusCode){
+            								                     return makeTreeData( data.entity,true);
+            								                 } else {
+                                              				          return makeTreeData( [],true);
+                                              				 }
+
+								 },method:'get',animate:true,checkbox:true,cascadeCheck:true"></ul>
 							</div>
 						</div>
 					</div>
@@ -424,7 +431,7 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 		   			}
 		   		}
 		}
-		 function makeTreeData(menus,usecheck){
+function makeTreeData(menus,usecheck){
 
 	if(menus.length==0)return menus;
  	 var mapdata = {};
@@ -433,21 +440,19 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 	  {
 	      var node = menus[i];
 	      var menuname = node['name'];
-	      var pid = node['pid'];
+	      var pid = node['parentId'];
 	      var aid = node['id'] ;
-
-	      var path = node['path'];
-	      var isbutton = node['isbutton'];
-	      var btnflag = node["btnflag"];
+	      var path = node['url'];
+	      var isbutton = node['button'];
+	      var authorityId = node["authorityId"];
 			var obj = {
 	    		  id:aid,
 	    		  text:menuname,
 	    		 // "iconCls":isbutton!=1?"tree-file":"icon-add",
-
 	    		  attributes:{
 	    		  	path:path,
 	    		  	isbutton:isbutton,
-	    		  	btnflag:btnflag,
+	    		  	authorityId:authorityId,
 	    		  	pid:pid
 	    		  }
 
