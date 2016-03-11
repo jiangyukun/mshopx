@@ -127,6 +127,11 @@ function enableableBtn(){
 					    			<td>权限ID:</td>
 					    			<td><input class="easyui-validatebox"  style="width:250px;" type="text"  id="authorityId" name="authorityId" data-options="required:false"></input></td>
 					    		</tr>
+                                <tr   >
+                                    <td>描述:</td>
+                                    <td><input class="easyui-textbox" data-options="multiline:true " style="width:250px;">
+									</td>
+                                </tr>
 					    		
 					    	</table>
 					    </form>
@@ -140,7 +145,6 @@ function enableableBtn(){
 	</div>
 </body>
 <script type="text/javascript">
-	
 	/***/
 	var type = 'menu';
 	window.treeData = [];
@@ -183,7 +187,7 @@ function addFn(){
 	saveType = "add";
 	var data = window.treeData;
 	 $('#w').window('open').panel('setTitle',"增加菜单");
-	 var menus = []; for(var i=0;i<data.length;i++){ if(data[i]['isbutton'] == false){ menus.push(data[i]); } }
+	 var menus = []; for(var i=0;i<data.length;i++){ if(data[i]['button'] == false){ menus.push(data[i]); } }
 	 var tree2Data = makeTreeData(menus,false);
 	var  newTree2Data = [{
 		"id":0,
@@ -390,7 +394,7 @@ function updateFn(){
 	var data = window.treeData;
 	 $('#w').window('open').panel('setTitle',"修改菜单");
 	 
-	 var menus = []; for(var i=0;i<data.length;i++){ if(data[i]['isbutton']!= 1){ menus.push(data[i]); } }
+	 var menus = []; for(var i=0;i<data.length;i++){ if(!data[i]['isbutton']){ menus.push(data[i]); } }
 	 var tree2Data = makeTreeData(menus,false);
 	 var  newTree2Data = [{
 		"id":0,
