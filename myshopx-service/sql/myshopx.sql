@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-03-11 13:23:09
+Date: 2016-03-11 19:46:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `admin_menu` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   `sort` double(10,2) NOT NULL DEFAULT '0.00',
-  `btn_id` varchar(32) DEFAULT '',
+  `authority_id` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -53,11 +53,12 @@ INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0012', '修改菜�
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0013', '删除菜单', '删除菜单', '/admin/menu/dodel', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:49', '2016-03-07 20:26:54', '5.00', 'admin_menu_dodel');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0014', '分页查看菜单', '分页查看菜单', '/admin/menu/dopager', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:27:45', '2016-03-08 20:27:49', '6.00', 'admin_menu_dopager');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153561693120001', '角色管理', '', '/admin/role', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-08 19:57:13', '2016-03-08 19:57:13', '1.00', '');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153561757580002', '创建角色', '', '/admin/role/doadd', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 19:58:04', '2016-03-08 19:58:04', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153561757580002', '创建角色', '', '/admin/role/doadd', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 19:58:04', '2016-03-11 19:45:43', '1.00', 'admin_role_doadd');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535622dcde0003', '修改角色', '', '/admin/role/doupdate', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:10:39', '2016-03-08 20:10:39', '1.00', '');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535623a3fd0004', '删除角色', '', '/admin/role/dodel', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:11:30', '2016-03-08 20:11:30', '1.00', '');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153562421bb0005', '分页查看角色', '', '/admin/role/dopager', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:12:02', '2016-03-08 20:12:02', '1.00', '');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535624d7c40006', '管理员管理 ', '', '/admin/user', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-08 20:12:48', '2016-03-08 20:12:48', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153657d10320000', '2222', '', 'dddd', 'N', '0', '', '2016-03-11 19:43:28', '2016-03-11 19:43:28', '1.00', '');
 
 -- ----------------------------
 -- Table structure for `brand`
@@ -350,7 +351,8 @@ CREATE TABLE `role` (
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('8a8a80ea53641ba70153641bd1e70000', '2016-03-11 13:17:38', '2016-03-11 13:17:38', '12', 'NORMAL');
+INSERT INTO `role` VALUES ('8a8a80ea53641ba70153641bd1e70000', '2016-03-11 13:17:38', '2016-03-11 13:51:14', '122', 'DEL');
+INSERT INTO `role` VALUES ('8a8a80ea53643a710153643aee4d0000', '2016-03-11 13:51:37', '2016-03-11 13:51:37', '222', 'NORMAL');
 
 -- ----------------------------
 -- Table structure for `user`

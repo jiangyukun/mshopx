@@ -123,8 +123,8 @@ function enableableBtn(){
 					    			<td>路径:</td>
 					    			<td><input class="easyui-validatebox" style="width:250px;"  type="text"  id="path" name="path" data-options="required:false"></input></td>
 					    		</tr>
-					    		<tr id="btn_code_tr" style="display: none;">
-					    			<td>按钮编码:</td>
+					    		<tr id="btn_code_tr" >
+					    			<td>权限ID:</td>
 					    			<td><input class="easyui-validatebox"  style="width:250px;" type="text"  id="authorityId" name="authorityId" data-options="required:false"></input></td>
 					    		</tr>
 					    		
@@ -202,14 +202,12 @@ function onChangeFn(isbutton, oldValue){
 	if(isbutton == 'false'){
 		type = 'menu';
 		//$("#menu_path_tr").show();
-
-		$("#btn_code_tr").hide();
+//		$("#btn_code_tr").hide();
 
 	}else  {
-
 		type = 'button';
 		//$("#menu_path_tr").hide();
-		$("#btn_code_tr").show();
+//		$("#btn_code_tr").show();
 	}
 
 }
@@ -217,7 +215,7 @@ function initFn(){
 	 
 		type = 'menu';
 		$("#menu_path_tr").show();
-		$("#btn_code_tr").hide();
+//		$("#btn_code_tr").hide();
 		$('#ff').form('reset');
 		
 }
@@ -409,11 +407,11 @@ function updateFn(){
 	$("#isbutton").combobox('select',isbutton+"");
 
 	 if(isbutton == false || isbutton == 'false'){
-		$("#btn_code_tr").hide();
+//		$("#btn_code_tr").hide();
 		
 	}else if(isbutton == true || isbutton == 'true'){
 
-		$("#btn_code_tr").show();
+//		$("#btn_code_tr").show();
 	}
 	$("#path").val(node.attributes.path);
 	$("#authorityId").val(node.attributes.authorityId);
