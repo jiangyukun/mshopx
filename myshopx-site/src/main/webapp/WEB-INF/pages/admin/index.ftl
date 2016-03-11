@@ -111,7 +111,7 @@
             var isbutton = node['isButton'];
             var authorityCode = node["btnId"];
 
-            if(isbutton == 1){
+            if(isbutton == true){
                 continue;
             }
             mapdata["id_"+aid]= {

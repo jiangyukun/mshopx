@@ -44,9 +44,8 @@ public class AdminMenu extends BaseModel{
     @NotNull
     private double sort = 0  ;        //排序
 
-    @Column(name="btn_id",nullable = false)
-    @NotNull(message = "{admin_menu.btnId.null}", groups = {Add.class, Update.class})
-    private String btnId ;    //按钮ID
+    @Column(name="authority_id",nullable = false)
+    private String authorityId ;    //权限ID
 
     public String getName() {
         return name;
@@ -89,14 +88,13 @@ public class AdminMenu extends BaseModel{
     }
 
 
-    public String getBtnId() {
-        return btnId;
+    public String getAuthorityId() {
+        return authorityId;
     }
 
-    public void setBtnId(String btnId) {
-        this.btnId = btnId;
+    public void setAuthorityId(String authorityId) {
+        this.authorityId = authorityId;
     }
-
 
     public boolean isButton() {
         return button;

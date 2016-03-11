@@ -27,16 +27,14 @@ function makeTreeData(menus,usecheck){
 	      
 	      var path = node['url'];
 	      var isbutton = node['button'];
-	      var btnflag = node["btn_id"];
+	      var authorityId = node["authorityId"];
 			var obj = {
 	    		  id:aid,
 	    		  text:menuname,
-	    		 // "iconCls":isbutton!=1?"tree-file":"icon-add",
-	    		  
 	    		  attributes:{
 	    		  	path:path,
 	    		  	isbutton:isbutton,
-	    		  	btnflag:btnflag,
+                      authorityId:authorityId,
 	    		  	pid:pid
 	    		  }
 	    		  
@@ -127,7 +125,7 @@ function enableableBtn(){
 					    		</tr>
 					    		<tr id="btn_code_tr" style="display: none;">
 					    			<td>按钮编码:</td>
-					    			<td><input class="easyui-validatebox"  style="width:250px;" type="text"  id="btnflag" name="btnflag" data-options="required:false"></input></td>
+					    			<td><input class="easyui-validatebox"  style="width:250px;" type="text"  id="authorityId" name="authorityId" data-options="required:false"></input></td>
 					    		</tr>
 					    		
 					    	</table>
@@ -185,7 +183,7 @@ function addFn(){
 	saveType = "add";
 	var data = window.treeData;
 	 $('#w').window('open').panel('setTitle',"增加菜单");
-	 var menus = []; for(var i=0;i<data.length;i++){ if(data[i]['isbutton']!= 1){ menus.push(data[i]); } }
+	 var menus = []; for(var i=0;i<data.length;i++){ if(data[i]['isbutton'] == false){ menus.push(data[i]); } }
 	 var tree2Data = makeTreeData(menus,false);
 	var  newTree2Data = [{
 		"id":0,
@@ -230,14 +228,14 @@ function submitForm(){
 	var name =  $('#name').val();
 	var isbutton = $('#isbutton').combo('getValue');
 	var path = $("#path").val();
-	var btnflag = $("#btnflag").val();
+	var authorityId = $("#authorityId").val();
 	
-	 
+
 	if($.trim(name).length==0){
 		$.messager.alert('系统提示','名称不能为空!','warning');
 		return;
 	}
-	if(isbutton ==1 ){/**按钮*/
+	if(isbutton == true ){/**按钮*/
 	
 		if(saveType == 'update'){
 			var node = $('#tt').tree("find",id);
@@ -270,7 +268,7 @@ function submitForm(){
 				  data:{
 				  	name:name,
 					  button:isbutton,
-					  btnId:btnflag,
+                      authorityId:authorityId,
 					  url:path,
 					  parentId:pid,
 					  action:'',
@@ -345,7 +343,7 @@ function submitForm(){
 			  	id:id,
 			  	name:name,
 				  button:isbutton,
-				  btnId:btnflag,
+                  authorityId:authorityId,
 				  url:path,
 				  parentId:pid,
 				  action:'',
@@ -418,7 +416,8 @@ function updateFn(){
 		$("#btn_code_tr").show();
 	}
 	$("#path").val(node.attributes.path);
-	$("#btnflag").val(node.attributes.btnflag);
+	$("#authorityId").val(node.attributes.authorityId);
+
 	$("#id").val(node.id);
 	 
 
