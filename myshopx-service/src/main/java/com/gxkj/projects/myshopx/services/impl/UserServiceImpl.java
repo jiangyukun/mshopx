@@ -68,6 +68,19 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    public User getByQq(String qq) {
+        return userDao.getUserByQQ(qq);
+    }
+
+
+    public void setAdmin(User user, String id) {
+        userDao.setAdminUser(id);
+    }
+    public void cancleAdmin(User user, String id) {
+        userDao.cancleAdmin(id);
+    }
+
+
     public void doAdd(User user) {
         userDao.insert(user);
     }

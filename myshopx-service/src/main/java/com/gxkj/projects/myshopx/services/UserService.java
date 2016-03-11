@@ -21,5 +21,11 @@ public interface UserService {
 
     public User doLogin(User user) throws ValidateException;
 
+    public User getByQq(String qq);
+
+    public void setAdmin(User user,String id);
+
+    public void cancleAdmin(User user, String id);
+
 //    public void doAdd(User user);
 }

@@ -71,4 +71,17 @@ public class UserDaoImpl extends HibernateBaseRepositoryImpl {
         param.put("qq",qq);
         return this.selectFirstOneByHQL(sql,param);
     }
+
+    public void setAdminUser(String id){
+        String updateSql = "update user set admin = 'true' where id = :id";
+        Map<String,Object> param = new HashMap<String,Object>();
+        param.put("id",id);
+        this.executeUpdateBySql(updateSql,param);
+    }
+    public void cancleAdmin(String id){
+        String updateSql = "update user set admin = 'false' where id = :id";
+        Map<String,Object> param = new HashMap<String,Object>();
+        param.put("id",id);
+        this.executeUpdateBySql(updateSql,param);
+    }
 }

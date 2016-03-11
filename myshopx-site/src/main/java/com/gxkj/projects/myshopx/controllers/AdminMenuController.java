@@ -61,7 +61,6 @@ public class AdminMenuController {
     		ModelMap modelMap) throws ValidateException {
 		ReturnData<AdminMenu> returnData = new ReturnData<AdminMenu>();
 
-
 		adminMenuService.doAddAdminMenu( null,entity);
 		returnData.setEntity(entity);
 		returnData.setStatusCode(ErrorCodeEnum.NORMAL.getCode());

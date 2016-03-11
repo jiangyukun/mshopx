@@ -30,66 +30,27 @@
         <div data-options="region:'center',border:false" id="content_layout" >
             <form id="ff" method="post">
                 <table>
-                    <tr style="display: none;">
-                        <td>id:</td>
-                        <td><input class="easyui-validatebox" type="text" id="id" name="id" data-options="required:false"></input></td>
-                    </tr>
+
                     <tr>
-                        <td>登陆名称:</td>
+                        <td>qq:</td>
                         <td>
-                            <input style="width:200px;" class="easyui-validatebox" type="text" id="name" name="name" data-options="required:true"></input>
+                            <input style="width:300px;height: 22px;" class="easyui-validatebox" type="text" id="qq" name="qq" data-options="required:true"></input>
+                            <a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchUser()">查询</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>真实姓名:</td>
+                        <td>查询结果:</td>
                         <td>
-                            <input style="width:200px;" class="easyui-validatebox" type="text" id="realName" name="realName" data-options="required:true"></input>
+                            <input style="width:300px;height: 22px;" id="userInfo" name="userInfo" class="easyui-textbox" data-options="editable:false"  ></input>
                         </td>
                     </tr>
                     <tr>
-                        <td>是否锁定:</td>
+                        <td>ID:</td>
                         <td>
-                            <select class="easyui-combobox" id="status" name="status" style="width:200px;"   data-options="editable:false,panelHeight:'auto',required:true">
-                                <option value="1">启用</option>
-                                <option value="2">锁定</option>
-                            </select>
+                            <input style="width:300px;height: 22px;" id="userId" name="userId" class="easyui-textbox" data-options="editable:false"  ></input>
                         </td>
                     </tr>
-                    <tr >
-                        <td>角色:</td>
-                        <td>
-                            <input id="roleid" name="roleid" class="easyui-combogrid" style="width:200px;" data-options="
-										panelWidth: 380,
-										textField: 'name',
-										idField:'id',
-										editable:false,
-										mode: 'remote',
-										method:'post',
-										fit:true,
-										pageSize:20,
-										url:'${rc.contextPath}/admin/role/dopager?status=1&d='+new Date().getTime(),
-										method: 'post',
-										columns: [[
-											{field:'id',title:'id',width:80,hidden:true},
-											{field:'name',title:'名字',width:120}
-										]],
-										fitColumns: true,
-										pagination:true,
-										pageSize:20,
-										onBeforeLoad:function(param){
-											 param['pageno'] =  param['page']-1;
-											param['limit']  = param['rows'];
-									  		return true ;
-									  	},
-									  	loadFilter:function(data){
-											if(data  == null)return null;
-											data.total = data.totalRows;
-											data.rows = data.pageData ?data.pageData:[];
-											return data;
-										}
-									">
-                        </td>
-                    </tr>
+
                 </table>
             </form>
         </div>
@@ -290,21 +251,40 @@
         );
     }
     function submitFormFn(){
-        var u_id = $("#id").val();
-        var u_name = $("#name").val();
-        var realName = $("#realName").val();
-        var status = $("#status").combobox("getValue");
-        var roleid = $('#roleid').combogrid('getValue');
-        var roleName = $('#roleid').combogrid('getText');
-        var status = $('#status').combogrid('getValue');
-        var saveObj = {};
-        saveObj.id=$.trim(u_id).length==0?0:u_id;
-        saveObj.name= u_name;
-        saveObj.realName=realName;
-        saveObj.roleid = roleid?roleid:0;
-        saveObj.roleName = roleName;
-        saveObj.status=status;
-        if(saveType == 'add'){ insertIntoDb(saveObj); }else if(saveType == 'update'){ updateIntoDb(saveObj); }
+       var userId = $("#userId").textbox('getValue');
+        var url =  "${rc.contextPath}/admin/adminuser/setadmin";
+        $.ajax({
+            type:'post',
+            url: url,
+            context: document.body,
+            data:{id:userId},
+            success:function(data){
+                //json = $.parseJSON(json);
+                var statusCode = data.statusCode;
+                if(normalStatusCode == statusCode){
+                    $('#dg').datagrid('reload');
+                    $.messager.alert('系统提示','保存成功!','info',closeWinFn);
+                }else {
+                    $.messager.alert('系统提示','保存失败，请刷新后重试!','error');
+                }
+
+            },
+            error:function(xhr,textStatus,errorThrown){
+                var responseText = xhr.responseText;
+
+                var obj = jQuery.parseJSON(responseText);
+
+                json = $.parseJSON(responseText);
+                var  errortype = json.errortype;
+                if(errortype){
+                    $.messager.alert('系统提示','保存失败,'+json.msg,'error');
+                }else{
+                    $.messager.alert('系统提示','保存失败，请刷新后重试!','error');
+                }
+
+
+            }
+        });
     }
     function insertIntoDb(saveObj){
         var url =  "${rc.contextPath}/admin/user/doadd";
@@ -400,6 +380,43 @@
         });
     }
     /***/
+    function searchUser(){
+        var qq = $("#qq").val();
+        var url = "${rc.contextPath}/admin/adminuser/getbyqq";
+        $.ajax({
+            type:'get',
+            url: url,
+            context: document.body,
+            data:{
+                d:new Date().getTime(),
+                qq:qq
+            },
+            beforeSend:function(){
+                $('#userInfo').textbox('setText',"查询中。。。");
+                $("#userId").textbox('setText',"");
+            },
+            success:function(data){
+                // json = eval("("+json+")");
+                var statusCode = data.statusCode;
+                if(normalStatusCode == statusCode){
+                        var user = data.entity;
+                    $('#userInfo').textbox('setValue',"查询到用户");
+                    $("#userId").textbox('setValue',user.id);
+
+                }else {
+                    $('#userInfo').textbox('setValue',"没有查到用户");
+                    $("#userId").textbox('setValue',"");
+
+                }
+            },
+            error:function(xhr,textStatus,errorThrown){
+                var responseText = xhr.responseText;
+                $.messager.alert('系统提示','密码重置失败，请刷新后重试!','error');
+
+            }
+        });
+
+    }
 
 </script>
 </html>
