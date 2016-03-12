@@ -135,7 +135,6 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 
 				]],
 				toolbar: '#tb',
-
 				loadFilter:function(data){
 				   if(data.statusCode == normalStatusCode){
                         	var obj = {};

@@ -26,7 +26,7 @@
 </div>
 <div id="adminuser_w" class="easyui-window" title="系统管理员" data-options="modal:true,closed:true,iconCls:'icon-save',
 		collapsible:false,minimizable:false,maximizable:false,resizable:false"
-     style="width:600px;height:420px;padding:10px;">
+           style="width:600px;height:420px;padding:10px;">
     <div class="easyui-layout" data-options="fit:true">
         <div data-options="region:'center',border:false" id="content_layout" >
             <form id="ff" method="post">
@@ -54,6 +54,25 @@
 
                 </table>
             </form>
+        </div>
+        <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:submitFormFn()">保存</a>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:closeWinFn()">取消</a>
+        </div>
+    </div>
+</div>
+
+<div id="setrole_w" class="easyui-window" title="设置用户角色" data-options="modal:true,closed:true,iconCls:'icon-save',
+		collapsible:false,minimizable:false,maximizable:false,resizable:false"
+     style="width:600px;height:420px;padding:10px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center',border:false" id="content_layout" >
+            <div  class="easyui-layout" data-options="fit:true">
+                <div data-options="region:'center',title:'可选角色'" style="background:#eee;">
+                    <table id="role_dg"></table>
+                </div>
+                <div id="have_sel_div" data-options="region:'south',title:'已选角色'" style="height:100px;"></div>
+            </div>
         </div>
         <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
             <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:submitFormFn()">保存</a>
@@ -99,7 +118,7 @@
             columns:[[
                 {field:'id',title:'id'},
                 {field:'qq',title:'qq' ,width:100},
-                {field:'uname',title:'真实姓名',width:200},
+                {field:'uname',title:'姓名',width:200},
                 {field:'role',title:'角色',width:200,formatter:roleFormat},
                 {field:'status',title:'状态' ,width:50,formatter:statusFormat},
                 {field:'opt',title:'操作' ,width:200,formatter:optFormat}
@@ -120,7 +139,6 @@
                 }
             }
         });
-
         var pager = $('#dg').datagrid("getPager");
         pager.pagination({
             'onBeforeRefresh':function(){
@@ -129,10 +147,8 @@
         });
     });
     function statusFormat(value,row,index){
-        if(value == 1) {
+        if(value == 'NORMAL') {
             return "启用";
-        }else if(value == 2) {
-            return "锁定";
         }
         return "";
     }
@@ -151,7 +167,7 @@
     }
     var saveType = "add";
     function closeWinFn(){
-        $('#w').window('close');
+        $('#adminuser_w').window('close');
     }
     function addFn(){
         saveType = "add";
@@ -167,7 +183,7 @@
             btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="cancleManagerFn(\''+row['id']+'\')" href="#" plain="true" iconCls="del_btn"><span class="l-btn-left"><span class="l-btn-text del_btn l-btn-icon-left">取消管理员</span></span></a>');
         }
         if(usersetpassword){
-          //  btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="passwordRest(\''+row['id']+'\')" href="#" plain="true" iconCls="lock"><span class="l-btn-left"><span class="l-btn-text lock l-btn-icon-left">密码初始化</span></span></a>');
+            btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="setUserRole(\''+row['id']+'\')" href="#" plain="true" iconCls="set_btn"><span class="l-btn-left"><span class="l-btn-text set_btn l-btn-icon-left">设置用户角色</span></span></a>');
         }
         return btns.join("&nbsp;");
     }
@@ -207,7 +223,6 @@
 
         $('#adminuser_w').window('open').panel('setTitle',"修改管理员") ;
         $('#adminuser_w').window('center');
-
     }
     function closeWinFn(){
         $('#adminuser_w').window('close');
@@ -265,7 +280,6 @@
                 }else {
                     $.messager.alert('系统提示','保存失败，请刷新后重试!','error');
                 }
-
             },
             error:function(xhr,textStatus,errorThrown){
                 var responseText = xhr.responseText;
@@ -279,114 +293,18 @@
                 }else{
                     $.messager.alert('系统提示','保存失败，请刷新后重试!','error');
                 }
-
-
             }
         });
     }
-    function insertIntoDb(saveObj){
-        var url =  "${rc.contextPath}/admin/user/doadd";
-        $.ajax({
-            type:'post',
-            url: url,
-            context: document.body,
-            data:saveObj,
-            success:function(json){
-                //json = $.parseJSON(json);
-                json = json.entity;
-                $('#dg').datagrid('appendRow',json);
-                $.messager.alert('系统提示','保存成功!','info',closeWinFn);
-            },
-            error:function(xhr,textStatus,errorThrown){
-                var responseText = xhr.responseText;
 
-                var obj = jQuery.parseJSON(responseText);
-
-                json = $.parseJSON(responseText);
-                var  errortype = json.errortype;
-                if(errortype){
-                    $.messager.alert('系统提示','保存失败,'+json.msg,'error');
-                }else{
-                    $.messager.alert('系统提示','保存失败，请刷新后重试!','error');
-                }
-
-
-            }
-        });
-    }
-    function updateIntoDb(saveObj){
-        var url =  "${rc.contextPath}/admin/user/doupdate";
-        $.ajax({
-            type:'post',
-            url: url,
-            context: document.body,
-            data:saveObj,
-            success:function(json){
-                //json = $.parseJSON(json);
-                json = json.entity;
-                $('#dg').datagrid('updateRow',{
-                    index:updateRowIndex,
-                    row:json
-                });
-                $('#dg').datagrid('selectRow',updateRowIndex);
-                $.messager.alert('系统提示','保存成功!','info',closeWinFn);
-
-            },
-            error:function(xhr,textStatus,errorThrown){
-
-                var responseText = xhr.responseText;
-                json = $.parseJSON(responseText);
-                var  errortype = json.errortype;
-                if(errortype){
-                    $.messager.alert('系统提示','保存失败,'+json.msg,'error');
-                }else{
-                    $.messager.alert('系统提示','保存失败，请刷新后重试!','error');
-                }
-
-            }
-        });
-    }
-    var initPassword = "111111";
-    function passwordRest(id){
-        var url = "${rc.contextPath}/admin/user/setpassword";
-        $.ajax({
-            type:'get',
-            url: url,
-            context: document.body,
-            data:{
-                d:new Date().getTime(),
-                id:id  ,
-                password:initPassword
-            },
-            success:function(json){
-                // json = eval("("+json+")");
-
-                var success = json['result'];
-                if(success){
-                    $.messager.alert('系统提示','密码重置成功!新密码为'+initPassword,'info',function(){ });
-                }else{
-                    $.messager.alert('系统提示','密码重置失败，请刷新后重试!','error');
-                }
-
-
-            },
-            error:function(xhr,textStatus,errorThrown){
-                var responseText = xhr.responseText;
-                $.messager.alert('系统提示','密码重置失败，请刷新后重试!','error');
-
-            }
-        });
-    }
     /***/
     function searchUser(){
         var qq = $("#qq").val();
-
         if(qq.length == 0){
             $('#userInfo').textbox('setText',"请输入QQ号");
             $("#userId").textbox('setText',"");
             return;
         }
-
         var url = "${rc.contextPath}/admin/adminuser/getbyqq";
         $.ajax({
             type:'get',
@@ -412,12 +330,9 @@
                         $('#userInfo').textbox('setValue',"未查询到用户");
                         $("#userId").textbox('setValue',"");
                     }
-
-
                 }else {
                     $('#userInfo').textbox('setValue',"没有查到用户");
                     $("#userId").textbox('setValue',"");
-
                 }
             },
             error:function(xhr,textStatus,errorThrown){
@@ -426,7 +341,126 @@
 
             }
         });
+    }
+    function setUserRole(id){
+        var rows = $("#dg").datagrid("getRows");
+        var row = null;
+        for(var i=0;i<rows.length;i++){
+            if(rows[i]['id'] == id){
+                row = rows[i];
+                break;
+            }
+        }
+        $('#setrole_w').window('open').panel('setTitle',"设置用户角色") ;
+        $('#setrole_w').window('center');
 
+        initRoleGrid();
+        //
+//        var delRowIndex = 	$('#dg').datagrid("getRowIndex",row);
+
+    }
+    function submitRole(){
+
+    }
+    function cancleRole(){
+        $('#setrole_w').window('close');
+    }
+    function initRoleGrid(){
+        $('#role_dg').datagrid({
+            border:false,
+            rownumbers:true,
+            checkOnSelect:true,
+            fitColumns:true,
+            pagination:true,
+            singleSelect:true,
+            fit:true,
+            pageSize:20,
+            method:'get',
+            url:'${rc.contextPath}/admin/role/dopage?d='+new Date().getTime(),
+            queryParams:{ },
+            onBeforeLoad:function(param){
+                param['pageno'] =  param['page']-1;
+                param['pagesize']  = param['rows'];
+                return true ;
+            },
+            onDblClickRow:function(rowIndex, rowData){
+                //updateRowIndex = rowIndex;
+                //getRoleInfoById(rowData['roleId']);
+            },
+            onLoadError:function(){
+            },
+            columns:[[
+                {field:'id',title:'id'},
+                {field:'name',title:'角色名' ,width:100},
+                {field:'opt',title:'操作' ,width:200,formatter:function optFormat(v,row,index){
+                    var btns = [];
+                      btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="addUserRole(\''+row['id']+'\')" href="#" plain="true" iconCls="add_btn"><span class="l-btn-left"><span class="l-btn-text add_btn l-btn-icon-left">增加</span></span></a>');
+                      btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="delUserRole(\''+row['id']+'\')" href="#" plain="true" iconCls="del_btn"><span class="l-btn-left"><span class="l-btn-text del_btn l-btn-icon-left">删除</span></span></a>');
+
+                    return btns.join("&nbsp;");
+                }}
+            ]],
+            loadFilter:function(data){
+                if(data.statusCode == normalStatusCode){
+                    var obj = {};
+                    obj.total =  data.entity.totalRows;
+                    obj.rows = $.isArray(data.entity.pageData)?data.entity.pageData:[];
+                    return obj;
+                }else {
+                    var obj = {};
+                    obj.total = 0;
+                    obj.rows = [];
+                    return obj;
+                }
+
+            }
+        });
+    }
+    var haveSelRoles = [];
+    function addUserRole(id){
+        var rows = $("#role_dg").datagrid("getRows");
+        var row = null;
+        for(var i=0;i<rows.length;i++){
+            if(rows[i]['id'] == id){
+                row = rows[i];
+                break;
+            }
+        }
+        var roleId = row['id'];
+        var roleName = row['name'];
+        haveSelRoles.push({id:roleId,name:roleName});
+        showRoleButns(haveSelRoles);
+    }
+    function delUserRole(id){
+        var newhaveSelRoles = [];
+        for(var i=haveSelRoles.length-1;i>=0;i--){
+            if(haveSelRoles[i]['id'] != id){
+                newhaveSelRoles.push(haveSelRoles[i]);
+            }
+        }
+        haveSelRoles = newhaveSelRoles;
+        newhaveSelRoles = null;
+        showRoleButns(haveSelRoles);
+    }
+    function showRoleButns(roles){
+
+        $("#have_sel_div").empty();
+        if(!roles || roles.length == 0){
+
+            return;
+        }
+        var ids = [];
+        for(var i=0;i<roles.length;i++ ){
+
+            if((";"+ids.join(";")+";").indexOf(";"+roles[i]['id']+";")>=0){
+                continue;
+            }
+            if(i>0){
+                $("#have_sel_div").append(';');
+            }
+            $("#have_sel_div").append('<a   href="#" class="easyui-linkbutton"  >'+roles[i].name+'</a>');
+            ids.push(roles[i]['id']);
+        }
     }
 
 </script>
