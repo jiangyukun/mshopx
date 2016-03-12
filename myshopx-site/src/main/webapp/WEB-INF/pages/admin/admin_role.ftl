@@ -106,7 +106,6 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 			  	onBeforeLoad:function(param){
 					param['pageno'] =  param['page']-1;
 					param['pagesize']  = param['rows'];
-
 			  		return true ;
 			  	},
 			  	onDblClickRow:function(rowIndex, rowData){
@@ -119,6 +118,7 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 				columns:[[
 					{field:'id',title:'id'},
 					{field:'name',title:'角色名' ,width:100},
+
 					{field:'status',title:'状态',width:100,formatter:function(value,row,index){
 						if(value == 1){
 							return "有效";
@@ -138,8 +138,8 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 
 				loadFilter:function(data){
 				   if(data.statusCode == normalStatusCode){
-                        var obj = {};
-                           obj.total = data.entity.totalPage;
+                        	var obj = {};
+                            obj.total =  data.entity.totalRows;
                             obj.rows = $.isArray(data.entity.pageData)?data.entity.pageData:[];
                             return obj;
 				   }else {
@@ -191,7 +191,6 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 		   		}
 		}
 		function delFn(id){
-
 			$.messager.confirm('系统提示', '您确定要删除该条记录吗?', function(r){
 			if (r){
 					var url = "${rc.contextPath}/admin/role/setstatus";
@@ -216,14 +215,11 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 									break;
 								}
 							}
-
 					  		$.messager.alert('系统提示','删除成功!','info');
 
 					  	}else{
 					  		$.messager.alert('系统提示','删除失败，请刷新后重试!','error');
 					  	}
-
-
 					  },
 					  error:function(xhr,textStatus,errorThrown){
 					  	var responseText = xhr.responseText;
@@ -259,7 +255,8 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 
 			var rowIndex =  $('#dg').datagrid("getRowIndex",row);
 			 updateRowIndex = rowIndex;
-			 getRoleInfoById(row['id']);
+//			 getRoleInfoById(row['id']);
+            showUpdateWin(row);
 		}
 
 		function submitForm(){
@@ -313,7 +310,8 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 					  jQuery.hideMask($("#w")[0]);
 				   	//	json = $.parseJSON(json);
 				   	if(data.statusCode == normalStatusCode){
-				   	                     $('#dg').datagrid('appendRow',data.entity);
+				   	                     //$('#dg').datagrid('appendRow',data.entity);
+										 $('#dg').datagrid('reload');
                     				 	 $.messager.alert('系统提示','保存成功!','info',closeWinFn);
 				   	}else{
                         $.messager.alert('系统提示','保存失败!','info');
@@ -347,13 +345,14 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 				  success:function(data){
 					  jQuery.hideMask($("#w")[0]);
 				  	 	if(data.statusCode == normalStatusCode){
-                                         $('#dg').datagrid('updateRow',{
-                                        				  	 	index:updateRowIndex,
-                                        				  	 	row:data.entity
-                                         });
-                                          $('#dg').datagrid('selectRow',updateRowIndex);
+//                                         $('#dg').datagrid('updateRow',{
+//                                        				  	 	index:updateRowIndex,
+//                                        				  	 	row:data.entity
+//                                         });
+//                                          $('#dg').datagrid('selectRow',updateRowIndex);
+                            			$('#dg').datagrid('reload');
+                                        closeWinFn();
 
-                                         closeWinFn();
                                          $.messager.alert('系统提示','保存成功!','info');
                     }else{
                          $.messager.alert('系统提示','保存失败!','info');
@@ -405,13 +404,12 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 			saveType = "update";
 			//$('#tt').tree("reload");
 			$('#w').window('open').panel('setTitle',"修改角色");
-
-
 			$("#form_role_name").val(role["name"]);
+            $("#form_role_name").validatebox("validate");
 			$("#form_role_id").val(role["id"]);
 			$("#form_role_status").val(role["state"]);
 
-		   		var nodes = $('#tt').tree('getChecked', ['checked','indeterminate']);
+		   	var nodes = $('#tt').tree('getChecked', ['checked','indeterminate']);
 
 		   		for(var i=0;i<nodes.length;i++){
 		   			var node = nodes[i];
@@ -420,7 +418,7 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 		   			}
 		   		}
 
-		   		var menus = role["relMenus"];
+		   		var menus = role["menus"];
 
 		   		for(var i=0,l=menus.length;i<l;i++){
 		   			var treeId = menus[i]['id'];

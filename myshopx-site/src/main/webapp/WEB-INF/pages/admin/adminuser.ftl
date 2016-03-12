@@ -109,7 +109,7 @@
                 var statusCode = data.statusCode;
                 if(data.statusCode == normalStatusCode){
                     var obj = {};
-                    obj.total = data.entity.totalPage;
+                    obj.total =  data.entity.totalRows;
                     obj.rows = $.isArray(data.entity.pageData)?data.entity.pageData:[];
                     return obj;
                 }else {
@@ -190,13 +190,9 @@
         var rowIndex = 	$('#dg').datagrid("getRowIndex",row);
         updateRowIndex = rowIndex;
 
-
-
         $("#id").val(row['id']);
         $("#name").val(row['name']);
         $("#realName").val(row['realName']);
-
-
         $('#name').validatebox("validate");
         $('#realName').validatebox("validate");
 
@@ -211,8 +207,6 @@
 
         $('#adminuser_w').window('open').panel('setTitle',"修改管理员") ;
         $('#adminuser_w').window('center');
-
-
 
     }
     function closeWinFn(){

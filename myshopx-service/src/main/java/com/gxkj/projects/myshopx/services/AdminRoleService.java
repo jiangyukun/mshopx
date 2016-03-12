@@ -11,9 +11,9 @@ import com.gxkj.projects.myshopx.enums.RoleState;
  */
 public interface AdminRoleService {
 
-    public void doAddRole(User user , Role entity) throws ValidateException;
+    public void doAddRole(User user , Role entity,String menuIds) throws ValidateException;
 
-    public void doUpdateRole(User user , Role entity) throws ValidateException;
+    public void doUpdateRole(User user , Role entity,String menuIds) throws ValidateException;
 
     public void doDeleteRole(User user, String id);
 

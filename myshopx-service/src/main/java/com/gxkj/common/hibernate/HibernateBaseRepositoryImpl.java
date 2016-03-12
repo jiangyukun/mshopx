@@ -168,7 +168,7 @@ public class HibernateBaseRepositoryImpl {
         }
         return query.list();
     }
-    public <T> List<T> selectListBySQL(String sql, Map<String, Object> parameters,T t) {
+    public <T> List<T> selectListBySQL(String sql, Map<String, Object> parameters,Class clazz) {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery query = session.createSQLQuery(sql);
         if (parameters != null) {
@@ -176,8 +176,8 @@ public class HibernateBaseRepositoryImpl {
                 query.setParameter(key, parameters.get(key));
             }
         }
-        if (t != null) {
-            this._transFormResult(query, t.getClass());
+        if (clazz != null) {
+            this._transFormResult(query, clazz);
         } else {
             query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         }
