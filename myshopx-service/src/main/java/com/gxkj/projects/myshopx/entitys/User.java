@@ -18,6 +18,9 @@ public class User extends BaseModel{
     @Column(name="qq")
     private String qq;
 
+    @Column(name="uname")
+    private String uname;
+
     @Column(name="password",length=64)
     private String password;
 
@@ -70,5 +73,13 @@ public class User extends BaseModel{
 
     public void setState(UserStatusEnum state) {
         this.state = state;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
     }
 }

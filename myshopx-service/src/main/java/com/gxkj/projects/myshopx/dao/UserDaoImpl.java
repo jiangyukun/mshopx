@@ -17,20 +17,6 @@ import java.util.Map;
 public class UserDaoImpl extends HibernateBaseRepositoryImpl {
 
 
-    public List<User> doListTest(int age, String userName){
-        String sql  = " from User u where 1=1 ";
-        Map<String,Object> param = new HashMap<String,Object>();
-        if(age > 0){
-            sql += " and age = :age";
-            param.put("age",age);
-        }
-        if(StringUtils.isNotBlank(userName)){
-            sql += " and userName = :userName";
-            param.put("userName",userName);
-        }
-        return super.selectListByHQL(sql,param);
-    }
-
     public ListPager<User> doPageHQL(int pagenNo,int pageSize,User user,boolean admin){
         ListPager<User> pager = new ListPager<User>();
         pager.setPageNo(pagenNo);
@@ -46,6 +32,10 @@ public class UserDaoImpl extends HibernateBaseRepositoryImpl {
             if(StringUtils.isNoneBlank(user.getQq())){
                 hql += " and qq = :qq";
                 param.put("qq",user.getQq());
+            }
+            if(StringUtils.isNoneBlank(user.getUname())){
+                hql += " and uname = :uname";
+                param.put("uname",user.getUname());
             }
         }
         return  this.selectPageByHql(hql,param,pager);
@@ -73,13 +63,13 @@ public class UserDaoImpl extends HibernateBaseRepositoryImpl {
     }
 
     public void setAdminUser(String id){
-        String updateSql = "update user set admin = 'true' where id = :id";
+        String updateSql = "update user set is_admin = 'Y' where id = :id";
         Map<String,Object> param = new HashMap<String,Object>();
         param.put("id",id);
         this.executeUpdateBySql(updateSql,param);
     }
     public void cancleAdmin(String id){
-        String updateSql = "update user set admin = 'false' where id = :id";
+        String updateSql = "update user set is_admin = 'N' where id = :id";
         Map<String,Object> param = new HashMap<String,Object>();
         param.put("id",id);
         this.executeUpdateBySql(updateSql,param);

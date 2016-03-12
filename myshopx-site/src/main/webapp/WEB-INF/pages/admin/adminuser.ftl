@@ -14,7 +14,8 @@
     <table width="100%">
         <tr width="100%">
             <td width="50%">
-                真实姓名: <input class="easyui-spinner" style="width:160px" id="s_name"/>
+                QQ: <input class="easyui-textbox" style="width:160px" id="s_qq"/>
+                姓名: <input class="easyui-textbox" style="width:160px" id="s_name"/>
                 <a href="#"  class="easyui-linkbutton" iconCls="icon-search" onclick="searchFn()">查看</a>
             </td>
             <td align="right" width="50%">
@@ -83,7 +84,7 @@
             pageSize:20,
             singleSelect:true,
             method:'get',
-            url:'${rc.contextPath}/admin/user/dopager?d='+new Date().getTime(),
+            url:'${rc.contextPath}/admin/adminuser/dopager?d='+new Date().getTime(),
             queryParams:{ },
             onBeforeLoad:function(param){
                 param['pageno'] =  param['page']-1;
@@ -97,23 +98,24 @@
             },
             columns:[[
                 {field:'id',title:'id'},
-                {field:'name',title:'登录名' ,width:100},
-                {field:'realName',title:'真实姓名',width:200},
+                {field:'qq',title:'qq' ,width:100},
+                {field:'uname',title:'真实姓名',width:200},
                 {field:'role',title:'角色',width:200,formatter:roleFormat},
                 {field:'status',title:'状态' ,width:50,formatter:statusFormat},
                 {field:'opt',title:'操作' ,width:200,formatter:optFormat}
             ]],
             toolbar: '#tb',
             loadFilter:function(data){
-                var result = data.result;
-                if(!result){
-                    return {total:0,rows:[]};
+                var statusCode = data.statusCode;
+                if(data.statusCode == normalStatusCode){
+                    var obj = {};
+                    obj.total = data.entity.totalPage;
+                    obj.rows = $.isArray(data.entity.pageData)?data.entity.pageData:[];
+                    return obj;
                 }else {
-
-                    var obj = {
-                        total:data.entity.totalRows,
-                        rows:data.entity.pageData ?data.entity.pageData:[]
-                    };
+                    var obj = {};
+                    obj.total = 0;
+                    obj.rows = [];
                     return obj;
                 }
             }
@@ -139,9 +141,11 @@
             $.messager.alert('系统提示','您没有权限访问!','info');
             return;
         }
+        var s_qq = $("#s_qq").val();
         var s_name = $("#s_name").val();
         $('#dg').datagrid('load',{
-            realname:s_name,
+            uname:s_name,
+            qq:s_qq,
             d:new Date().getTime()
         });
     }
@@ -157,13 +161,13 @@
     function optFormat(v,row,index){
         var btns = [];
         if(updateUserBtn){
-            btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="updateFn(\''+row['id']+'\')" href="#" plain="true" iconCls="update_btn"><span class="l-btn-left"><span class="l-btn-text update_btn l-btn-icon-left">修改</span></span></a>');
+            //btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="updateFn(\''+row['id']+'\')" href="#" plain="true" iconCls="update_btn"><span class="l-btn-left"><span class="l-btn-text update_btn l-btn-icon-left">修改</span></span></a>');
         }
         if(userdodel){
-            btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="delFn(\''+row['id']+'\')" href="#" plain="true" iconCls="del_btn"><span class="l-btn-left"><span class="l-btn-text del_btn l-btn-icon-left">删除</span></span></a>');
+            btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="cancleManagerFn(\''+row['id']+'\')" href="#" plain="true" iconCls="del_btn"><span class="l-btn-left"><span class="l-btn-text del_btn l-btn-icon-left">取消管理员</span></span></a>');
         }
         if(usersetpassword){
-            btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="passwordRest(\''+row['id']+'\')" href="#" plain="true" iconCls="lock"><span class="l-btn-left"><span class="l-btn-text lock l-btn-icon-left">密码初始化</span></span></a>');
+          //  btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="passwordRest(\''+row['id']+'\')" href="#" plain="true" iconCls="lock"><span class="l-btn-left"><span class="l-btn-text lock l-btn-icon-left">密码初始化</span></span></a>');
         }
         return btns.join("&nbsp;");
     }
@@ -214,7 +218,7 @@
     function closeWinFn(){
         $('#adminuser_w').window('close');
     }
-    function delFn(id){
+    function cancleManagerFn(id){
         var rows = $("#dg").datagrid("getRows");
         var row = null;
         for(var i=0;i<rows.length;i++){
@@ -224,26 +228,26 @@
             }
         }
         var delRowIndex = 	$('#dg').datagrid("getRowIndex",row);
-        $.messager.confirm('系统提示', '您确定要删除这条记录吗?', function(r){
+        $.messager.confirm('系统提示', '您确定要删除该管理员吗?', function(r){
             if (r){
-                var url = "${rc.contextPath}/admin/user/dodel";
+                var url = "${rc.contextPath}/admin/adminuser/cancleadmin";
                 $.ajax({
                     type:'post',
                     url: url,
                     data:{
                         id:id,
-                        status:4
+                        d:new Date().getTime()
                     },
                     context: document.body,
                     success:function(json){
                         $('#dg').datagrid("deleteRow",delRowIndex);
                         $('#dg').datagrid('acceptChanges');
-                        $.messager.alert('系统提示','删除成功!','info',closeWinFn);
+                        $.messager.alert('系统提示','操作成功!','info',closeWinFn);
 
                     },
                     error:function(xhr,textStatus,errorThrown){
                         var responseText = xhr.responseText;
-                        $.messager.alert('系统提示','删除失败，请刷新后重试!','error');
+                        $.messager.alert('系统提示','操作失败，请刷新后重试!','error');
 
                     }
                 });
@@ -382,6 +386,13 @@
     /***/
     function searchUser(){
         var qq = $("#qq").val();
+
+        if(qq.length == 0){
+            $('#userInfo').textbox('setText',"请输入QQ号");
+            $("#userId").textbox('setText',"");
+            return;
+        }
+
         var url = "${rc.contextPath}/admin/adminuser/getbyqq";
         $.ajax({
             type:'get',
@@ -398,10 +409,16 @@
             success:function(data){
                 // json = eval("("+json+")");
                 var statusCode = data.statusCode;
-                if(normalStatusCode == statusCode){
-                        var user = data.entity;
-                    $('#userInfo').textbox('setValue',"查询到用户");
-                    $("#userId").textbox('setValue',user.id);
+                if(normalStatusCode == statusCode   ){
+                    var user = data.entity;
+                    if(user){
+                        $('#userInfo').textbox('setValue',"查询到用户");
+                        $("#userId").textbox('setValue',user.id);
+                    }else{
+                        $('#userInfo').textbox('setValue',"未查询到用户");
+                        $("#userId").textbox('setValue',"");
+                    }
+
 
                 }else {
                     $('#userInfo').textbox('setValue',"没有查到用户");

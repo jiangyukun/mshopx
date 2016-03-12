@@ -40,13 +40,12 @@ public class AdminRoleController {
                          HttpServletRequest request, HttpServletResponse response, ModelMap modelMap){
 
         ReturnData<ListPager<Role>> returnData = new ReturnData<ListPager<Role>>();
-try{
+
         ListPager<Role> pager =  adminRoleService.doHqlPage(pageno,pagesize,entity);
         returnData.setEntity(pager);
         returnData.setStatusCode(ErrorCodeEnum.NORMAL.getCode());
         return returnData;
-}catch (Exception e){e.printStackTrace();}
-        return null;
+
     }
 
     @RequestMapping(value="doadd",method= RequestMethod.POST)

@@ -1,7 +1,9 @@
 package com.gxkj.projects.myshopx.controllers;
 
+import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.dto.ReturnData;
 import com.gxkj.projects.myshopx.entitys.AdminMenu;
+import com.gxkj.projects.myshopx.entitys.Role;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.enums.ErrorCodeEnum;
 import com.gxkj.projects.myshopx.services.UserService;
@@ -30,9 +32,14 @@ public class AdminUserController {
         return mv;
     }
     @RequestMapping(value="dopager")
-    public String dopager(User user, HttpServletRequest request, HttpServletResponse response, ModelMap modelMap){
-        String mv = "admin/adminuser";
-        return mv;
+    @ResponseBody
+    public ReturnData<ListPager<User>>  dopager(User user,  int pageno,int pagesize,HttpServletRequest request, HttpServletResponse response, ModelMap modelMap){
+        ReturnData<ListPager<User>> returnData = new ReturnData<ListPager<User>>();
+        ListPager<User> pager =  userService.doHqlPage(pageno,pagesize,user,true);
+        returnData.setEntity(pager);
+        returnData.setStatusCode(ErrorCodeEnum.NORMAL.getCode());
+        return returnData;
+
     }
 
     @RequestMapping(value="getbyqq")

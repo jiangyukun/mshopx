@@ -17,7 +17,7 @@
 			<table width="100%">
 			<tr width="100%">
 				<td width="50%">
-					角色名称: <input class="easyui-spinner" style="line-height:12px; width:200px" id="role_Name"/>
+					角色名称: <input class="easyui-textbox" style="line-height:12px; width:200px" id="role_Name"/>
 					<!--
 					状态:<select class="easyui-combobox" data-options="editable:false,panelHeight:'auto'" style="width:100px" id="role_status">
 						<option value="0">不限</option>

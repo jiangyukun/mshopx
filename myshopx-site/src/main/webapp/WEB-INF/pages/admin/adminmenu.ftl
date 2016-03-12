@@ -158,7 +158,6 @@ function enableableBtn(){
 			if(!menudodel){
 				$("#delBtn").hide();
 			}
-			
 			$('#tt').tree({
 			    url: hostpath+'/admin/menu/list',
 			    method: 'get',
@@ -291,9 +290,6 @@ function submitForm(){
 				 	   $.messager.alert('系统提示','保存成功!','info',function(){
 				 	   		closeWinFn();
 				 	   });
-				 	    
-			 	   	   
-				 	  
 				  },
 				  error:function(xhr,textStatus,errorThrown){
 				  	 enableableBtn();
@@ -450,7 +446,6 @@ function delIndb(nodeId){
 			  context: document.body,
 			  beforeSend:function(){
 			  		$("#delBtn").attr('disabled','disabled');
-				  
 				 },
 			  data:{
 			   id:nodeId
