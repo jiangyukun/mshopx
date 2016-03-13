@@ -80,10 +80,10 @@
 			</div>
 	</div>
 <script type="text/javascript">
-var roledoadd =  true;//"###_adminUser_.btnMap.roledoadd}"?true:false;
-var roledoupdate = true;//"###_adminUser_.btnMap.roledoupdate}"?true:false;
-var rolesetstatus = true;//"###_adminUser_.btnMap.rolesetstatus}"?true:false;
-var roledopage = true;//"###_adminUser_.btnMap.roledopage}"?true:false;
+var roledoadd =  authIds.indexOf(",admin_role_doadd,")>=0?true:false;
+var roledoupdate = authIds.indexOf(",admin_role_doupdate,")>=0?true:false;
+var roledodel = authIds.indexOf(",admin_role_dodel,")>=0?true:false;
+var roledopage = authIds.indexOf(",admin_role_dopager,")>=0?true:false;
 var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 		var authoritydata = [];
 		var saveType="add";

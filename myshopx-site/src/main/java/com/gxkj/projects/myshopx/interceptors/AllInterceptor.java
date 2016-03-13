@@ -6,6 +6,7 @@ package com.gxkj.projects.myshopx.interceptors;
 
 import com.alibaba.fastjson.JSON;
 import com.gxkj.projects.myshopx.controllers.AdminLoginController;
+import com.gxkj.projects.myshopx.dto.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.ModelMap;
@@ -45,8 +46,10 @@ public class AllInterceptor implements WebRequestInterceptor {
 
         RequestAttributes attributes =  RequestContextHolder.getRequestAttributes();
         Object user =  attributes.getAttribute(AdminLoginController.sessionUserKey,RequestAttributes.SCOPE_SESSION);
+        Object userDto =  attributes.getAttribute(AdminLoginController.sessionUserDtoKey,RequestAttributes.SCOPE_SESSION);
 		if(user != null && modelMap != null){
             modelMap.put(AdminLoginController.sessionUserKey,user);
+            modelMap.put(AdminLoginController.sessionUserDtoKey,userDto);
 
             LOG.info("user={}", JSON.toJSONString(user));
         }

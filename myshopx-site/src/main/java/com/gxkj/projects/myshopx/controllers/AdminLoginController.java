@@ -135,7 +135,6 @@ public class AdminLoginController {
                         if(menuIndex >0 && StringUtils.isNoneBlank(menuItem.getUrl()) ){
                             urls.append(","+menuItem.getUrl());
                         }
-
                     }
                     dto.setMenuUrls(urls.toString());
                     dto.setAuthIds(authorityIds.toString());

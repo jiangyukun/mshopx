@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50132
 File Encoding         : 65001
 
-Date: 2016-03-12 23:05:14
+Date: 2016-03-13 11:42:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,22 +47,24 @@ INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c0a0002', '回收站'
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c120003', '删除', '从回收站删除功能', '/admin/goods/dodel', 'Y', '297e40e3534c3d2301534c3d2c0a0002', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00', '');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0004', '还原', '从回收站回收功能', '/admin/goods/dodel', 'Y', '297e40e3534c3d2301534c3d2c0a0002', '', '2016-03-06 22:03:10', '2016-03-06 22:03:10', '1.00', '');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0009', '系统管理', '', '', 'N', '0', '', '2016-03-05 20:23:12', '2016-03-07 20:23:20', '1.00', '');
-INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0010', '菜单管理', '', '/admin/menu', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-05 20:24:14', '2016-03-08 20:24:17', '2.00', '');
+INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0010', '菜单管理', '', '/admin/menu', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-05 20:24:14', '2016-03-13 10:42:15', '1.00', '');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0011', '创建菜单', '创建菜单', '/admin/menu/doadd', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:25:17', '2016-03-09 20:25:21', '3.00', 'admin_menu_doadd');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0012', '修改菜单', '修改菜单', '/admin/menu/doupdate', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:06', '2016-03-07 20:26:11', '4.00', 'admin_menu_doupdate');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0013', '删除菜单', '删除菜单', '/admin/menu/dodel', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:26:49', '2016-03-07 20:26:54', '5.00', 'admin_menu_dodel');
 INSERT INTO `admin_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0014', '分页查看菜单', '分页查看菜单', '/admin/menu/dopager', 'Y', '297e40e3534c3d2301534c3d2c1a0010', '', '2016-03-05 20:27:45', '2016-03-08 20:27:49', '6.00', 'admin_menu_dopager');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153561693120001', '角色管理', '', '/admin/role', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-08 19:57:13', '2016-03-08 19:57:13', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153561693120001', '角色管理', '', '/admin/role', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-08 19:57:13', '2016-03-13 10:42:06', '2.00', '');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153561757580002', '创建角色', '', '/admin/role/doadd', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 19:58:04', '2016-03-11 19:45:43', '1.00', 'admin_role_doadd');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535622dcde0003', '修改角色', '', '/admin/role/doupdate', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:10:39', '2016-03-08 20:10:39', '1.00', '');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535623a3fd0004', '删除角色', '', '/admin/role/dodel', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:11:30', '2016-03-08 20:11:30', '1.00', '');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153562421bb0005', '分页查看角色', '', '/admin/role/dopager', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:12:02', '2016-03-08 20:12:02', '1.00', '');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535622dcde0003', '修改角色', '', '/admin/role/doupdate', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:10:39', '2016-03-08 20:10:39', '1.00', 'admin_role_doupdate');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535623a3fd0004', '删除角色', '', '/admin/role/dodel', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:11:30', '2016-03-08 20:11:30', '1.00', 'admin_role_dodel');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc70153562421bb0005', '分页查看角色', '', '/admin/role/dopager', 'Y', '8a8a80ea53560fc70153561693120001', '', '2016-03-08 20:12:02', '2016-03-08 20:12:02', '1.00', 'admin_role_dopager');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53560fc701535624d7c40006', '管理员管理 ', '', '/admin/adminuser', 'N', '297e40e3534c3d2301534c3d2c1a0009', '', '2016-03-08 20:12:48', '2016-03-08 20:12:48', '1.00', '');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153657d10320000', '2222', '', 'dddd', 'N', '0', '', '2016-03-11 19:43:28', '2016-03-11 19:43:28', '1.00', '');
-INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153658e50c90002', '增加管理员', '', '/admin/adminuser/doadd', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:02:19', '2016-03-11 20:02:19', '1.00', 'admin_adminuser_doadd');
+INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153658e50c90002', '增加管理员', '', '/admin/adminuser/doadd', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:02:19', '2016-03-13 10:41:59', '1.00', 'admin_adminuser_doadd');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153658ee18b0003', '修改管理员', '', '/admin/adminuser/doupdate', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:02:56', '2016-03-11 20:02:56', '1.00', 'admin_adminuser_doupdate');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153658f98420004', '删除管理员', '', '/admin/adminuser/dodel', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:03:43', '2016-03-11 20:03:43', '1.00', 'admin_adminuser_dodel');
 INSERT INTO `admin_menu` VALUES ('8a8a80ea53657b320153659034090005', '管理员分页查看', '', '/admin/adminuser/dopager', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-11 20:04:23', '2016-03-11 20:04:23', '1.00', 'admin_adminuser_dopager');
+INSERT INTO `admin_menu` VALUES ('297e40e3536dcbfb01536dcf31090000', '设置角色', '', '/admin/adminuser/setroles', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-13 10:30:07', '2016-03-13 10:30:07', '1.00', 'admin_adminuser_setroles');
+INSERT INTO `admin_menu` VALUES ('297e40e3536dcbfb01536dd064240001', '查看可选角色', '', '/admin/adminuser/canselroles', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-13 10:31:27', '2016-03-13 10:31:35', '1.00', 'admin_adminuser_canselroles');
+INSERT INTO `admin_menu` VALUES ('297e40e3536dcbfb01536dd1d5ff0002', '取消管理员', '', '/admin/adminuser/cancleadmin', 'Y', '8a8a80ea53560fc701535624d7c40006', '', '2016-03-13 10:33:01', '2016-03-13 10:33:08', '1.00', 'admin_adminuser_cancleadmin');
 
 -- ----------------------------
 -- Table structure for `brand`
@@ -352,6 +354,8 @@ CREATE TABLE `rel_admin_user_role` (
 -- ----------------------------
 -- Records of rel_admin_user_role
 -- ----------------------------
+INSERT INTO `rel_admin_user_role` VALUES ('8a8a80ea53560fc701535610afe10000', '297e40e3536dc6f901536dc7b5340000');
+INSERT INTO `rel_admin_user_role` VALUES ('8a8a80ea53560fc701535610afe10000', '8a8a80ea53643a710153643aee4d0000');
 
 -- ----------------------------
 -- Table structure for `rel_role_menu`
@@ -372,31 +376,47 @@ INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c0a0002', '8a8a80e
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c120003', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0004', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0009', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0009', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0009', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0010', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0010', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0010', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0011', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0011', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0011', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0012', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0012', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0012', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0013', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0013', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0013', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0014', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0014', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('297e40e3534c3d2301534c3d2c1a0014', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153561693120001', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153561693120001', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153561693120001', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153561757580002', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153561757580002', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153561757580002', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc701535622dcde0003', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc701535622dcde0003', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc701535622dcde0003', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc701535623a3fd0004', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc701535623a3fd0004', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc701535623a3fd0004', '8a8a80ea53643a710153643aee4d0000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153562421bb0005', '297e40e3536a8f7601536b1520d80000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153562421bb0005', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc70153562421bb0005', '8a8a80ea53643a710153643aee4d0000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc701535624d7c40006', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53560fc701535624d7c40006', '8a8a80ea53643a710153643aee4d0000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53657b320153658e50c90002', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53657b320153658e50c90002', '8a8a80ea53643a710153643aee4d0000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53657b320153658ee18b0003', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53657b320153658ee18b0003', '8a8a80ea53643a710153643aee4d0000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53657b320153658f98420004', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53657b320153658f98420004', '8a8a80ea53643a710153643aee4d0000');
+INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53657b320153659034090005', '297e40e3536dc6f901536dc7b5340000');
 INSERT INTO `rel_role_menu` VALUES ('8a8a80ea53657b320153659034090005', '8a8a80ea53643a710153643aee4d0000');
 
 -- ----------------------------
@@ -418,6 +438,7 @@ CREATE TABLE `role` (
 INSERT INTO `role` VALUES ('8a8a80ea53641ba70153641bd1e70000', '2016-03-11 13:17:38', '2016-03-11 13:51:14', '122', 'DEL');
 INSERT INTO `role` VALUES ('8a8a80ea53643a710153643aee4d0000', '2016-03-11 13:51:37', '2016-03-12 21:46:51', '222', 'NORMAL');
 INSERT INTO `role` VALUES ('297e40e3536a8f7601536b1520d80000', '2016-03-12 21:47:40', '2016-03-12 21:51:47', '111', 'DEL');
+INSERT INTO `role` VALUES ('297e40e3536dc6f901536dc7b5340000', '2016-03-13 10:21:57', '2016-03-13 11:14:54', '角色2', 'NORMAL');
 
 -- ----------------------------
 -- Table structure for `user`
