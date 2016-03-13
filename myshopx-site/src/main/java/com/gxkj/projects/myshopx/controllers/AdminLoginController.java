@@ -3,12 +3,19 @@ package com.gxkj.projects.myshopx.controllers;
 import com.gxkj.common.exceptions.ValidateException;
 import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.dto.ReturnData;
+import com.gxkj.projects.myshopx.dto.UserDto;
+import com.gxkj.projects.myshopx.entitys.AdminMenu;
+import com.gxkj.projects.myshopx.entitys.Role;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.enums.ErrorCodeEnum;
+import com.gxkj.projects.myshopx.services.RelAdminUserRoleService;
+import com.gxkj.projects.myshopx.services.RelRoleMenuSerivice;
 import com.gxkj.projects.myshopx.services.UserService;
 import org.apache.commons.collections.SetUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +35,8 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -42,8 +51,15 @@ public class AdminLoginController {
 
     public static final String sessionUserKey = "user";
 
+    public static final String sessionUserDtoKey = "userdto";
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RelAdminUserRoleService relAdminUserRoleService;
+
+    @Autowired
+    private RelRoleMenuSerivice relRoleMenuSerivice;
 
     @RequestMapping(value="login",method= RequestMethod.GET)
     public String index(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap){
@@ -75,8 +91,7 @@ public class AdminLoginController {
                  break;
              }
         }
-
-return "admin/login";
+         return "admin/login";
     }
 
     @RequestMapping(value="dologin",method= RequestMethod.POST)
@@ -84,7 +99,53 @@ return "admin/login";
     public ReturnData<User> dologin(User user, HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) throws ValidateException {
         ReturnData<User> returnData = new ReturnData<User>();
         user = userService.doLogin(user);
+        UserDto dto = null;
+        //看看用户角色，和用户可查看的菜单
+        if(user  != null){
+            dto = new UserDto();
+            BeanUtils.copyProperties(user,dto);
+            if(dto.isAdmin()){
+                List<Role> roleList =  relAdminUserRoleService.getRoleByUserId(user.getId());
+                dto.setRoleList(roleList);
+                if(roleList != null){
+                    //设置用户可以查看的菜单
+                    Set<AdminMenu> menuSet = new HashSet<AdminMenu>();
+                    for(Role item : roleList){
+                        List<AdminMenu> menuList =   relRoleMenuSerivice.getAdminMenuListByRoleId(item.getId());
+                        menuSet.addAll(menuList);
+                    }
+                    dto.setMenuSet(menuSet);
+
+                    StringBuffer urls = new StringBuffer();
+                    StringBuffer authorityIds = new StringBuffer();
+                    int menuIndex = 0;
+                    int authorityIndex = 0;
+                    for(AdminMenu menuItem :menuSet){
+                        if(authorityIndex == 0 && StringUtils.isNoneBlank(menuItem.getAuthorityId())){
+                            authorityIds.append(menuItem.getAuthorityId());
+                            authorityIndex++;
+                        }
+                        if(menuIndex == 0 && StringUtils.isNoneBlank(menuItem.getUrl())){
+                            urls.append(menuItem.getUrl());
+                            menuIndex ++;
+                        }
+                        if(authorityIndex >0  && StringUtils.isNoneBlank(menuItem.getAuthorityId())){
+                            authorityIds.append(","+menuItem.getAuthorityId());
+                        }
+                        if(menuIndex >0 && StringUtils.isNoneBlank(menuItem.getUrl()) ){
+                            urls.append(","+menuItem.getUrl());
+                        }
+
+                    }
+                    dto.setMenuUrls(urls.toString());
+                    dto.setAuthIds(authorityIds.toString());
+                }
+            }
+
+        }
         request.getSession().setAttribute(sessionUserKey,user);
+        request.getSession().setAttribute(sessionUserDtoKey,dto);
+
         returnData.setEntity(user);
         returnData.setStatusCode(ErrorCodeEnum.NORMAL.getCode());
         return returnData;
