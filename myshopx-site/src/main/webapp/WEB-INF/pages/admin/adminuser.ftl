@@ -83,11 +83,10 @@
 </div>
 </body>
 <script type="text/javascript">
-    var addUserBtn = true; //"#_adminUser_.btnMap.userdoadd}"== "true"?true:false;
-    var updateUserBtn = true; //"#_adminUser_.btnMap.userdoupdate}"== "true"?true:false;
-    var userdodel =  true;// "#_adminUser_.btnMap.userdodel}"== "true"?true:false;
-    var userdopage =  true;//"#_adminUser_.btnMap.userdopage}"== "true"?true:false;
-    var usersetpassword =  true;//"#_adminUser_.btnMap.usersetpassword}"== "true"?true:false;
+    var addUserBtn =   authIds.indexOf(",admin_adminuser_doadd,")>=0?true:false;
+    var userdodel =   authIds.indexOf(",admin_adminuser_dodel,")>=0?true:false;
+    var userdopage =  authIds.indexOf(",admin_adminuser_dopager,")>=0?true:false;
+    var setUserRoleBtn =  authIds.indexOf(",admin_adminuser_setroles,")>=0?true:false;
 
 
     $(function(){
@@ -107,6 +106,9 @@
             url:'${rc.contextPath}/admin/adminuser/dopager?d='+new Date().getTime(),
             queryParams:{ },
             onBeforeLoad:function(param){
+                if(!userdopage){
+                    return false;
+                }
                 param['pageno'] =  param['page']-1;
                 param['pagesize']  = param['rows'];
 
@@ -177,13 +179,11 @@
     }
     function optFormat(v,row,index){
         var btns = [];
-        if(updateUserBtn){
-            //btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="updateFn(\''+row['id']+'\')" href="#" plain="true" iconCls="update_btn"><span class="l-btn-left"><span class="l-btn-text update_btn l-btn-icon-left">修改</span></span></a>');
-        }
+
         if(userdodel){
             btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="cancleManagerFn(\''+row['id']+'\')" href="#" plain="true" iconCls="del_btn"><span class="l-btn-left"><span class="l-btn-text del_btn l-btn-icon-left">取消管理员</span></span></a>');
         }
-        if(usersetpassword){
+        if(setUserRoleBtn){
             btns.push('<a class="easyui-linkbutton l-btn l-btn-plain" onclick="setUserRole(\''+row['id']+'\')" href="#" plain="true" iconCls="set_btn"><span class="l-btn-left"><span class="l-btn-text set_btn l-btn-icon-left">设置用户角色</span></span></a>');
         }
         return btns.join("&nbsp;");
@@ -196,42 +196,6 @@
             roleNames.push(v[i]['name']);
         }
         return roleNames.join(",");
-    }
-    function updateFn(id){
-        $("#ff").form("reset");
-        updateRowIndex = -1;
-        saveType = "update";
-        var rows = $("#dg").datagrid("getRows");
-        var row = null;
-        for(var i=0;i<rows.length;i++){
-            if(rows[i]['id'] == id){
-                row = rows[i];
-                break;
-            }
-        }
-        var rowIndex = 	$('#dg').datagrid("getRowIndex",row);
-        updateRowIndex = rowIndex;
-
-        $("#id").val(row['id']);
-        $("#name").val(row['name']);
-        $("#realName").val(row['realName']);
-        $('#name').validatebox("validate");
-        $('#realName').validatebox("validate");
-
-        $('#status').combobox('setValue', row['status']);
-        if(row['role']){
-            var role = row['role'];
-            var roleID =role.id;
-            var roleName = role.name;
-            $('#roleid').combogrid('setValue', roleID);
-            $('#roleid').combogrid('setText', roleName);
-        }
-
-        $('#adminuser_w').window('open').panel('setTitle',"修改管理员") ;
-        $('#adminuser_w').window('center');
-    }
-    function closeWinFn(){
-        $('#adminuser_w').window('close');
     }
     function cancleManagerFn(id){
         var rows = $("#dg").datagrid("getRows");
@@ -362,12 +326,7 @@
         $("#user_id").val(row["id"]);
         initRoleGrid();
         initHaveSelectedUserRoles(row);
-        //
-//        var delRowIndex = 	$('#dg').datagrid("getRowIndex",row);
-
     }
-
-
     function initRoleGrid(){
         $('#role_dg').datagrid({
             border:false,

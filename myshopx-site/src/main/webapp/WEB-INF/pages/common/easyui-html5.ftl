@@ -16,6 +16,7 @@
 	　
 //	调用枚举类的例子：${ErrorCodeEnum.NORMAL.code}
 	var normalStatusCode = "${ErrorCodeEnum.NORMAL.code}"
+
 	var authIds = ","+"${(userdto.authIds)!''}"+",";
 
 	 function getPageArea() {

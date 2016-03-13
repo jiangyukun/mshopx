@@ -1,5 +1,6 @@
 package com.gxkj.projects.myshopx.controllers;
 
+import com.alibaba.fastjson.JSONArray;
 import com.gxkj.common.exceptions.ValidateException;
 import com.gxkj.common.utils.ListPager;
 import com.gxkj.projects.myshopx.dto.ReturnData;
@@ -110,16 +111,25 @@ public class AdminLoginController {
                 if(roleList != null){
                     //设置用户可以查看的菜单
                     Set<AdminMenu> menuSet = new HashSet<AdminMenu>();
+                    JSONArray roleNameJSONArray = new JSONArray();
                     for(Role item : roleList){
                         List<AdminMenu> menuList =   relRoleMenuSerivice.getAdminMenuListByRoleId(item.getId());
                         menuSet.addAll(menuList);
+
+                        roleNameJSONArray.add(item.getName());
                     }
                     dto.setMenuSet(menuSet);
+                    LOG.info("QQ["+dto.getQq()+"]拥有这些角色："+roleNameJSONArray.toJSONString());
+
 
                     StringBuffer urls = new StringBuffer();
                     StringBuffer authorityIds = new StringBuffer();
                     int menuIndex = 0;
                     int authorityIndex = 0;
+
+                    JSONArray menuAuthorityIdJSONArray = new JSONArray();
+                    JSONArray menuUrlJSONArray = new JSONArray();
+                    JSONArray menuNameJSONArray = new JSONArray();
                     for(AdminMenu menuItem :menuSet){
                         if(authorityIndex == 0 && StringUtils.isNoneBlank(menuItem.getAuthorityId())){
                             authorityIds.append(menuItem.getAuthorityId());
@@ -135,7 +145,19 @@ public class AdminLoginController {
                         if(menuIndex >0 && StringUtils.isNoneBlank(menuItem.getUrl()) ){
                             urls.append(","+menuItem.getUrl());
                         }
+                        if(  StringUtils.isNoneBlank(menuItem.getAuthorityId()) ){
+                            menuAuthorityIdJSONArray.add(menuItem.getAuthorityId());
+                        }
+                        if(  StringUtils.isNoneBlank(menuItem.getUrl()) ){
+                            menuUrlJSONArray.add(menuItem.getUrl());
+                        }
+                        if(  StringUtils.isNoneBlank(menuItem.getName()) ){
+                            menuNameJSONArray.add(menuItem.getName());
+                        }
                     }
+                    LOG.info("QQ["+dto.getQq()+"]可查看这些菜单："+menuNameJSONArray.toJSONString());
+                    LOG.info("QQ["+dto.getQq()+"]可查看这些菜单URL："+menuUrlJSONArray.toJSONString());
+                    LOG.info("QQ["+dto.getQq()+"]拥有这些权限："+menuAuthorityIdJSONArray.toJSONString());
                     dto.setMenuUrls(urls.toString());
                     dto.setAuthIds(authorityIds.toString());
                 }

@@ -80,13 +80,13 @@
 			</div>
 	</div>
 <script type="text/javascript">
-var roledoadd =  authIds.indexOf(",admin_role_doadd,")>=0?true:false;
-var roledoupdate = authIds.indexOf(",admin_role_doupdate,")>=0?true:false;
-var roledodel = authIds.indexOf(",admin_role_dodel,")>=0?true:false;
-var roledopage = authIds.indexOf(",admin_role_dopager,")>=0?true:false;
-var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
-		var authoritydata = [];
-		var saveType="add";
+var roledoadd =   authIds.indexOf(",admin_role_doadd,")>=0?true:false;
+var roledoupdate =  authIds.indexOf(",admin_role_doupdate,")>=0?true:false;
+var roledodel =  authIds.indexOf(",admin_role_dodel,")>=0?true:false;
+var roledopage =  authIds.indexOf(",admin_role_dopager,")>=0?true:false;
+var rolesetstatus =   authIds.indexOf(",admin_role_dodel,")>=0?true:false;
+
+var saveType="add";
 		$(function(){
 			if(!roledoadd){
 				$("#addBtn").hide();
@@ -104,6 +104,10 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 			  	url:'${rc.contextPath}/admin/role/dopage?d='+new Date().getTime(),
 			  	queryParams:{ },
 			  	onBeforeLoad:function(param){
+                    if(!roledopage){
+                        $.messager.alert('系统提示','您没有权限访问!','info');
+                        return;
+                    }
 					param['pageno'] =  param['page']-1;
 					param['pagesize']  = param['rows'];
 			  		return true ;
@@ -120,19 +124,13 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 					{field:'name',title:'角色名' ,width:100},
 
 					{field:'status',title:'状态',width:100,formatter:function(value,row,index){
-						if(value == 1){
+						if(value == 'NORMAL'){
 							return "有效";
-						}else if(value == 2){
-							return "待审核";
-						}else if(value == 3){
-							return "锁定";
-						}else if(value == 4){
+						}else  if(value == 'DEL'){
 							return "删除";
 						}
 					}},
 					{field:'opt',title:'操作' ,width:100,formatter:optFormat}
-
-
 				]],
 				toolbar: '#tb',
 				loadFilter:function(data){
@@ -162,9 +160,9 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 
 		function searchFn(){
 			if(!roledopage){
-			 $.messager.alert('系统提示','您没有权限访问!','info');
-			return;
-		}
+				 $.messager.alert('系统提示','您没有权限访问!','info');
+				return;
+			}
 			var role_Name = $("#role_Name").val();
 			//var role_status = $('#role_status').combobox('getValue');
 			$('#dg').datagrid('load',{
@@ -242,7 +240,6 @@ var roleget = true;//"###_adminUser_.btnMap.roleget}"?true:false;
 		}
 		function updateFn(id){
 			updateRowIndex = -1;
-
 			var rows = $("#dg").datagrid("getRows");
 			var row = null;
 			for(var i=0;i<rows.length;i++){

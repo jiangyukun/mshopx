@@ -8,79 +8,7 @@
 <#include "../common/easyui-html5.ftl"/>
 </head>
 <script type="text/javascript">
-var menulist = true;//"#_adminUser_.btnMap.menulist}"?true:false;
-var menudoupdate = true;//"#_adminUser_.btnMap.menudoupdate}"?true:false;
-var menudoadd = true;//"#_adminUser_.btnMap.menudoadd}"?true:false;
-var menudodel = true;//"#_adminUser_.btnMap.menudodel}"?true:false;
-var hostpath = "${rc.contextPath}";
-function makeTreeData(menus,usecheck){
 
-	if(menus.length==0)return menus;
- 	 var mapdata = {};
-	  //第一次组织树节点内容
-	  for(var i=0;i<menus.length;i++)
-	  {
-	      var node = menus[i];
-	      var menuname = node['name'];
-	      var pid = node['parentId'];
-	      var aid = node['id'] ;
-	      
-	      var path = node['url'];
-	      var isbutton = node['button'];
-	      var authorityId = node["authorityId"];
-          var sort = node["sort"];
-			var obj = {
-	    		  id:aid,
-	    		  text:menuname,
-	    		  attributes:{
-	    		  		path:path,
-	    		  		isbutton:isbutton,
-					  	authorityId:authorityId,
-	    		  		pid:pid,
-                      	sort:sort
-	    		  }
-	    		  
-	    		};
-	    		if(isbutton==1){
-	    			obj['iconCls'] = 'icon-add';
-	    		}
-	      mapdata["id_"+aid]= obj;
-	     if(usecheck)
-		 {
-		 	mapdata["id_"+aid]['checked']=false;
-		 }
-
-	  }
-  var ret = [];
-  for(var key in mapdata)
-  {
-      var node = mapdata[key];
-      var pid = mapdata[key]['attributes']['pid'];
-      if(mapdata["id_"+pid])
-      {
-          if(typeof mapdata["id_"+pid]['children'] == 'undefined')
-          {
-              mapdata["id_"+pid]['children'] = [];
-          }
-          mapdata["id_"+pid]['children'].push(mapdata[key]);
-      }else
-      {
-          ret.push(mapdata[key]);
-      }
-  }
-  return ret;
-}
- 
-function disableBtn(){
-	$("#cancleBtn").attr('disabled','disabled');
-	$("#saveBtn").attr('disabled','disabled');
-
-}
-function enableableBtn(){
-	$("#cancleBtn").removeAttr("disabled");
-	$("#saveBtn").removeAttr("disabled");
-	
-}
 </script>
 <body class="easyui-layout"> 
 	<div data-options="region:'center'">
@@ -145,10 +73,83 @@ function enableableBtn(){
 	</div>
 </body>
 <script type="text/javascript">
-	/***/
+    var menulist =   authIds.indexOf(",admin_menu_list,")>=0?true:false;
+    var menudoupdate =  authIds.indexOf(",admin_menu_doupdate,")>=0?true:false;
+    var menudoadd = authIds.indexOf(",admin_menu_doadd,")>=0?true:false;
+    var menudodel = authIds.indexOf(",admin_menu_dodel,")>=0?true:false;
+    var hostpath = "${rc.contextPath}";
+    function makeTreeData(menus,usecheck){
+
+        if(menus.length==0)return menus;
+        var mapdata = {};
+        //第一次组织树节点内容
+        for(var i=0;i<menus.length;i++)
+        {
+            var node = menus[i];
+            var menuname = node['name'];
+            var pid = node['parentId'];
+            var aid = node['id'] ;
+
+            var path = node['url'];
+            var isbutton = node['button'];
+            var authorityId = node["authorityId"];
+            var sort = node["sort"];
+            var obj = {
+                id:aid,
+                text:menuname,
+                attributes:{
+                    path:path,
+                    isbutton:isbutton,
+                    authorityId:authorityId,
+                    pid:pid,
+                    sort:sort
+                }
+
+            };
+            if(isbutton==1){
+                obj['iconCls'] = 'icon-add';
+            }
+            mapdata["id_"+aid]= obj;
+            if(usecheck)
+            {
+                mapdata["id_"+aid]['checked']=false;
+            }
+
+        }
+        var ret = [];
+        for(var key in mapdata)
+        {
+            var node = mapdata[key];
+            var pid = mapdata[key]['attributes']['pid'];
+            if(mapdata["id_"+pid])
+            {
+                if(typeof mapdata["id_"+pid]['children'] == 'undefined')
+                {
+                    mapdata["id_"+pid]['children'] = [];
+                }
+                mapdata["id_"+pid]['children'].push(mapdata[key]);
+            }else
+            {
+                ret.push(mapdata[key]);
+            }
+        }
+        return ret;
+    }
+
+    function disableBtn(){
+        $("#cancleBtn").attr('disabled','disabled');
+        $("#saveBtn").attr('disabled','disabled');
+
+    }
+    function enableableBtn(){
+        $("#cancleBtn").removeAttr("disabled");
+        $("#saveBtn").removeAttr("disabled");
+
+    }
 	var type = 'menu';
 	window.treeData = [];
 	$(function(){
+
 			if(!menudoadd){
 				$("#addBtn").attr("disabled",true);
 			}
@@ -163,6 +164,9 @@ function enableableBtn(){
 			    method: 'get',
 				animate: true,
 				onBeforeLoad: function(node, param){
+					if(!menulist){
+						return false;
+					}
 					param['date'] = new Date().getTime();
 				},
 			    loadFilter: function(data){

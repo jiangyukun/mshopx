@@ -11,6 +11,7 @@ import com.gxkj.projects.myshopx.entitys.RelAdminUserRolePK;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.enums.UserStatusEnum;
 import com.gxkj.projects.myshopx.services.UserService;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by dell on 2016/1/14.
@@ -92,11 +95,13 @@ public class UserServiceImpl implements UserService {
         relAdminUserRoleDao.deleteRelAdminUserRoleByUserId(targetUserId);
         if(!StringUtils.isEmpty(targetUserId)){
             String[] roleIdArray = roleIds.split(",");
-            for(int i=0;i<roleIdArray.length;i++){
-                RelAdminUserRole relAdminUserRole = new RelAdminUserRole();
+            Set<String> roleSet = new HashSet<String>();
+            CollectionUtils.addAll(roleSet, roleIdArray);
 
+            for(String roleId:roleSet){
+                RelAdminUserRole relAdminUserRole = new RelAdminUserRole();
                 RelAdminUserRolePK pk = new RelAdminUserRolePK();
-                pk.setAdminRoleId(roleIdArray[i]);
+                pk.setAdminRoleId(roleId);
                 pk.setUserId(targetUserId);
 
                 relAdminUserRole.setRelAdminUserRolePK(pk);
@@ -104,8 +109,6 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
-
-
     public void doAdd(User user) {
         userDao.insert(user);
     }
