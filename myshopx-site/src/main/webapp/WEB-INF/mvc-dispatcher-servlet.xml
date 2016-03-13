@@ -18,6 +18,7 @@
 	<mvc:annotation-driven validator="validator"> </mvc:annotation-driven>
 
 	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 		 <!--使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求-->
 		<bean class="com.gxkj.projects.myshopx.interceptors.AllInterceptor"/><!--freemarker 静态类拦截在这里配置 -->
 		<!--<mvc:interceptor>-->

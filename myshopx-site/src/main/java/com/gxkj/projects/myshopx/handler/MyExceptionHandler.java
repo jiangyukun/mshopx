@@ -3,6 +3,7 @@ package com.gxkj.projects.myshopx.handler;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gxkj.common.dto.ValidateDescDto;
+import com.gxkj.common.exceptions.AuthorityException;
 import com.gxkj.common.exceptions.BusinessException;
 import com.gxkj.common.exceptions.ValidateException;
 import com.gxkj.projects.myshopx.dto.ReturnData;
@@ -77,6 +78,18 @@ public class MyExceptionHandler extends SimpleMappingExceptionResolver {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                }else  if (ex instanceof AuthorityException){
+                    AuthorityException exception = (AuthorityException)ex;
+                    ReturnData<String> returnData = new ReturnData<String>();
+                    returnData.setStatusCode(ErrorCodeEnum.NOAUTHORITY_ERROR.getCode());
+                    returnData.setEntity(ErrorCodeEnum.NOAUTHORITY_ERROR.getMsg());
+                    try {
+                        LOG.error("no authority url:"+exception.getUrl());
+                        doWriteJsonData( response,returnData,ex);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
                 return null;
