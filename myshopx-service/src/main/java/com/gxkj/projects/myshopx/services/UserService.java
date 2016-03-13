@@ -27,5 +27,13 @@ public interface UserService {
 
     public void cancleAdmin(User user, String id);
 
+    /**
+     * 设置用户角色
+     * @param operator
+     * @param targetUserId
+     * @param roleIds
+     */
+    public void setroles(User operator,String targetUserId,String roleIds);
+
 //    public void doAdd(User user);
 }

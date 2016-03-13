@@ -12,12 +12,12 @@ import java.util.Map;
 public class AdminMenuDaoImpl extends HibernateBaseRepositoryImpl {
 
     public List<AdminMenu> getAllAdminMenu() {
-        String hql = "from AdminMenu order by createdAt";
+        String hql = "from AdminMenu order by sort,createdAt";
         return this.selectListByHQL(hql,new HashMap<>());
     }
 
     public AdminMenu getAdminMenuByName(String name) {
-        String hql = "from AdminMenu where name=:name";
+        String hql = "from AdminMenu where name=:name order by sort,createdAt";
         Map<String,Object> param = new HashMap<String,Object>();
         param.put("name",name);
         return this.selectFirstOneByHQL(hql,param);

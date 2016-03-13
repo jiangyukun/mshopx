@@ -28,14 +28,16 @@ function makeTreeData(menus,usecheck){
 	      var path = node['url'];
 	      var isbutton = node['button'];
 	      var authorityId = node["authorityId"];
+          var sort = node["sort"];
 			var obj = {
 	    		  id:aid,
 	    		  text:menuname,
 	    		  attributes:{
-	    		  	path:path,
-	    		  	isbutton:isbutton,
-                      authorityId:authorityId,
-	    		  	pid:pid
+	    		  		path:path,
+	    		  		isbutton:isbutton,
+					  	authorityId:authorityId,
+	    		  		pid:pid,
+                      	sort:sort
 	    		  }
 	    		  
 	    		};
@@ -127,12 +129,10 @@ function enableableBtn(){
 					    			<td>权限ID:</td>
 					    			<td><input class="easyui-validatebox"  style="width:250px;" type="text"  id="authorityId" name="authorityId" data-options="required:false"></input></td>
 					    		</tr>
-                                <#--<tr   >-->
-                                    <#--<td>描述:</td>-->
-                                    <#--<td><input class="easyui-textbox" data-options="multiline:true " style="width:250px;">-->
-									<#--</td>-->
-                                <#--</tr>-->
-					    		
+                                <tr   >
+                                    <td>顺序:</td>
+                                    <td><input class="easyui-numberspinner"  style="width:250px;" type="text"  id="sort" name="sort" data-options="required:true" value="999"></input></td>
+                                </tr>
 					    	</table>
 					    </form>
 				</div>
@@ -230,9 +230,9 @@ function submitForm(){
 	var isbutton = $('#isbutton').combo('getValue');
 	var path = $("#path").val();
 	var authorityId = $("#authorityId").val();
-	
+	var sort = $('#sort').numberspinner('getValue');
 
-	if($.trim(name).length==0){
+    if($.trim(name).length==0){
 		$.messager.alert('系统提示','名称不能为空!','warning');
 		return;
 	}
@@ -274,7 +274,7 @@ function submitForm(){
 					  parentId:pid,
 					  action:'',
 					  des:'',
-					  sort:'1'
+					  sort:sort
 				  },
 				  success:function(json){
 				  	 enableableBtn();
@@ -346,7 +346,7 @@ function submitForm(){
 				  parentId:pid,
 				  action:'',
 				  des:'',
-				  sort:'1'
+				  sort:sort
 			  	
 			  },
 			  success:function(json){
@@ -401,7 +401,7 @@ function updateFn(){
 	 $('#parentMenu').combotree('setValue',node.attributes.pid);
 	 $('#name').val(node.text);
 	 $('#name').validatebox("validate");
-	 
+    $('#sort').numberspinner('setValue', node.attributes.sort);  // set value
 	 var isbutton = node.attributes.isbutton
 
 	$("#isbutton").combobox('select',isbutton+"");

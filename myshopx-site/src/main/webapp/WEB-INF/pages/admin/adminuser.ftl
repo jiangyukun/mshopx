@@ -70,13 +70,14 @@
             <div  class="easyui-layout" data-options="fit:true">
                 <div data-options="region:'center',title:'可选角色'" style="background:#eee;">
                     <table id="role_dg"></table>
+                    <input type="hidden" id="user_id"/>
                 </div>
                 <div id="have_sel_div" data-options="region:'south',title:'已选角色'" style="height:100px;"></div>
             </div>
         </div>
         <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
-            <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:submitFormFn()">保存</a>
-            <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:closeWinFn()">取消</a>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:saveFormFn()">保存</a>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:cancleRole()">取消</a>
         </div>
     </div>
 </div>
@@ -119,7 +120,7 @@
                 {field:'id',title:'id'},
                 {field:'qq',title:'qq' ,width:100},
                 {field:'uname',title:'姓名',width:200},
-                {field:'role',title:'角色',width:200,formatter:roleFormat},
+                {field:'roleList',title:'角色',width:200,formatter:roleFormat},
                 {field:'status',title:'状态' ,width:50,formatter:statusFormat},
                 {field:'opt',title:'操作' ,width:200,formatter:optFormat}
             ]],
@@ -188,8 +189,13 @@
         return btns.join("&nbsp;");
     }
     function roleFormat(v,row,index){
-        if(!v)return "";
-        return v.name;
+
+        if(!v || v.length == 0)return "";
+        var roleNames = [];
+        for(var i=0;i< v.length;i++){
+            roleNames.push(v[i]['name']);
+        }
+        return roleNames.join(",");
     }
     function updateFn(id){
         $("#ff").form("reset");
@@ -337,7 +343,7 @@
             },
             error:function(xhr,textStatus,errorThrown){
                 var responseText = xhr.responseText;
-                $.messager.alert('系统提示','密码重置失败，请刷新后重试!','error');
+                $.messager.alert('系统提示','查到失败，请刷新后重试!','error');
 
             }
         });
@@ -353,18 +359,15 @@
         }
         $('#setrole_w').window('open').panel('setTitle',"设置用户角色") ;
         $('#setrole_w').window('center');
-
+        $("#user_id").val(row["id"]);
         initRoleGrid();
+        initHaveSelectedUserRoles(row);
         //
 //        var delRowIndex = 	$('#dg').datagrid("getRowIndex",row);
 
     }
-    function submitRole(){
 
-    }
-    function cancleRole(){
-        $('#setrole_w').window('close');
-    }
+
     function initRoleGrid(){
         $('#role_dg').datagrid({
             border:false,
@@ -376,7 +379,7 @@
             fit:true,
             pageSize:20,
             method:'get',
-            url:'${rc.contextPath}/admin/role/dopage?d='+new Date().getTime(),
+            url:'${rc.contextPath}/admin/adminuser/canselroles?d='+new Date().getTime(),
             queryParams:{ },
             onBeforeLoad:function(param){
                 param['pageno'] =  param['page']-1;
@@ -446,12 +449,10 @@
 
         $("#have_sel_div").empty();
         if(!roles || roles.length == 0){
-
             return;
         }
         var ids = [];
         for(var i=0;i<roles.length;i++ ){
-
             if((";"+ids.join(";")+";").indexOf(";"+roles[i]['id']+";")>=0){
                 continue;
             }
@@ -461,6 +462,60 @@
             $("#have_sel_div").append('<a   href="#" class="easyui-linkbutton"  >'+roles[i].name+'</a>');
             ids.push(roles[i]['id']);
         }
+    }
+    function cancleRole(){
+        $('#setrole_w').window('close');
+    }
+    function saveFormFn(){
+
+        var userId = $("#user_id").val();
+        var roles = [];
+        for(var i=0;i<haveSelRoles.length;i++ ){
+            roles.push(haveSelRoles[i]['id']);
+        }
+        roles = roles.join(",");
+        var url = "${rc.contextPath}/admin/adminuser/setroles";
+        $.ajax({
+            type:'post',
+            url: url,
+            context: document.body,
+            data:{
+                d:new Date().getTime(),
+                userId:userId,
+                roles:roles
+            },
+            beforeSend:function(){
+                jQuery.showMask($("#setrole_w")[0],"正在保存中 ....");
+            },
+            success:function(data){
+                jQuery.hideMask($("#setrole_w")[0]);
+                var statusCode = data.statusCode;
+                if(normalStatusCode == statusCode   ){
+                    $('#dg').datagrid('reload');
+                    $.messager.alert('系统提示','保存成功!','info',cancleRole);
+                }else {
+                    $.messager.alert('系统提示','保存失败!','warning');
+                }
+            },
+            error:function(xhr,textStatus,errorThrown){
+                var responseText = xhr.responseText;
+                jQuery.hideMask($("#setrole_w")[0]);
+                $.messager.alert('系统提示','设置失败，请刷新后重试!','error');
+
+            }
+        });
+    }
+    function initHaveSelectedUserRoles(row){
+        var roleList = row['roleList'];
+        if(!roleList || roleList.length == 0){
+            haveSelRoles = [];
+        }else{
+            for(var i=0;i<roleList.length;i++){
+                haveSelRoles.push({id:roleList[i]['id'],name:roleList[i]['name']})
+            }
+
+        }
+        showRoleButns(haveSelRoles);
     }
 
 </script>

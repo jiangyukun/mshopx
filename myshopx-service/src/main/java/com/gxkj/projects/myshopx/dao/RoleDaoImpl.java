@@ -21,10 +21,17 @@ public class RoleDaoImpl extends HibernateBaseRepositoryImpl {
         Map<String,Object> param = new HashMap<String,Object>();
         param.put("delState", RoleState.DEL);
 
-        if(StringUtils.isNotBlank(role.getName())){
-            hql += " and name like :name";
-            param.put("name","%"+role.getName()+"%");
+        if(role != null){
+            if(StringUtils.isNotBlank(role.getName())){
+                hql += " and name like :name";
+                param.put("name","%"+role.getName()+"%");
+            }
+            if(role.getState() != null){
+                hql += " and u.state = :state";
+                param.put("state",role.getState());
+            }
         }
+
         return  this.selectPageByHql(hql,param,pager);
     }
 }

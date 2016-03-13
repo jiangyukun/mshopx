@@ -4,7 +4,10 @@ package com.gxkj.projects.myshopx.services.impl;
 import com.gxkj.common.exceptions.ValidateException;
 import com.gxkj.common.utils.ListPager;
 import com.gxkj.common.utils.ValidatorUtil;
+import com.gxkj.projects.myshopx.dao.RelAdminUserRoleDaoImpl;
 import com.gxkj.projects.myshopx.dao.UserDaoImpl;
+import com.gxkj.projects.myshopx.entitys.RelAdminUserRole;
+import com.gxkj.projects.myshopx.entitys.RelAdminUserRolePK;
 import com.gxkj.projects.myshopx.entitys.User;
 import com.gxkj.projects.myshopx.enums.UserStatusEnum;
 import com.gxkj.projects.myshopx.services.UserService;
@@ -12,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -26,6 +30,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDaoImpl userDao;
+
+    @Autowired
+    private RelAdminUserRoleDaoImpl relAdminUserRoleDao;
 
     @Autowired
     private ValidatorUtil validatorUtil;
@@ -78,6 +85,24 @@ public class UserServiceImpl implements UserService {
     }
     public void cancleAdmin(User user, String id) {
         userDao.cancleAdmin(id);
+    }
+
+
+    public void setroles(User operator,String targetUserId,String roleIds) {
+        relAdminUserRoleDao.deleteRelAdminUserRoleByUserId(targetUserId);
+        if(!StringUtils.isEmpty(targetUserId)){
+            String[] roleIdArray = roleIds.split(",");
+            for(int i=0;i<roleIdArray.length;i++){
+                RelAdminUserRole relAdminUserRole = new RelAdminUserRole();
+
+                RelAdminUserRolePK pk = new RelAdminUserRolePK();
+                pk.setAdminRoleId(roleIdArray[i]);
+                pk.setUserId(targetUserId);
+
+                relAdminUserRole.setRelAdminUserRolePK(pk);
+                relAdminUserRoleDao.insert(relAdminUserRole);
+            }
+        }
     }
 
 
