@@ -57,7 +57,7 @@
                 欢迎您:${(user.qq)!"游客"} &nbsp;&nbsp;您的编号是：${(user.id)!"0"}
             </td>
             <td align="right" width="50%">
-                <a href="#" class="easyui-linkbutton" onclick="addTabPanel('userhome')" data-options="plain:true,iconCls:'user_btn'">个人中心</a>
+
                 <a href="#" class="easyui-linkbutton" onclick="logout()" data-options="plain:true,iconCls:'poweroff_btn'">退出</a>
             </td>
         </tr>
@@ -104,6 +104,7 @@
         {
             var node = menus[i];
             var menuname = node['name'];
+
             var parentNo = node['parentId'];
             var aid = node['id'] ;
 
