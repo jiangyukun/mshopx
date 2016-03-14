@@ -49,12 +49,12 @@ public class UserTServiceImplTest extends BaseSpringTest {
      */
     @Test
     public void doListTest(){
-        ListPager<User> userLists =  userService.doHqlPage(0,20,null);
+        ListPager<User> userLists =  userService.doHqlPage(0,20,null,false);
         LOG.info("userLists="+JSON.toJSONString(userLists));
     }
     @Test
     public void doSqlPageTest(){
-        ListPager<User> pager =  userService.doSqlPageTest(0,10,0,"");
+        ListPager<User> pager =  userService.doSqlPageTest(0,10,null,true);
         LOG.info("pager="+ JSON.toJSONString(pager));
     }
 }
