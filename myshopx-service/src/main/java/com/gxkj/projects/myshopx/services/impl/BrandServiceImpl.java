@@ -6,6 +6,7 @@ import com.gxkj.common.utils.ValidatorUtil;
 import com.gxkj.projects.myshopx.dao.BrandDaoImpl;
 import com.gxkj.projects.myshopx.entitys.Brand;
 import com.gxkj.projects.myshopx.entitys.User;
+import com.gxkj.projects.myshopx.enums.BrandStates;
 import com.gxkj.projects.myshopx.services.BrandService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,7 @@ public class BrandServiceImpl implements BrandService {
 
         entity.setCreatedAt(new Date());
         entity.setUpdatedAt(new Date());
-
+        entity.setStates(BrandStates.NORMAL);
         validatorUtil.validate(entity,true);
         brandDao.insert(entity);
     }
@@ -41,14 +42,16 @@ public class BrandServiceImpl implements BrandService {
 
         entity.setCreatedAt(dbentity.getCreatedAt());
         entity.setUpdatedAt(new Date());
+        entity.setStates(BrandStates.NORMAL);
         validatorUtil.validate(entity,true);
         brandDao.updateByMerge(entity);
     }
 
 
     public void doDeleteBrand(User user, String brandId) {
-
-            brandDao.deleteById(brandId,Brand.class);
+        Brand dbentity = brandDao.selectById(brandId,Brand.class);
+        dbentity.setStates(BrandStates.DEL);
+        brandDao.updateByMerge(dbentity);
     }
 
 

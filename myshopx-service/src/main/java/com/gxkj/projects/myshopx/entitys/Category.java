@@ -1,8 +1,8 @@
 package com.gxkj.projects.myshopx.entitys;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.gxkj.projects.myshopx.enums.CategoryState;
+
+import javax.persistence.*;
 
 /**
  * 商品分类
@@ -35,13 +35,15 @@ public class Category extends BaseModel{
     private String measureUnit;//数量单位
 
     @Column(name="show_in_nav",nullable = false)
-    private int showInNav;//导航栏
+    @org.hibernate.annotations.Type(type="yes_no")
+    private boolean showInNav;//导航栏
 
     @Column(name="style" ,nullable = false)
     private String style;
 
     @Column(name="is_show" ,nullable = false)
-    private int isShow;//是否显示
+    @org.hibernate.annotations.Type(type="yes_no")
+    private boolean show;//是否显示
 
     @Column(name="grade" ,nullable = false)
     private int grade;//价格分级
@@ -49,6 +51,10 @@ public class Category extends BaseModel{
 
     @Column(name="filter_attr",nullable = false)
     private String filterAttr;//筛选属性
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="states",nullable = false)//状态
+    private CategoryState states;
 
     public String getCatName() {
         return catName;
@@ -106,13 +112,7 @@ public class Category extends BaseModel{
         this.measureUnit = measureUnit;
     }
 
-    public int getShowInNav() {
-        return showInNav;
-    }
 
-    public void setShowInNav(int showInNav) {
-        this.showInNav = showInNav;
-    }
 
     public String getStyle() {
         return style;
@@ -120,14 +120,6 @@ public class Category extends BaseModel{
 
     public void setStyle(String style) {
         this.style = style;
-    }
-
-    public int getIsShow() {
-        return isShow;
-    }
-
-    public void setIsShow(int isShow) {
-        this.isShow = isShow;
     }
 
     public int getGrade() {
@@ -144,5 +136,30 @@ public class Category extends BaseModel{
 
     public void setFilterAttr(String filterAttr) {
         this.filterAttr = filterAttr;
+    }
+
+    public CategoryState getStates() {
+        return states;
+    }
+
+    public void setStates(CategoryState states) {
+        this.states = states;
+    }
+
+
+    public boolean isShowInNav() {
+        return showInNav;
+    }
+
+    public void setShowInNav(boolean showInNav) {
+        this.showInNav = showInNav;
+    }
+
+    public boolean isShow() {
+        return show;
+    }
+
+    public void setShow(boolean show) {
+        this.show = show;
     }
 }

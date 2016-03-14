@@ -1,10 +1,9 @@
 package com.gxkj.projects.myshopx.entitys;
 
+import com.gxkj.projects.myshopx.enums.BrandStates;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 商品品牌
@@ -31,7 +30,14 @@ public class Brand extends BaseModel{
     private int sortOrder;//排序
 
     @Column(name="is_show",nullable = false)
-    private int isShow;//是否显示
+    @org.hibernate.annotations.Type(type="yes_no")
+    private boolean show;//是否显示
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="states",nullable = false)//状态
+    private BrandStates states;
+
 
     public String getBrandName() {
         return brandName;
@@ -73,11 +79,19 @@ public class Brand extends BaseModel{
         this.sortOrder = sortOrder;
     }
 
-    public int getIsShow() {
-        return isShow;
+    public boolean isShow() {
+        return show;
     }
 
-    public void setIsShow(int isShow) {
-        this.isShow = isShow;
+    public void setShow(boolean show) {
+        this.show = show;
+    }
+
+    public BrandStates getStates() {
+        return states;
+    }
+
+    public void setStates(BrandStates states) {
+        this.states = states;
     }
 }

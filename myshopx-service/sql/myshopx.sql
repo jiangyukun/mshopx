@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50132
 File Encoding         : 65001
 
-Date: 2016-03-13 22:30:12
+Date: 2016-03-14 22:33:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -83,7 +83,8 @@ CREATE TABLE `brand` (
   `brand_desc` text NOT NULL,
   `site_url` varchar(255) NOT NULL DEFAULT '',
   `sort_order` tinyint(3) NOT NULL DEFAULT '50',
-  `is_show` tinyint(1) NOT NULL DEFAULT '1',
+  `is_show` char(4) NOT NULL DEFAULT 'Y',
+  `states` char(8) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -106,11 +107,12 @@ CREATE TABLE `category` (
   `sort_order` tinyint(1) NOT NULL DEFAULT '50',
   `template_file` varchar(50) NOT NULL DEFAULT '',
   `measure_unit` varchar(15) NOT NULL DEFAULT '',
-  `show_in_nav` tinyint(1) NOT NULL DEFAULT '0',
+  `show_in_nav` char(4) NOT NULL DEFAULT '0',
   `style` varchar(256) NOT NULL,
-  `is_show` tinyint(1) NOT NULL DEFAULT '1',
+  `is_show` char(4) NOT NULL DEFAULT '1',
   `grade` tinyint(4) NOT NULL DEFAULT '0',
   `filter_attr` varchar(255) NOT NULL DEFAULT '0',
+  `states` varchar(16) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
